@@ -1,0 +1,43 @@
+source "https://rubygems.org"
+
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby "2.6.3"
+
+gem "rails", "~> 6.1.0"
+gem "pg", "~> 1.1"
+gem "puma", "~> 5.0"
+gem "webpacker", "~> 5.0"
+gem "jbuilder", "~> 2.7"
+
+gem 'bcrypt', '~> 3.1.7' # Use Active Model has_secure_password
+
+
+gem "bootsnap", ">= 1.4.4", require: false
+gem "haml-rails", "~> 2.0"
+
+group :development, :test do
+  gem "pry-nav"
+  gem "pry-rails"
+
+  gem "factory_bot_rails"
+  gem "rspec-rails"
+  # capybara
+  gem "capybara"
+  gem "launchy" # for capybara save_and_open_page
+  gem "webdrivers"
+end
+
+group :development do
+  gem "listen", "~> 3.3"
+  gem "rack-mini-profiler", "~> 2.0"
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem "annotate"
+  gem "spring"
+
+  gem "haml_lint"
+  gem "rubocop"
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
+end

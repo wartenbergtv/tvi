@@ -1,0 +1,6 @@
+inherits_from:
+  - .rubocop.yml
+
+linters:
+  LineLength:
+    max: 130
