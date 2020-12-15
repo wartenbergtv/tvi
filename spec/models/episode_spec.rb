@@ -19,7 +19,7 @@
 #  index_episodes_on_slug          (slug) UNIQUE
 #  index_episodes_on_title         (title) UNIQUE
 #
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Episode, type: :model do
   it "has a valid factory" do

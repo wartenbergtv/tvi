@@ -2,11 +2,42 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Podi
+
+    %title Wartenberger - der Podcast für Wartenberg
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    %meta{:content => "Podcast Wartenberg Oberbayern", :name => "description"}/
+    %meta{:content => "Podcast, Wartenberg, Oberbayern, München, Bayern, Regional", :name => "keywords"}/
+    %meta{:content => "Michael Deimel", :name => "author"}/
+    %link{:href => "/public/favicon.ico", :rel => "shortcut icon"}/
+    %link{:href => "public/apple-touch-icon-144-precomposed-2.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}/
+
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all'
-    = javascript_pack_tag 'application'
-  %body
-    = yield
+
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+  %body{:class => "#{controller_name} #{action_name}"}
+
+    %ul.nav.navbar-light.bg-light
+      %a.navbar-brand{:href => root_path} Wartenberger
+      %li.nav-item
+        %a.nav-link{:href => "#"} Episoden
+      %li.nav-item
+        %a.nav-link{:href => admin_episodes_path} Episoden Administration
+
+    .container-fluid
+      .row
+        - flash.each do |name, msg|
+          - if msg.is_a?(String)
+            %div{class: "alert alert-dismissible fade show alert-#{name == :notice ? "success" : "warning"}", role: "alert"}
+              %a.close{"data-dismiss" => "alert"} ×
+              = content_tag :div, msg, :id => "flash_#{name}"
+      .row
+        .col
+          = yield
+
+  %footer.footer
+    .container
+      %span.text-muted= link_to "Über uns", "/about"
+      %span.text-muted= link_to "Imperessum", "/imprint"
+      %span.text-muted= link_to "Datenschutz", "/privacy"
