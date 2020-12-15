@@ -21,11 +21,11 @@
 #
 FactoryBot.define do
   factory :episode do
-    title { "MyString" }
-    slug { "MyString" }
-    description { "MyText" }
-    file_url { "MyText" }
+    title { "Soli Wartenberg" }
+    slug { "002-soli-wartenberg" }
+    description { "we talk about bikes and things" }
+    file_url { "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/test-001.mp3" }
     downloads_count { 1 }
-    published_at { "2020-12-15 12:27:56" }
+    published_at { Time.current }
   end
 end

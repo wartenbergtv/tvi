@@ -22,5 +22,10 @@
 require 'rails_helper'
 
 RSpec.describe Episode, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "has a valid factory" do
+    event = FactoryBot.build :episode
+
+    expect(event).to be_valid
+    assert event.save!
+  end
 end

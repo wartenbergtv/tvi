@@ -2,7 +2,7 @@ source "https://rubygems.org"
 
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby "2.6.3"
+ruby "2.6.6"
 
 gem "rails", "~> 6.1.0"
 gem "pg", "~> 1.1"
@@ -10,9 +10,9 @@ gem "puma", "~> 5.0"
 gem "webpacker", "~> 5.0"
 gem "jbuilder", "~> 2.7"
 
-gem 'bcrypt', '~> 3.1.7' # Use Active Model has_secure_password
+# gem 'bcrypt', '~> 3.1.7' # Use Active Model has_secure_password
 
-
+gem "simple_form"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "haml-rails", "~> 2.0"
 
