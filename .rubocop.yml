@@ -12,6 +12,7 @@ AllCops:
     - '**/vendor/**/*'
     - '**/node_modules/**/*'
     - 'bin/**/*'
+    - 'config/initializers/simple_form_bootstrap.rb'
 
 Layout/LineLength:
   Max: 130

@@ -1,9 +1,8 @@
 module Admin
   class EpisodesController < ApplicationController
-
     def index
       @episode_records = Episode.all
-      @episodes        = EpisodePresenter.wrap  @episode_record
+      @episodes        = EpisodePresenter.wrap @episode_record
     end
 
     def show
@@ -17,11 +16,10 @@ module Admin
     def edit; end
 
     def create
-
-      @episode = Episode.new(episode_params)
+      @episode_creator = EpisodeCreator(episode_params)
 
       respond_to do |format|
-        if @episode.save
+        if episode_creator.call
           format.html { redirect_to @episode, notice: "Episode was successfully created." }
         else
           format.html { render :new }
@@ -42,9 +40,8 @@ module Admin
 
     private
 
-    # Only allow a list of trusted parameters through.
     def episode_params
-      params.require(:episode).permit(:show, :index, :new, :edit)
+      params.require(:episode).permit(*Episode::ATTRIBUTES)
     end
   end
 end

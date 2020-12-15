@@ -20,4 +20,5 @@
 #  index_episodes_on_title         (title) UNIQUE
 #
 class Episode < ApplicationRecord
+  ATTRIBUTES = %i[title description file_url published_at].freeze
 end

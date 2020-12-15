@@ -5,6 +5,7 @@
 
   .form-inputs
     = f.input :title
+    = f.input :slug, disabled: true, hint: 'You cannot change the slug.'
     = f.input :description
     = f.input :file_url
     = f.input :published_at
