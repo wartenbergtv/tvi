@@ -1,9 +1,20 @@
 %h1 Welcome
 
-%i.fa.fa-heart.fa-w-16.fa-9x
+%h2 Letzte Episonden
+- @episodes.each do |episode|
+  .card
+    %h3
+      = episode.title
+      %span.text-muted= episode.published_on
+      %button{class: "btn", "data-target" => "#description-#{episode.id}", "data-toggle" => "collapse"} collapse
+    %div{id: "description-#{episode.id}", class: "collapse"}
+      = episode.description
+.p
+  #buzzsprout-player-6873407
+  %script{:charset => "utf-8", :src => "https://www.buzzsprout.com/1526770/6873407.js?container_id=buzzsprout-player-6873407&player=small", :type => "text/javascript"}
 
-%h2 Debug
-#buzzsprout-player-6873407
-%script{:charset => "utf-8", :src => "https://www.buzzsprout.com/1526770/6873407.js?container_id=buzzsprout-player-6873407&player=small", :type => "text/javascript"}
+.p
+  %button{"data-target" => "#demo", "data-toggle" => "collapse"} Collapsible
 
-%p= ActiveRecord::Base.connection.execute("SELECT version();").first["version"]
+  #demo.collapse
+    Lorem ipsum dolor text....
