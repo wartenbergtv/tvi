@@ -43,3 +43,4 @@ capybara-*.html
 !/storage/.keep
 /public/uploads
 /public/system
+buzzsprout_rss.xml

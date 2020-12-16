@@ -4,7 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  description     :text             not null
-#  downloads_count :integer
+#  downloads_count :integer          default(0)
 #  file_url        :text
 #  published_at    :datetime
 #  slug            :string           not null
@@ -20,5 +20,5 @@
 #  index_episodes_on_title         (title) UNIQUE
 #
 class Episode < ApplicationRecord
-  ATTRIBUTES = %i[title description file_url published_at].freeze
+  ATTRIBUTES = %w[title description file_url published_at].freeze
 end

@@ -39,3 +39,6 @@ RSpec/ExampleLength:
 
 Metrics/BlockLength:
   Enabled: false
+
+Style/AsciiComments:
+  Enabled: false

@@ -4,7 +4,7 @@
 #
 #  id              :bigint           not null, primary key
 #  description     :text             not null
-#  downloads_count :integer
+#  downloads_count :integer          default(0)
 #  file_url        :text
 #  published_at    :datetime
 #  slug            :string           not null

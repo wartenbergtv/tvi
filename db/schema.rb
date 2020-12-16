@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20_201_215_112_756) do
     t.string "slug", null: false
     t.text "description", null: false
     t.text "file_url"
-    t.integer "downloads_count"
+    t.integer "downloads_count", default: 0
     t.datetime "published_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
