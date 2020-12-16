@@ -5,7 +5,7 @@ describe "Administrate Episodes", type: :system do
     episode = FactoryBot.create :episode
 
     visit "/"
-    click_on "Episoden Administration"
+    click_on "Administration"
     expect(page).to have_selector "h1", text: "Episodes"
 
     expect(page).to have_table_with_exact_data([
@@ -23,7 +23,7 @@ describe "Administrate Episodes", type: :system do
 
   it "create a new episode" do
     visit "/"
-    click_on "Episoden Administration"
+    click_on "Administration"
 
     click_on "Add"
 
@@ -51,7 +51,7 @@ describe "Administrate Episodes", type: :system do
     episode = FactoryBot.create :episode
 
     visit "/"
-    click_on "Episoden Administration"
+    click_on "Administration"
 
     click_on "Edit"
 

@@ -14,8 +14,8 @@
     = csrf_meta_tags
     = csp_meta_tag
 
-    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
-    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application', media: 'all'
   %body{:class => "#{controller_name} #{action_name}"}
 
     %ul.nav.navbar-light.bg-light
@@ -23,7 +23,10 @@
       %li.nav-item
         %a.nav-link{:href => "#"} Episoden
       %li.nav-item
-        %a.nav-link{:href => admin_episodes_path} Episoden Administration
+        %a.nav-link{:href => "#"} Über uns
+      - if true # admin
+        %li.nav-item
+          %a.nav-link{:href => admin_episodes_path} Administration
 
     .container-fluid
       .row
@@ -33,11 +36,26 @@
               %a.close{"data-dismiss" => "alert"} ×
               = content_tag :div, msg, :id => "flash_#{name}"
       .row
-        .col
+        .mt-8
+          &nbsp;
+      .row
+        .col-md-8
           = yield
+        .col-md-3.col-md-offset-1
+          .sidebar
+            .card-header
+              Wartenberger podcasting for geeks
+            .card
+              = image_pack_tag 'media/images/logo.png', class: "img-thumbnail rounded"
+
+
+            .card-body
+              %p.card-text
+                This is a little demo of Octopod - podcast delivery for geeks in it's current state of development.
+                You will find all the information you need on the project homepage on Github.
 
   %footer.footer
     .container
-      %span.text-muted= link_to "Über uns", "/about"
       %span.text-muted= link_to "Imperessum", "/imprint"
+      |
       %span.text-muted= link_to "Datenschutz", "/privacy"

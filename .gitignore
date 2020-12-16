@@ -44,3 +44,4 @@ capybara-*.html
 /public/uploads
 /public/system
 buzzsprout_rss.xml
+.DS_Store
