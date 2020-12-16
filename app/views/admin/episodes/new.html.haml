@@ -5,9 +5,9 @@
 
   .form-inputs
     = f.input :title
-    = f.input :description
+    = f.input :description, as: :text
     = f.input :file_url
-    = f.input :published_at, as: :string
+    = f.input :published_on, as: :date, html5: true
   .form-actions
     = submit_button
 

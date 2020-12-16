@@ -6,7 +6,7 @@ class CreateEpisodes < ActiveRecord::Migration[6.1]
       t.text :description, null: false
       t.text :file_url, index: { unique: true }
       t.integer :downloads_count, default: 0
-      t.datetime :published_at, index: true
+      t.date :published_on, index: true
 
       t.timestamps
     end

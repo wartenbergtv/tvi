@@ -3,7 +3,7 @@
 = simple_form_for(@episode_updater, url: admin_episode_path(@episode_updater.id), method: :patch, html: { class: 'form-horizontal' })do |f|
   .form-inputs
     = f.input :title
-    = f.input :description
+    = f.input :description, as: :text
     = f.input :file_url
   .form-actions
     = submit_button

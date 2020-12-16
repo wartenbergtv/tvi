@@ -11,12 +11,12 @@ describe "Administrate Episodes", type: :system do
     expect(page).to have_table_with_exact_data([
                                                  ["Title",
                                                   "downloads_count",
-                                                  "published_at",
+                                                  "published_on",
                                                   "",
                                                   ""],
                                                  ["Soli Wartenberg",
                                                   "1",
-                                                  episode.published_at.strftime("%d.%m.%Y %H:%M"),
+                                                  episode.published_on.strftime("%d.%m.%Y"),
                                                   "Show", "Edit"]
                                                ])
   end
@@ -42,7 +42,7 @@ describe "Administrate Episodes", type: :system do
     click_on "Save"
     expect(page).to have_content "Episode was successfully created."
     expect(page).to have_table_with_exact_data([
-                                                 ["Title", "downloads_count", "published_at", "", ""],
+                                                 ["Title", "downloads_count", "published_on", "", ""],
                                                  ["Talk about shit", "0", "", "Show", "Edit"]
                                                ])
   end
@@ -63,8 +63,8 @@ describe "Administrate Episodes", type: :system do
 
     expect(page).to have_content "Episode was successfully updated."
     expect(page).to have_table_with_exact_data([
-                                                 ["Title", "downloads_count", "published_at", "", ""],
-                                                 ["test", "1", episode.published_at.strftime("%d.%m.%Y %H:%M"), "Show", "Edit"]
+                                                 ["Title", "downloads_count", "published_on", "", ""],
+                                                 ["test", "1", episode.published_on.strftime("%d.%m.%Y"), "Show", "Edit"]
                                                ])
   end
 end

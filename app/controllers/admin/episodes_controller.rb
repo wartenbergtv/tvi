@@ -42,7 +42,7 @@ module Admin
     protected
 
     def create_params
-      params.require(:episode_creator).permit(*Episode::ATTRIBUTES)
+      params.require(:episode_creator).permit(*EpisodeCreator::CREATABLE_ATTRIBUTES)
     end
 
     def update_params

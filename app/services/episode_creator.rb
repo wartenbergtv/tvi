@@ -1,10 +1,15 @@
 class EpisodeCreator < BaseService
-  attr_accessor(*Episode::ATTRIBUTES)
+  CREATABLE_ATTRIBUTES = %w[title description file_url published_on].freeze
+
+  attr_accessor(*CREATABLE_ATTRIBUTES)
 
   validates(:title, presence: true)
   validates(:description, presence: true)
   validates(:file_url, presence: true)
+  # validates(:published_on, presence: true) # TODO
+
   def call
+    @published_on = published_on.present? ? published_on.to_date : nil
     return false if invalid?
 
     ::Episode.create! episode_attributes.merge(slug: build_slug)
@@ -18,6 +23,6 @@ class EpisodeCreator < BaseService
   end
 
   def episode_attributes
-    Episode::ATTRIBUTES.map { |name| [name, send(name)] if send(name) }.compact.to_h
+    CREATABLE_ATTRIBUTES.map { |name| [name, send(name)] if send(name) }.compact.to_h
   end
 end

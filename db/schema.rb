@@ -20,11 +20,11 @@ ActiveRecord::Schema.define(version: 20_201_215_112_756) do
     t.text "description", null: false
     t.text "file_url"
     t.integer "downloads_count", default: 0
-    t.datetime "published_at"
+    t.date "published_on"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["file_url"], name: "index_episodes_on_file_url", unique: true
-    t.index ["published_at"], name: "index_episodes_on_published_at"
+    t.index ["published_on"], name: "index_episodes_on_published_on"
     t.index ["slug"], name: "index_episodes_on_slug", unique: true
     t.index ["title"], name: "index_episodes_on_title", unique: true
   end
