@@ -17,6 +17,9 @@ gem "bootsnap", ">= 1.4.4", require: false
 gem "haml-rails", "~> 2.0"
 gem "rails-i18n"
 
+gem "rollbar"
+gem "newrelic_rpm"
+
 group :development, :test do
   gem "pry-nav"
   gem "pry-rails"
