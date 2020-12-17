@@ -1,1 +1,4 @@
+git checkout master
 git push heroku
+
+heroku run rake --trace db:migrate
