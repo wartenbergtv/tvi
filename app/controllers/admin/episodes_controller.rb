@@ -6,6 +6,7 @@ module Admin
     end
 
     def show
+      raise "test"
       @episode = EpisodePresenter.new Episode.find(params[:id])
     end
 
