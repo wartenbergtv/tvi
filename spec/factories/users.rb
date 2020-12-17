@@ -24,6 +24,8 @@ FactoryBot.define do
     first_name { "Joe" }
     last_name { "Doe" }
     email { "joe@test.com" }
+    password { "Test123!" }
+    password_confirmation { "Test123!" }
     admin { false }
 
     trait :admin do
@@ -31,6 +33,4 @@ FactoryBot.define do
       email { "admin@test.com" }
     end
   end
-
-
 end

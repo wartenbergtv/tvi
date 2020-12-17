@@ -5,7 +5,8 @@ describe "Episodes", type: :system do
     FactoryBot.create :episode
 
     visit "/"
-    click_on "Episoden"
+    click_on "Archiv"
+
     expect(page).to have_selector "h1", text: "Episoden"
   end
 end
