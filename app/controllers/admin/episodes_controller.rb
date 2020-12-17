@@ -1,12 +1,11 @@
 module Admin
-  class EpisodesController < ApplicationController
+  class EpisodesController < BaseController
     def index
       @episode_records = Episode.all
       @episodes        = EpisodePresenter.wrap @episode_records
     end
 
     def show
-      raise "test"
       @episode = EpisodePresenter.new Episode.find(params[:id])
     end
 

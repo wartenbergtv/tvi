@@ -21,13 +21,14 @@
     %ul.nav.navbar-light.bg-light
       %a.navbar-brand{:href => root_path} Wartenberger
       %li.nav-item
-        %a.nav-link{:href => "#"} Episoden
+        %a.nav-link{:href => episodes_path} Episoden
       %li.nav-item
-        %a.nav-link{:href => "#"} Über uns
+        %a.nav-link{:href => about_path } Über uns
       - if true # admin
         %li.nav-item
           %a.nav-link{:href => admin_episodes_path} Administration
-
+        %li.nav-item
+          %a.nav-link{:href => "#"} Settings
     .container-fluid
       .row
         - flash.each do |name, msg|
@@ -56,6 +57,6 @@
 
   %footer.footer
     .container
-      %span.text-muted= link_to "Imperessum", "/imprint"
+      %span.text-muted= link_to "Impressum", imprint_path
       |
-      %span.text-muted= link_to "Datenschutz", "/privacy"
+      %span.text-muted= link_to "Datenschutz", privacy_path

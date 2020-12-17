@@ -16,6 +16,10 @@ gem "simple_form"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "haml-rails", "~> 2.0"
 gem "rails-i18n"
+gem "redcarpet"
+
+gem "will_paginate"
+gem "will_paginate-bootstrap4"
 
 gem "rollbar"
 gem "newrelic_rpm"
