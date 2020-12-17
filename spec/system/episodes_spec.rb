@@ -2,7 +2,7 @@ require "capybara_helper"
 
 describe "Episodes", type: :system do
   it "overview page" do
-    episode = FactoryBot.create :episode
+    FactoryBot.create :episode
 
     visit "/"
     click_on "Episoden"
