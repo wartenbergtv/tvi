@@ -1,70 +1,106 @@
 require "capybara_helper"
 
 describe "Administrate Episodes", type: :system do
-  it "overview page" do
-    episode = FactoryBot.create :episode
+  context "when logged in as admin" do
+    let(:admin) { FactoryBot.create :user, :admin }
 
-    visit "/"
-    click_on "Administration"
-    expect(page).to have_selector "h1", text: "Episodes"
+    before { login_as admin }
 
-    expect(page).to have_table_with_exact_data([
-                                                 ["Title",
-                                                  "downloads_count",
-                                                  "published_on",
-                                                  "",
-                                                  ""],
-                                                 ["Soli Wartenberg",
-                                                  "1",
-                                                  episode.published_on.strftime("%d.%m.%Y"),
-                                                  "Show", "Edit"]
-                                               ])
+    it "overview page" do
+      episode = FactoryBot.create :episode
+
+      visit "/"
+      click_on "Administration"
+      expect(page).to have_selector "h1", text: "Episodes"
+
+      expect(page).to have_table_with_exact_data([
+                                                   ["Title",
+                                                    "downloads_count",
+                                                    "published_on",
+                                                    "",
+                                                    ""],
+                                                   ["Soli Wartenberg",
+                                                    "1",
+                                                    episode.published_on.strftime("%d.%m.%Y"),
+                                                    "Show", "Edit"]
+                                                 ])
+    end
+
+    it "create a new episode" do
+      visit "/"
+      click_on "Administration"
+
+      click_on "Add"
+
+      expect(page).to have_text "New Episode"
+
+      click_on "Save"
+      expect(page).to have_content "Title can't be blank"
+      expect(page).to have_content "Description can't be blank"
+      expect(page).to have_content "File url can't be blank"
+      # expect(page).to have_content "Published at muss ausgefüllt werden"
+
+      fill_in "Title", with: "Talk about shit"
+      fill_in "Description", with: "more alk about shit"
+      fill_in "File url", with: "https:\\blah.test\001-test.mp3"
+
+      click_on "Save"
+      expect(page).to have_content "Episode was successfully created."
+      expect(page).to have_table_with_exact_data([
+                                                   ["Title", "downloads_count", "published_on", "", ""],
+                                                   ["Talk about shit", "0", "", "Show", "Edit"]
+                                                 ])
+    end
+
+    it "edits a existin episode" do
+      episode = FactoryBot.create :episode
+
+      visit "/"
+      click_on "Administration"
+
+      click_on "Edit"
+
+      expect(page).to have_text "Editing Episode"
+
+      fill_in "Title", with: "test"
+
+      click_on "Save"
+
+      expect(page).to have_content "Episode was successfully updated."
+      expect(page).to have_table_with_exact_data([
+                                                   ["Title", "downloads_count", "published_on", "", ""],
+                                                   ["test", "1", episode.published_on.strftime("%d.%m.%Y"), "Show", "Edit"]
+                                                 ])
+    end
   end
 
-  it "create a new episode" do
-    visit "/"
-    click_on "Administration"
+  context "when logged in  as user" do
+    let(:user) { FactoryBot.create :user }
 
-    click_on "Add"
+    before { login_as user }
 
-    expect(page).to have_text "New Episode"
+    it "does not have Adminstration link" do
+      visit "/"
 
-    click_on "Save"
-    expect(page).to have_content "Title muss ausgefüllt werden"
-    expect(page).to have_content "Description muss ausgefüllt werden"
-    expect(page).to have_content "File url muss ausgefüllt werden"
-    # expect(page).to have_content "Published at muss ausgefüllt werden"
+      expect(page).not_to have_link "Administration"
+    end
 
-    fill_in "Title", with: "Talk about shit"
-    fill_in "Description", with: "more alk about shit"
-    fill_in "File url", with: "https:\\blah.test\001-test.mp3"
-
-    click_on "Save"
-    expect(page).to have_content "Episode was successfully created."
-    expect(page).to have_table_with_exact_data([
-                                                 ["Title", "downloads_count", "published_on", "", ""],
-                                                 ["Talk about shit", "0", "", "Show", "Edit"]
-                                               ])
+    it "gets  Access Denied for admin functions" do
+      visit "/admin/episodes"
+      expect(page).to have_content "Access Denied"
+    end
   end
 
-  it "edits a existin episode" do
-    episode = FactoryBot.create :episode
+  context "when not logged in" do
+    it "does not have Adminstration link" do
+      visit "/"
 
-    visit "/"
-    click_on "Administration"
+      expect(page).not_to have_link "Administration"
+    end
 
-    click_on "Edit"
-
-    expect(page).to have_text "Editing Episode"
-
-    fill_in "Title", with: "test"
-
-    click_on "Save"
-
-    expect(page).to have_content "Episode was successfully updated."
-    expect(page).to have_table_with_exact_data([
-                                                 ["Title", "downloads_count", "published_on", "", ""],
-                                                 ["test", "1", episode.published_on.strftime("%d.%m.%Y"), "Show", "Edit"]
-                                               ])
+    it "gets  Access Denied for admin functions" do
+      visit "/admin/episodes"
+      expect(page).to have_content "Access Denied"
+    end
   end
 end
