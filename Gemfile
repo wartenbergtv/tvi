@@ -18,6 +18,7 @@ gem "haml-rails", "~> 2.0"
 gem "rails-i18n"
 
 gem "rollbar"
+gem "newrelic_rpm"
 
 group :development, :test do
   gem "pry-nav"
