@@ -18,6 +18,9 @@ gem "haml-rails", "~> 2.0"
 gem "rails-i18n"
 gem "redcarpet"
 
+gem "will_paginate"
+gem "will_paginate-bootstrap4"
+
 gem "rollbar"
 gem "newrelic_rpm"
 

@@ -1,2 +1,6 @@
-%h1 Episodes#index
-%p Find me in app/views/episodes/index.html.haml
+%h1 Episonden
+
+- @episodes.each do |episode|
+  = render "shared/episode", episode: episode
+
+= will_paginate @episodes_records, renderer: WillPaginate::ActionView::BootstrapLinkRenderer
