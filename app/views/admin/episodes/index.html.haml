@@ -1,0 +1,23 @@
+%h1 Episodes
+
+%table.table.table-striped.table-bordered
+  %thead.thead-dark
+    %tr
+      %th Title
+      %th downloads_count
+      %th published_on
+      %th
+      %th
+
+  %tbody
+    - @episodes.each do |episode|
+      %tr
+        %td= episode.title
+        %td= episode.downloads_count
+        %td= episode.published_on
+        %td= show_button admin_episode_path(episode)
+        %td= edit_button edit_admin_episode_path(episode)
+
+%br
+
+= add_button  new_admin_episode_path

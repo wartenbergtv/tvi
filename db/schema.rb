@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 0) do
+ActiveRecord::Schema.define(version: 20_201_215_112_756) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "episodes", force: :cascade do |t|
+    t.string "title", null: false
+    t.string "slug", null: false
+    t.text "description", null: false
+    t.text "file_url"
+    t.integer "downloads_count", default: 0
+    t.date "published_on"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["file_url"], name: "index_episodes_on_file_url", unique: true
+    t.index ["published_on"], name: "index_episodes_on_published_on"
+    t.index ["slug"], name: "index_episodes_on_slug", unique: true
+    t.index ["title"], name: "index_episodes_on_title", unique: true
+  end
 end

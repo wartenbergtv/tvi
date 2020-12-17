@@ -36,7 +36,7 @@ module ApplicationHelper
   def edit_button(link, text = "Edit", options = {})
     link = link.is_a?(ActiveRecord::Base) ? [:edit, link] : link
     options.reverse_merge! class: "btn btn-primary"
-    button_with_icon link, text, "pencil", options
+    button_with_icon link, text, "pencil-alt", options
   end
 
   def submit_button(text = "Save", options = {})
