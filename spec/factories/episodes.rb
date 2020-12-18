@@ -21,10 +21,10 @@
 #
 FactoryBot.define do
   factory :episode do
-    title { "Soli Wartenberg" }
-    slug { "002-soli-wartenberg" }
+    sequence(:title) { |n| "Soli Wartenberg #{n}" }
+    sequence(:slug) { |n| "00#{n}-soli-wartenberg" }
     description { "we talk about bikes and things" }
-    file_url { "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/test-001.mp3" }
+    sequence(:file_url) {  |n| "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/test-00#{n}.mp3" }
     downloads_count { 1 }
     published_on { Time.current.to_date }
   end

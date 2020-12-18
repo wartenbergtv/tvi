@@ -7,7 +7,7 @@ describe "Administrate Episodes", type: :system do
     before { login_as admin }
 
     it "overview page" do
-      episode = FactoryBot.create :episode
+      episode = FactoryBot.create :episode, title: "Soli Wartenberg"
 
       visit "/"
       click_on "Administration"
@@ -52,7 +52,7 @@ describe "Administrate Episodes", type: :system do
                                                  ])
     end
 
-    it "edits a existin episode", focus: true do
+    it "edits a existin episode" do
       episode = FactoryBot.create :episode
 
       visit "/"
