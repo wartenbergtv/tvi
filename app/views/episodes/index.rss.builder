@@ -23,7 +23,7 @@ xml.rss("version" => "2.0",
     xml.tag! "itunes:image", href: @feed.logo_url
 
     # The language spoken on the show. ISO 639 e.g. en-us
-    xml.language @feed.language
+    xml.language @feed.ituens_language
 
     # The show category information.
     xml.tag! "itunes:category", text: @feed.ituens_category do

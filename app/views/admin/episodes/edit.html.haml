@@ -4,7 +4,10 @@
   .form-inputs
     = f.input :title
     = f.input :description, as: :text
+
     = f.input :file_url
+    = f.input :file_size
+    = f.input :file_duration
   .form-actions
     = submit_button
 

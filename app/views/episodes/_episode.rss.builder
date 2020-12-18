@@ -21,7 +21,8 @@ xml.item do
   xml.link episode.episonde_url
 
   # The episode artwork.
-  xml.tag! "itunes:image", href: episode.artwork_url
+  # TODO
+  # xml.tag! "itunes:image", href: episode.artwork_url
 
   # The episode parental advisory information.
   xml.tag! "itunes:explicit", false

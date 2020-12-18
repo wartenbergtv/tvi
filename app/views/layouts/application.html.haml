@@ -59,8 +59,9 @@
 
             .card-body
               %p.card-text
-                This is a little demo of Octopod - podcast delivery for geeks in it's current state of development.
-                You will find all the information you need on the project homepage on Github.
+                = current_setting.description
+              %p
+                = link_to "RSS", episodes_url(:format => :rss)
 
   %footer.footer
     .container

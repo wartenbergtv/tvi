@@ -5,7 +5,7 @@
 
 host = if Rails.env.test?
          "wartenberger.test.com"
-       elsif Rails.env.production?
+       elsif Rails.env.development?
          "localhost:3000"
        else
          ENV["DEFAULT_URL_HOST"] || "#{ENV.fetch('HEROKU_APP_NAME')}.herokuapp.com"

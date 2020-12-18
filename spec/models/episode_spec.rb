@@ -5,6 +5,8 @@
 #  id              :bigint           not null, primary key
 #  description     :text             not null
 #  downloads_count :integer          default(0)
+#  file_duration   :integer          not null
+#  file_size       :integer          not null
 #  file_url        :text
 #  published_on    :date
 #  slug            :string           not null

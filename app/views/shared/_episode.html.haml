@@ -5,3 +5,7 @@
     %button{class: "btn", "data-target" => "#description-#{episode.id}", "data-toggle" => "collapse"} collapse
   %div{id: "description-#{episode.id}", class: "collapse"}
     = episode.description
+    %br
+    %audio{:controls => ""}
+      %source{:src => episode.file_url, :type => "audio/mpeg"}
+      Your browser does not support the audio element.

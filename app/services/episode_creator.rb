@@ -1,5 +1,5 @@
 class EpisodeCreator < BaseService
-  CREATABLE_ATTRIBUTES = %w[title description file_url published_on].freeze
+  CREATABLE_ATTRIBUTES = %w[title description file_url published_on file_size file_duration].freeze
 
   attr_accessor(*CREATABLE_ATTRIBUTES)
 

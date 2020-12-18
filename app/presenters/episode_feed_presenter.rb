@@ -6,7 +6,6 @@ class EpisodeFeedPresenter < ApplicationPresenter
   end
 
   def file_url
-    # TODO
     # he URL attribute points to your podcast media file.
     # The file extension specified within the URL attribute determines whether or
     #  not content appears in the podcast directory.
@@ -14,10 +13,12 @@ class EpisodeFeedPresenter < ApplicationPresenter
     Rails.application.routes.url_helpers.episode_url(o, format: :mp3)
   end
 
-  def file_size
-    # TODO
-    # The length attribute is the file size in bytes.
-    # You can find this information in the properties of your podcast file
+  delegate :file_size, to: :o
+
+  def duration
+    # Different duration formats are accepted however
+    # it is recommended to convert the length of the episode into seconds.
+    o.file_duration
   end
 
   def file_type
@@ -42,10 +43,6 @@ class EpisodeFeedPresenter < ApplicationPresenter
 
   def episonde_url
     # This is used when an episode has a corresponding webpage. For example:
-    # <link>
-    #   http://www.mypodcast.com/episode-one.html
-    # </link>
-    # TODO
     Rails.application.routes.url_helpers.episode_url(o)
   end
 
@@ -58,12 +55,6 @@ class EpisodeFeedPresenter < ApplicationPresenter
     # You should use this tag when you have a high quality,
     # episode-specific image you would like listeners to see.
     # "http://gr-podcast.s3.amazonaws.com/#{episode.show.slug}-1400.jpg"
-  end
-
-  def duration
-    # TODO
-    # Different duration formats are accepted however
-    # it is recommended to convert the length of the episode into seconds.
   end
 
   def pub_date

@@ -2,4 +2,6 @@
 
 TODO
 
-%p Find me in app/views/episodes/show.html.haml
+%audio{:controls => ""}
+  %source{:src => @episode.file_url, :type => "audio/mpeg"}
+  Your browser does not support the audio element.
