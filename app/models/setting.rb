@@ -1,4 +1,9 @@
 class Setting
+  def title
+    "Wartenberger Podcast"
+    # Wartenberger - der Podcast für Wartenberg
+  end
+
   def imprint
     <<~IMPRINT
       # Impressum

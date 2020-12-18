@@ -3,7 +3,7 @@
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
 
-    %title Wartenberger - der Podcast für Wartenberg
+    %title= current_setting.title
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
     %meta{:content => "Podcast Wartenberg Oberbayern", :name => "description"}/
     %meta{:content => "Podcast, Wartenberg, Oberbayern, München, Bayern, Regional", :name => "keywords"}/
@@ -20,7 +20,7 @@
 
     %nav.nav.navbar-light.bg-light
       %ul.nav.navbar-light.bg-light.mr-auto
-        %a.navbar-brand{:href => root_path} Wartenberger
+        %a.navbar-brand{:href => root_path}= current_setting.title
         %li.nav-item
           %a.nav-link{:href => episodes_path} Archiv
         %li.nav-item

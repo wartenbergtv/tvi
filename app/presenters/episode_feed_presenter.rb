@@ -1,0 +1,2 @@
+class EpisodeFeedPresenter < ApplicationPresenter
+end

@@ -2,6 +2,13 @@ require "capybara_helper"
 
 describe "welcome", type: :system do
   context "when not logged in" do
+    it "shows some basic informations" do
+      visit "/"
+
+      expect(page).to have_link "Wartenberger Podcast "
+      expect(page).to have_title "Wartenberger Podcast"
+    end
+
     it "shows the tranding tracks of this year" do
       visit "/"
 
