@@ -20,4 +20,7 @@
 #  index_episodes_on_title         (title) UNIQUE
 #
 class Episode < ApplicationRecord
+  def to_param
+    slug
+  end
 end

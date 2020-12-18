@@ -4,5 +4,8 @@ class EpisodesController < ApplicationController
     @episodes = EpisodePresenter.wrap @episodes_records
   end
 
-  def show; end
+  def show
+    episode_record = Episode.find_by(slug: params[:slug]) || not_found
+    @episode = EpisodePresenter.new episode_record
+  end
 end

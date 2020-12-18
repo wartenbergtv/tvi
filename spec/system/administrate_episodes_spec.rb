@@ -52,7 +52,7 @@ describe "Administrate Episodes", type: :system do
                                                  ])
     end
 
-    it "edits a existin episode" do
+    it "edits a existin episode", focus: true do
       episode = FactoryBot.create :episode
 
       visit "/"
