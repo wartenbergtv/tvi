@@ -49,3 +49,6 @@ Rails/OutputSafety:
 
 Rails/BulkChangeTable:
   Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false

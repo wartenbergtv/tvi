@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
   helper_method :current_setting
 
   def current_setting
-    @current_setting ||= Setting.new
+    @current_setting ||= Setting.last
   end
 
   protected
