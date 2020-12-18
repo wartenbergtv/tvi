@@ -6,7 +6,7 @@ module Admin
     end
 
     def show
-      @episode = EpisodePresenter.new Episode.find(params[:id])
+      @episode = EpisodePresenter.new find_episode
     end
 
     def new
@@ -14,7 +14,7 @@ module Admin
     end
 
     def edit
-      episode = Episode.find(params[:id])
+      episode = find_episode
       attributes = episode.slice(*EpisodeUpdater::UPDATEABLE_ATTRIBUTES)
       @episode_updater = EpisodeUpdater.new attributes.merge(episode: episode)
     end
@@ -29,7 +29,7 @@ module Admin
     end
 
     def update
-      episode = Episode.find(params[:id])
+      episode = Episode.find params[:id] # no slug given during the update
       @episode_updater = EpisodeUpdater.new(update_params.merge(episode: episode))
 
       if @episode_updater.call
@@ -40,6 +40,10 @@ module Admin
     end
 
     protected
+
+    def find_episode
+      Episode.find_by(slug: params[:id]) || not_found
+    end
 
     def create_params
       params.require(:episode_creator).permit(*EpisodeCreator::CREATABLE_ATTRIBUTES)

@@ -19,7 +19,7 @@ class EpisodeCreator < BaseService
 
   def build_slug
     counter = (Episode.count + 1)
-    "#{counter.to_s.rjust(3, '0')}-#{title}"
+    "#{counter.to_s.rjust(3, '0')} #{title}".parameterize
   end
 
   def episode_attributes

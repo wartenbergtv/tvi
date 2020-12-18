@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :episodes
   end
 
-  resources :episodes, only: %i[show index]
+  resources :episodes, only: %i[show index], param: :slug
 
   root to: "welcome#index"
 
