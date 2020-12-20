@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   namespace :admin do
-    resources :episodes
+    resources :episodes, only: %w[index show edit update new create]
   end
 
   resources :episodes, only: %i[show index], param: :slug

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_201_218_171_741) do
+ActiveRecord::Schema.define(version: 20_201_220_152_747) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -25,6 +25,8 @@ ActiveRecord::Schema.define(version: 20_201_218_171_741) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "file_size", null: false
     t.integer "file_duration", null: false
+    t.text "node"
+    t.boolean "active", default: true
     t.index ["file_url"], name: "index_episodes_on_file_url", unique: true
     t.index ["published_on"], name: "index_episodes_on_published_on"
     t.index ["slug"], name: "index_episodes_on_slug", unique: true

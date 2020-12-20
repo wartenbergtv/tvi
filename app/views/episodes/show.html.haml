@@ -1,7 +1,21 @@
 %h1= @episode.title
 
-TODO
+
+%h3 Beschreibung
+.p
+  = render_markdown @episode.description
 
 %audio{:controls => ""}
-  %source{:src => @episode.file_url, :type => "audio/mpeg"}
+  %source{:src => @episode.mp3_url, :type => "audio/mpeg"}
   Your browser does not support the audio element.
+
+
+- if  @episode.node.present?
+  %h3 Show Nodes
+  #show-node.card
+    = render_markdown @episode.node
+
+- if current_user&.admin?
+
+  .p.mt-3
+    = edit_button  edit_admin_episode_path @episode

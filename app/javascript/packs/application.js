@@ -8,7 +8,6 @@ const imagePath = (name) => images(name, true)
 
 import Rails from "@rails/ujs"
 import 'bootstrap/dist/js/bootstrap'
-import 'bootstrap/dist/css/bootstrap'
 import "@fortawesome/fontawesome-free/css/all.css";
 // custom css
 require("css/application.scss")

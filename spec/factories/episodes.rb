@@ -3,11 +3,13 @@
 # Table name: episodes
 #
 #  id              :bigint           not null, primary key
+#  active          :boolean          default(TRUE)
 #  description     :text             not null
 #  downloads_count :integer          default(0)
 #  file_duration   :integer          not null
 #  file_size       :integer          not null
 #  file_url        :text
+#  node            :text
 #  published_on    :date
 #  slug            :string           not null
 #  title           :string           not null

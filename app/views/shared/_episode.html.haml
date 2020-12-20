@@ -1,11 +1,17 @@
-.card
-  %h3
-    = episode.title
-    %span.text-muted= episode.published_on
-    %button{class: "btn", "data-target" => "#description-#{episode.id}", "data-toggle" => "collapse"} collapse
-  %div{id: "description-#{episode.id}", class: "collapse"}
-    = episode.description
-    %br
-    %audio{:controls => ""}
-      %source{:src => episode.file_url, :type => "audio/mpeg"}
-      Your browser does not support the audio element.
+.row
+  .col-sm-10.col-md-5.col-lg-4.album-arta
+    %a{:href =>  episode_path(episode)}
+      %img.img-thumbnail{:src => "http://sunriserobot.net/images/flippingtables/flippingtables_album.jpg"}/
+  .col-sm-11.col-md-7.col-lg-8
+    %h3
+      = link_to episode.title, episode_path(episode)
+      %span.text-muted= episode.published_on
+      %button{class: "btn", "data-target" => "#description-#{episode.id}", "data-toggle" => "collapse"} collapse
+    %div{id: "description-#{episode.id}", class: "collapse"}
+      = render_markdown episode.description
+      %br
+      %audio{:controls => ""}
+        %source{:src => episode.mp3_url, :type => "audio/mpeg"}
+        Your browser does not support the audio element.
+    - if current_user&.admin?
+      = edit_button  edit_admin_episode_path episode

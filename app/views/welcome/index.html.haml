@@ -1,15 +1,23 @@
-%h1 Welcome
-
 %h2 Letzte Episoden
+
 - @episodes.each do |episode|
-
   = render "shared/episode", episode: episode
-.p
-  #buzzsprout-player-6873407
-  %script{:charset => "utf-8", :src => "https://www.buzzsprout.com/1526770/6873407.js?container_id=buzzsprout-player-6873407&player=small", :type => "text/javascript"}
 
-.p
-  %button{"data-target" => "#demo", "data-toggle" => "collapse"} Collapsible
+= link_to "Alle Episoden", episodes_path
 
-  #demo.collapse
-    Lorem ipsum dolor text....
+.show-box
+  .row
+    .col-sm-10.col-md-5.col-lg-4.album-art
+      %a{:href => "flippingtables"}
+        %img.img-thumbnail{:src => "http://sunriserobot.net/images/flippingtables/flippingtables_album.jpg"}/
+    .col-sm-11.col-md-7.col-lg-8
+      %h2.show-box-title
+        %a{:href => "flippingtables"} Flipping Tables
+      %p.show-box-desc The most interesting, entertaining, and table-flip worthy show about technology and gaming you'll hear each week.
+      %p
+        %a.btn.btn-itunes{:href => "https://itunes.apple.com/us/podcast/flipping-tables/id820841907", :onclick => "ga('send', 'event', 'subscribe_button', 'click', 'iTunes', 1);", :role => "button"}
+          %i.fa.fa-music
+          iTunes
+        %a.btn.btn-rss{:href => "pcast://sunriserobot.net/flippingtables/feed.xml", :onclick => "ga('send', 'event', 'subscribe_button', 'click', 'RSS', 1);", :role => "button"}
+          %i.fa.fa-rss
+          RSS

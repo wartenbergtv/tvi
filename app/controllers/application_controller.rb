@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :current_setting
+  helper_method :current_setting, :markdown_processor
 
   def current_setting
     @current_setting ||= Setting.last
