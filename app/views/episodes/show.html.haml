@@ -10,10 +10,10 @@
   Your browser does not support the audio element.
 
 
-- if  @episode.node.present?
+- if  @episode.nodes.present?
   %h3 Show Nodes
   #show-node.card
-    = render_markdown @episode.node
+    = render_markdown @episode.nodes
 
 - if current_user&.admin?
 

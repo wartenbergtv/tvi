@@ -25,8 +25,10 @@ ActiveRecord::Schema.define(version: 20_201_220_152_747) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "file_size", null: false
     t.integer "file_duration", null: false
-    t.text "node"
+    t.text "nodes"
     t.boolean "active", default: true
+    t.integer "number", default: 0, null: false
+    t.string "artwork_url"
     t.index ["file_url"], name: "index_episodes_on_file_url", unique: true
     t.index ["published_on"], name: "index_episodes_on_published_on"
     t.index ["slug"], name: "index_episodes_on_slug", unique: true

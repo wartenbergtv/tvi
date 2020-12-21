@@ -4,12 +4,14 @@
 #
 #  id              :bigint           not null, primary key
 #  active          :boolean          default(TRUE)
+#  artwork_url     :string
 #  description     :text             not null
 #  downloads_count :integer          default(0)
 #  file_duration   :integer          not null
 #  file_size       :integer          not null
 #  file_url        :text
-#  node            :text
+#  nodes           :text
+#  number          :integer          default(0), not null
 #  published_on    :date
 #  slug            :string           not null
 #  title           :string           not null
@@ -26,12 +28,13 @@
 FactoryBot.define do
   factory :episode do
     sequence(:title) { |n| "Soli Wartenberg #{n}" }
-    sequence(:slug) { |n| "00#{n}-soli-wartenberg" }
+    slug        { "#{number.to_s.rjust(3, '0')} #{title}".parameterize }
     description { "we talk about bikes and things" }
-    sequence(:file_url) {  |n| "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/test-00#{n}.mp3" }
+    file_url    { |_n| "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/#{slug}.mp3" }
     downloads_count { 1 }
     file_size { 123 }
     file_duration { 321 }
     published_on { Time.current.to_date }
+    sequence(:number) { |n| n }
   end
 end

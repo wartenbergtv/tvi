@@ -1,12 +1,18 @@
 class EpisodeCreator < BaseService
-  CREATABLE_ATTRIBUTES = %w[title description file_url published_on file_size file_duration node active].freeze
+  include ActiveModel::Attributes
+  CREATABLE_ATTRIBUTES = %w[title description file_url published_on file_size file_duration nodes number active].freeze
 
-  attr_accessor(*CREATABLE_ATTRIBUTES)
+  attr_accessor(*(CREATABLE_ATTRIBUTES - %w[number]))
+
+  attribute :number, :integer, default: -> { (Episode.count + 1) }
 
   validates(:title, presence: true)
   validates(:description, presence: true)
   validates(:file_url, presence: true)
-  # validates(:published_on, presence: true) # TODO
+  validates(:number, presence: true)
+  validates(:published_on, presence: true)
+  validates(:file_size, presence: true)
+  validates(:file_duration, presence: true)
 
   def call
     @published_on = published_on.present? ? published_on.to_date : nil
@@ -18,8 +24,7 @@ class EpisodeCreator < BaseService
   private
 
   def build_slug
-    counter = (Episode.count + 1)
-    "#{counter.to_s.rjust(3, '0')} #{title}".parameterize
+    "#{number.to_s.rjust(3, '0')} #{title}".parameterize
   end
 
   def episode_attributes

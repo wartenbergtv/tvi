@@ -28,6 +28,12 @@ class EpisodeFeedPresenter < ApplicationPresenter
     "audio/mpeg"
   end
 
+  def length
+    # The length attribute is the file size in bytes.
+    # You can find this information in the properties of your podcast file
+    o.file_size
+  end
+
   def guid
     # The episode’s globally unique identifier (GUID).
     # It is very important that each episode have a unique GUID and that it never changes, even if an episode’s metadata,
@@ -50,12 +56,7 @@ class EpisodeFeedPresenter < ApplicationPresenter
     h.truncate(o.description, length: 4000)
   end
 
-  def artwork_url
-    # TODO
-    # You should use this tag when you have a high quality,
-    # episode-specific image you would like listeners to see.
-    # "http://gr-podcast.s3.amazonaws.com/#{episode.show.slug}-1400.jpg"
-  end
+  delegate :artwork_url, to: :o
 
   def pub_date
     # # The date and time when an episode was released. RFC 2822

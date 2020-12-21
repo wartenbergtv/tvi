@@ -52,3 +52,9 @@ Rails/BulkChangeTable:
 
 Metrics/ClassLength:
   Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false

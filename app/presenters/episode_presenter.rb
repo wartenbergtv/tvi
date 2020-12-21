@@ -1,4 +1,8 @@
 class EpisodePresenter < ApplicationPresenter
+  def number
+    o.number.to_s.rjust(3, "0")
+  end
+
   def published_on
     h.format_date o.published_on
   end

@@ -3,7 +3,7 @@ xml.item do
   xml.title episode.title
 
   # The episode content, file size, and file type information.
-  xml.enclosure(url: episode.mp3_url, length: episode.file_size, type: episode.file_type)
+  xml.enclosure(url: episode.mp3_url, length: episode.length, type: episode.file_type)
 
   # The episode’s globally unique identifier (GUID)
   xml.guid episode.guid

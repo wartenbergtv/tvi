@@ -3,6 +3,7 @@
 %table.table.table-striped.table-bordered
   %thead.thead-dark
     %tr
+      %th Epsiode
       %th Title
       %th downloads_count
       %th published_on
@@ -12,6 +13,7 @@
   %tbody
     - @episodes.each do |episode|
       %tr
+        %td= episode.number
         %td= episode.title
         %td= episode.downloads_count
         %td= episode.published_on

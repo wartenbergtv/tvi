@@ -50,7 +50,7 @@ module Admin
     end
 
     def update_params
-      params.require(:episode_updater).permit(*EpisodeUpdater::UPDATEABLE_ATTRIBUTES)
+      params.require(:episode_updater).permit(*(EpisodeUpdater::UPDATEABLE_ATTRIBUTES + [:slug]))
     end
   end
 end
