@@ -37,7 +37,7 @@ xml.rss("version" => "2.0",
     xml.tag! "itunes:author", @feed.author
 
     # The website associated with a podcast.
-    xml.link href: @feed.canonical_url
+    xml.link @feed.canonical_url
 
     # The podcast owner contact information.
     xml.tag! "itunes:owner" do

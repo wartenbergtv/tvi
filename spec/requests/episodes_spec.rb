@@ -26,7 +26,7 @@ RSpec.describe "episodes", type: :request do
             </itunes:category>
             <itunes:explicit>false</itunes:explicit>
             <itunes:author>Michael Deimel</itunes:author>
-            <link href="https://wartenberger.de/"/>
+            <link>http://wartenberger.test.com</link>
             <itunes:owner>
               <itunes:name>Michael Deimel</itunes:name>
               <itunes:email>admin@wartenberger.de</itunes:email>
@@ -54,9 +54,9 @@ RSpec.describe "episodes", type: :request do
               <itunes:explicit>false</itunes:explicit>
             </item>
           </channel>
-        </rss>).squish
+        </rss>)
 
-      expect(response.body.squish).to eq(expected_xml)
+      expect(response.body.squish).to eq(expected_xml.squish)
     end
   end
 
