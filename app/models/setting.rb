@@ -4,7 +4,7 @@ class Setting
   end
 
   def canonical_url
-    "https://wartenberger.de/"
+    Rails.application.routes.url_helpers.root_url
   end
 
   def seo_keywords
