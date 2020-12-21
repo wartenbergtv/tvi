@@ -3,13 +3,19 @@ require "rails_helper"
 RSpec.describe "episodes", type: :request do
   describe "GET /episodes.rss" do
     it "generates a feed" do
-      FactoryBot.create_list :episode, 2
+      episode1 = FactoryBot.create :episode, number: 1, title: "Soli Wartenberg"
+      episode2 = FactoryBot.create :episode, number: 2, title: "Anton Müller"
 
       get "/episodes.rss"
-      # rubocop:disable Layout/LineLength
-      expect(response.body.squish).to eq(
-        %( <?xml version="1.0" encoding="UTF-8"?>
-        <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:sy="http://purl.org/rss/1.0/modules/syndication/" xmlns:admin="http://webns.net/mvcb/" xmlns:atom="http://www.w3.org/2005/Atom/" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
+
+      expected_xml = %(<?xml version="1.0" encoding="UTF-8"?>
+        <rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/"
+                           xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+                           xmlns:admin="http://webns.net/mvcb/"
+                           xmlns:atom="http://www.w3.org/2005/Atom/"
+                           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+                           xmlns:content="http://purl.org/rss/1.0/modules/content/"
+                          xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd">
           <channel>
             <title>Wartenberger Podcast</title>
             <description>Der Podcast über und um den Markt Wartenberg</description>
@@ -26,29 +32,31 @@ RSpec.describe "episodes", type: :request do
               <itunes:email>admin@wartenberger.de</itunes:email>
             </itunes:owner>
             <item>
-              <title>Soli Wartenberg 2</title>
-              <enclosure url="http://wartenberger.test.com/episodes/002-soli-wartenberg-2.mp3" length="123" type="audio/mpeg"/>
-              <guid>http://wartenberger.test.com/episodes/002-soli-wartenberg-2.mp3</guid>
-              <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+              <title>Anton Müller</title>
+              <enclosure url="http://wartenberger.test.com/episodes/002-anton-muller.mp3" length="123" type="audio/mpeg"/>
+              <guid>http://wartenberger.test.com/episodes/002-anton-muller.mp3</guid>
+              <pubDate>#{episode2.published_on.to_date.rfc822}</pubDate>
               <description>we talk about bikes and things</description>
               <itunes:duration>321</itunes:duration>
-              <link>http://wartenberger.test.com/episodes/002-soli-wartenberg-2</link>
+              <link>http://wartenberger.test.com/episodes/002-anton-muller</link>
+              <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/episode-default-logo.png"/>
               <itunes:explicit>false</itunes:explicit>
             </item>
             <item>
-              <title>Soli Wartenberg 3</title>
-              <enclosure url="http://wartenberger.test.com/episodes/003-soli-wartenberg-3.mp3" length="123" type="audio/mpeg"/>
-              <guid>http://wartenberger.test.com/episodes/003-soli-wartenberg-3.mp3</guid>
-              <pubDate>Mon, 21 Dec 2020 00:00:00 +0000</pubDate>
+              <title>Soli Wartenberg</title>
+              <enclosure url="http://wartenberger.test.com/episodes/001-soli-wartenberg.mp3" length="123" type="audio/mpeg"/>
+              <guid>http://wartenberger.test.com/episodes/001-soli-wartenberg.mp3</guid>
+              <pubDate>#{episode1.published_on.to_date.rfc822}</pubDate>
               <description>we talk about bikes and things</description>
               <itunes:duration>321</itunes:duration>
-              <link>http://wartenberger.test.com/episodes/003-soli-wartenberg-3</link>
+              <link>http://wartenberger.test.com/episodes/001-soli-wartenberg</link>
+              <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/episode-default-logo.png"/>
               <itunes:explicit>false</itunes:explicit>
             </item>
           </channel>
         </rss>).squish
-      )
-      # rubocop:enable Layout/LineLength
+
+      expect(response.body.squish).to eq(expected_xml)
     end
   end
 
