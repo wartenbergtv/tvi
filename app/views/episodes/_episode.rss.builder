@@ -12,7 +12,7 @@ xml.item do
   xml.pubDate episode.pub_date
 
   # An episode description. max 4000
-  xml.description episode.description
+  xml.description strip_tags episode.description
 
   # The duration of an episode.
   xml.tag! "itunes:duration", episode.duration
