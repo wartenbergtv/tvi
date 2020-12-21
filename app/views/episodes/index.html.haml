@@ -2,6 +2,5 @@
 
 - @episodes.each do |episode|
   = render "shared/episode", episode: episode
-  = link_to "episode", episode
-
+  
 = will_paginate @episodes_records, renderer: WillPaginate::ActionView::BootstrapLinkRenderer

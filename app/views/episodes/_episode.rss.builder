@@ -3,7 +3,7 @@ xml.item do
   xml.title episode.title
 
   # The episode content, file size, and file type information.
-  xml.enclosure(url: episode.mp3_url, length: episode.length, type: episode.file_type)
+  xml.enclosure(url: episode.mp3_url, length: episode.length, type: episode.audio_type)
 
   # The episode’s globally unique identifier (GUID)
   xml.guid episode.guid
@@ -22,7 +22,7 @@ xml.item do
 
   # The episode artwork.
   # TODO
-  # xml.tag! "itunes:image", href: episode.artwork_url
+  xml.tag! "itunes:image", href: episode.artwork_url
 
   # The episode parental advisory information.
   xml.tag! "itunes:explicit", false

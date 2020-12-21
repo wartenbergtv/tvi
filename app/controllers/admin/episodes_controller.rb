@@ -1,7 +1,7 @@
 module Admin
   class EpisodesController < BaseController
     def index
-      @episode_records = Episode.all
+      @episode_records = Episode.order("number desc")
       @episodes        = EpisodePresenter.wrap @episode_records
     end
 

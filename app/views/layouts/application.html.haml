@@ -47,10 +47,11 @@
           &nbsp;
 
       .row
+
         .col-md-8
           = yield
 
-        .col-md-3.col-md-offset-1
+        .col-md-3.col-md-offset-1.mt-8
           .sidebar
             .card-header
               = current_setting.short_description
@@ -61,7 +62,12 @@
               %p.card-text
                 = current_setting.description
               %p
-                = link_to "RSS", episodes_url(:format => :rss)
+                %a.btn.btn-itunes{href: current_setting.itunes_url, :role => "button"}
+                  %i.fa.fa-music
+                  iTunes
+                %a.btn.btn-rss{href: episodes_url(:format => :rss), :role => "button"}
+                  %i.fa.fa-rss
+                  RSS
 
   %footer.footer
     .container

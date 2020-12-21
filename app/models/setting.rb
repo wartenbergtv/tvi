@@ -56,12 +56,21 @@ class Setting
     "News"
   end
 
+  def itunes_url
+    # "https://itunes.apple.com/us/podcast/flipping-tables/id820841907"
+    "#" # TODO
+  end
+
   def ituens_sub_category
     "Politics"
   end
 
   def ituens_language
     "de-de"
+  end
+
+  def default_episode_artwork
+    "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/episode-default-logo.png"
   end
 
   def imprint
