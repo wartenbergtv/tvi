@@ -47,7 +47,7 @@ class Setting
   end
 
   def logo_url
-    "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/itunes-logo-2000x2000.png"
+    "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/itunes-logo-1400x1400.png"
   end
 
   # https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12
