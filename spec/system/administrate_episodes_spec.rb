@@ -7,26 +7,31 @@ describe "Administrate Episodes", type: :system do
     before { login_as admin }
 
     it "overview page" do
-      episode = FactoryBot.create :episode, title: "Soli Wartenberg"
+      episode = FactoryBot.create :episode, title: "Soli Wartenberg", number: 1
 
       visit "/"
       click_on "Administration"
       expect(page).to have_selector "h1", text: "Episodes"
 
       expect(page).to have_table_with_exact_data([
-                                                   ["Title",
+                                                   ["Epsiode",
+                                                    "Title",
                                                     "downloads_count",
                                                     "published_on",
                                                     "",
                                                     ""],
-                                                   ["Soli Wartenberg",
+                                                   ["001",
+                                                    "Soli Wartenberg",
                                                     "1",
                                                     episode.published_on.strftime("%d.%m.%Y"),
-                                                    "Show", "Edit"]
+                                                    "Edit",
+                                                    "Show"]
                                                  ])
     end
 
     it "create a new episode" do
+      published_on = Date.current
+
       visit "/"
       click_on "Administration"
 
@@ -38,22 +43,33 @@ describe "Administrate Episodes", type: :system do
       expect(page).to have_content "Title can't be blank"
       expect(page).to have_content "Description can't be blank"
       expect(page).to have_content "File url can't be blank"
-      # expect(page).to have_content "Published at muss ausgefüllt werden"
+      expect(page).to have_content "Published on can't be blank"
+      expect(page).to have_content "File size can't be blank"
+      expect(page).to have_content "File duration can't be blank"
 
       fill_in "Title", with: "Talk about shit"
       fill_in "Description", with: "more alk about shit"
       fill_in "File url", with: "https:\\blah.test\001-test.mp3"
+      fill_in "Published on", with: published_on
+      fill_in "File size", with: 1000
+      fill_in "File duration", with: 123_456
 
       click_on "Save"
+
       expect(page).to have_content "Episode was successfully created."
       expect(page).to have_table_with_exact_data([
-                                                   ["Title", "downloads_count", "published_on", "", ""],
-                                                   ["Talk about shit", "0", "", "Show", "Edit"]
+                                                   ["Epsiode", "Title", "downloads_count", "published_on", "", ""],
+                                                   ["001",
+                                                    "Talk about shit",
+                                                    "0",
+                                                    published_on.strftime("%d.%m.%Y"),
+                                                    "Edit",
+                                                    "Show"]
                                                  ])
     end
 
     it "edits a existin episode" do
-      episode = FactoryBot.create :episode
+      episode = FactoryBot.create :episode, title: "foo", number: 2
 
       visit "/"
       click_on "Administration"
@@ -63,14 +79,27 @@ describe "Administrate Episodes", type: :system do
       expect(page).to have_text "Editing Episode"
 
       fill_in "Title", with: "test"
+      fill_in "Nodes", with: "# my notes here *there*"
 
       click_on "Save"
 
       expect(page).to have_content "Episode was successfully updated."
       expect(page).to have_table_with_exact_data([
-                                                   ["Title", "downloads_count", "published_on", "", ""],
-                                                   ["test", "1", episode.published_on.strftime("%d.%m.%Y"), "Show", "Edit"]
+                                                   ["Epsiode",
+                                                    "Title",
+                                                    "downloads_count",
+                                                    "published_on",
+                                                    "",
+                                                    ""],
+                                                   ["002",
+                                                    "test",
+                                                    "1",
+                                                    episode.published_on.strftime("%d.%m.%Y"),
+                                                    "Edit",
+                                                    "Show"]
                                                  ])
+
+      expect(episode.reload.slug).to eq "002-test"
     end
   end
 

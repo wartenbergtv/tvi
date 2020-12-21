@@ -1,4 +1,78 @@
 class Setting
+  def self.last
+    new
+  end
+
+  def canonical_url
+    "https://wartenberger.de/"
+  end
+
+  def seo_keywords
+    %w[Podcast Wartenberg Oberbayern München Bayern Regional]
+  end
+
+  def title
+    "Wartenberger Podcast"
+    # Wartenberger - der Podcast für Wartenberg
+  end
+
+  def short_description
+    "Der Podcast über und um den Markt Wartenberg"
+  end
+
+  def description
+    %(
+    Der Podcast über und um den Markt Wartenberg
+    und noch mehr blah)
+  end
+
+  def language
+    :de
+  end
+
+  def author
+    owner_name
+  end
+
+  def owner_name
+    "Michael Deimel"
+  end
+
+  def keywords
+    # TODO
+  end
+
+  def email
+    "admin@wartenberger.de"
+  end
+
+  def logo_url
+    # TODO
+    "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/logo-itunes.png"
+  end
+
+  # https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12
+  def ituens_category
+    "News"
+  end
+
+  def itunes_url
+    # "https://itunes.apple.com/us/podcast/flipping-tables/id820841907"
+    "#" # TODO
+  end
+
+  def ituens_sub_category
+    "Politics"
+  end
+
+  def ituens_language
+    "de-de"
+  end
+
+  def default_episode_artwork
+    "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/episode-default-logo.png"
+  end
+
   def imprint
     <<~IMPRINT
       # Impressum

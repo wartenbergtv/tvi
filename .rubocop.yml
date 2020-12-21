@@ -49,3 +49,12 @@ Rails/OutputSafety:
 
 Rails/BulkChangeTable:
   Enabled: false
+
+Metrics/ClassLength:
+  Enabled: false
+
+Rails/NotNullColumn:
+  Enabled: false
+
+Rails/SkipsModelValidations:
+  Enabled: false

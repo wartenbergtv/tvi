@@ -15,14 +15,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  helper_method :current_setting, :markdown_processor
+
+  def current_setting
+    @current_setting ||= Setting.last
+  end
+
   protected
 
   def authorize_admin
     redirect_to root_path, alert: "Access Denied" unless current_user&.admin?
-  end
-
-  def current_setting
-    @current_setting ||= Setting.new
   end
 
   def markdown_processor

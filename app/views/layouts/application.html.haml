@@ -1,16 +1,16 @@
 !!!
-%html
+%html{lang: current_setting.language}
   %head
+    %title= current_setting.title
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-
-    %title Wartenberger - der Podcast für Wartenberg
     %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
-    %meta{:content => "Podcast Wartenberg Oberbayern", :name => "description"}/
-    %meta{:content => "Podcast, Wartenberg, Oberbayern, München, Bayern, Regional", :name => "keywords"}/
-    %meta{:content => "Michael Deimel", :name => "author"}/
+    %meta{:content => current_setting.short_description, :name => "description"}/
+    %meta{:content => current_setting.seo_keywords.join(",") , :name => "keywords"}/
+    %meta{:content => current_setting.author , :name => "author"}/
     %link{:href => "/public/favicon.ico", :rel => "shortcut icon"}/
     %link{:href => "public/apple-touch-icon-144-precomposed-2.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}/
-
+    %link{:href => current_setting.canonical_url, :rel => "canonical"}/
+    = auto_discovery_link_tag :rss, episodes_url(:format => :rss)
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -20,7 +20,7 @@
 
     %nav.nav.navbar-light.bg-light
       %ul.nav.navbar-light.bg-light.mr-auto
-        %a.navbar-brand{:href => root_path} Wartenberger
+        %a.navbar-brand{:href => root_path}= current_setting.title
         %li.nav-item
           %a.nav-link{:href => episodes_path} Archiv
         %li.nav-item
@@ -35,7 +35,6 @@
         = link_to "Login", new_user_session_path, class: "nav-link"
 
 
-
     .container-fluid
       .row
         - flash.each do |name, msg|
@@ -46,21 +45,29 @@
       .row
         .mt-8
           &nbsp;
+
       .row
+
         .col-md-8
           = yield
-        .col-md-3.col-md-offset-1
+
+        .col-md-3.col-md-offset-1.mt-8
           .sidebar
             .card-header
-              Wartenberger podcasting for geeks
+              = current_setting.short_description
             .card
               = image_pack_tag 'media/images/logo.png', class: "img-thumbnail rounded"
 
-
             .card-body
               %p.card-text
-                This is a little demo of Octopod - podcast delivery for geeks in it's current state of development.
-                You will find all the information you need on the project homepage on Github.
+                = current_setting.description
+              %p
+                %a.btn.btn-itunes{href: current_setting.itunes_url, :role => "button"}
+                  %i.fa.fa-music
+                  iTunes
+                %a.btn.btn-rss{href: episodes_url(:format => :rss), :role => "button"}
+                  %i.fa.fa-rss
+                  RSS
 
   %footer.footer
     .container

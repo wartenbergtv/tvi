@@ -3,8 +3,14 @@
 = simple_form_for(@episode_updater, url: admin_episode_path(@episode_updater.id), method: :patch, html: { class: 'form-horizontal' })do |f|
   .form-inputs
     = f.input :title
-    = f.input :description, as: :text
+    = f.input :description, as: :text, input_html: { cols: 5, rows: 10 }
+    = f.input :nodes, as: :text, input_html: { cols: 5, rows: 10 }
+
     = f.input :file_url
+    = f.input :file_size
+    = f.input :file_duration
+
+    = f.input :active, as: :boolean
   .form-actions
     = submit_button
 

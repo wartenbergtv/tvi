@@ -1,11 +1,21 @@
 require "capybara_helper"
 
 describe "welcome", type: :system do
+  let(:setting) { Setting.last }
+
   context "when not logged in" do
-    it "shows the tranding tracks of this year" do
+    it "shows some basic informations" do
       visit "/"
 
-      expect(page).to have_content("Welcome")
+      expect(page).to have_link "Wartenberger Podcast"
+      expect(page).to have_title "Wartenberger Podcast"
+      expect(page).to have_content setting.short_description
+    end
+
+    it "shows the title" do
+      visit "/"
+
+      expect(page).to have_content("Wartenberger Podcast")
     end
 
     it "shows the about page" do

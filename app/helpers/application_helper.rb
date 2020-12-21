@@ -74,4 +74,10 @@ module ApplicationHelper
       icon_tag :times, class: "text-danger"
     end
   end
+
+  def render_markdown(text)
+    return "" if text.blank?
+
+    markdown_processor.render(text.to_s).html_safe
+  end
 end

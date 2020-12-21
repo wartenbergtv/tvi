@@ -1,15 +1,8 @@
-%h1 Welcome
 
-%h2 Letzte Episoden
+
 - @episodes.each do |episode|
-
   = render "shared/episode", episode: episode
-.p
-  #buzzsprout-player-6873407
-  %script{:charset => "utf-8", :src => "https://www.buzzsprout.com/1526770/6873407.js?container_id=buzzsprout-player-6873407&player=small", :type => "text/javascript"}
 
-.p
-  %button{"data-target" => "#demo", "data-toggle" => "collapse"} Collapsible
-
-  #demo.collapse
-    Lorem ipsum dolor text....
+.row
+  .col-sm-10.col-md-5.col-lg-4.pt-2
+    = show_button episodes_path, "Alle Episoden"
