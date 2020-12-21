@@ -1,6 +1,17 @@
 class EpisodeCreator < BaseService
   include ActiveModel::Attributes
-  CREATABLE_ATTRIBUTES = %w[title description file_url published_on file_size file_duration nodes number active].freeze
+  CREATABLE_ATTRIBUTES = %w[
+    title
+    description
+    file_url
+    artwork_url
+    published_on
+    file_size
+    file_duration
+    nodes
+    number
+    active
+  ].freeze
 
   attr_accessor(*(CREATABLE_ATTRIBUTES - %w[number]))
 

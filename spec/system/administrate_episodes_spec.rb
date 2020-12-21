@@ -53,6 +53,7 @@ describe "Administrate Episodes", type: :system do
       fill_in "Published on", with: published_on
       fill_in "File size", with: 1000
       fill_in "File duration", with: 123_456
+      fill_in "Artwork url", with: "https:\\blah.test\001-test.png"
 
       click_on "Save"
 
@@ -66,6 +67,8 @@ describe "Administrate Episodes", type: :system do
                                                     "Edit",
                                                     "Show"]
                                                  ])
+      episode = Episode.last
+      expect(episode.artwork_url).to eq "https:\\blah.test\001-test.png"
     end
 
     it "edits a existin episode" do
@@ -80,6 +83,7 @@ describe "Administrate Episodes", type: :system do
 
       fill_in "Title", with: "test"
       fill_in "Nodes", with: "# my notes here *there*"
+      fill_in "Artwork url", with: "https:\\blah.test\001-test-1.png"
 
       click_on "Save"
 
@@ -100,6 +104,7 @@ describe "Administrate Episodes", type: :system do
                                                  ])
 
       expect(episode.reload.slug).to eq "002-test"
+      expect(episode.reload.artwork_url).to eq "https:\\blah.test\001-test-1.png"
     end
   end
 

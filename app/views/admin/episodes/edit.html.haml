@@ -6,9 +6,11 @@
     = f.input :description, as: :text, input_html: { cols: 5, rows: 10 }
     = f.input :nodes, as: :text, input_html: { cols: 5, rows: 10 }
 
-    = f.input :file_url
-    = f.input :file_size
-    = f.input :file_duration
+    = f.input :file_url, hint: "Path of the mp3 file"
+    = f.input :file_size, hint: "file size in bytes"
+    = f.input :file_duration, hint: "Length of the episode into seconds"
+
+    = f.input :artwork_url, hint: "Path for episodes logo"
 
     = f.input :active, as: :boolean
   .form-actions
