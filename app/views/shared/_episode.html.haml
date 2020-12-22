@@ -10,7 +10,11 @@
             = episode.published_on
 
     %p.mb-4
-      = render_markdown episode.description
+      = render_markdown truncate(episode.description, length: 200) { link_to " Mehr",  episode.episonde_url }
     .player
       %audio#player2{:controls => "", :preload => "none", :style => "max-width: 100%"}
         %source{:src => episode.mp3_url, :type => "audio/mp3"}
+
+  - if current_user&.admin?
+    .p.mt-3
+      = edit_button  edit_admin_episode_path episode

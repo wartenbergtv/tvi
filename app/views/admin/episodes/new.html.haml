@@ -10,6 +10,7 @@
           .form-inputs
             = f.input :number
             = f.input :title
+            = show_button "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet", "Markdown Help"
             = f.input :description, as: :text, input_html: { cols: 5, rows: 10 }
             = f.input :nodes, as: :text, input_html: { cols: 5, rows: 10 }
             = f.input :file_url, hint: "Path of the mp3 file"

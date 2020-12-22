@@ -7,6 +7,7 @@
         = simple_form_for(@episode_updater, url: admin_episode_path(@episode_updater.id), method: :patch, html: { class: 'form-horizontal' })do |f|
           .form-inputs
             = f.input :title
+            = show_button "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet", "Markdown Help"
             = f.input :description, as: :text, input_html: { cols: 5, rows: 10 }
             = f.input :nodes, as: :text, input_html: { cols: 5, rows: 10 }
 
