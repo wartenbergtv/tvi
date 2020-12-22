@@ -1,8 +1,8 @@
 .d-block.d-md-flex.podcast-entry.bg-white.mb-5{"data-aos" => "fade-up"}
-  %a{:href => episode.episonde_url, class: "image" , :style => "background-image: url(#{episode.artwork_url});"}
+  = link_to image_tag(episode.artwork_url, class: "image img-thumbnail"), episode.episonde_url
   .text
     %h3.font-weight-light
-      %a{:href => episode.episonde_url }= "Episode #{episode.number}: #{episode.title}"
+      = link_to "Episode #{episode.number}: #{episode.title}", episode.episonde_url
     .text-white.mb-3
       %span.text-black-opacity-05
         %small
@@ -10,10 +10,10 @@
             = episode.published_on
 
     %p.mb-4
-      = render_markdown truncate(episode.description, length: 200) { link_to " Mehr",  episode.episonde_url }
-    .player
-      %audio#player2{:controls => "", :preload => "none", :style => "max-width: 100%"}
-        %source{:src => episode.mp3_url, :type => "audio/mp3"}
+      = render_markdown truncate(episode.description, length: 100) { link_to " Mehr",  episode.episonde_url }
+      .player
+        %audio{:controls => "", :preload => "none", :style => "max-width: 100%"}
+          %source{:src => episode.mp3_url, :type => "audio/mp3"}
 
   - if current_user&.admin?
     .p.mt-3

@@ -13,13 +13,12 @@ import "@fortawesome/fontawesome-free/css/all.css";
 require("css/application.scss")
 import AOS from 'aos';
 import("aos/dist/aos.css")
-import('jquery.stellar/jquery.stellar')
 
 document.addEventListener("turbolinks:load", () => {
   AOS.init({
     duration: 800,
     easing: 'slide',
     once: true
-  }); 
+  });
 
 });
