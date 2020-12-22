@@ -16,6 +16,10 @@ import("aos/dist/aos.css")
 import('jquery.stellar/jquery.stellar')
 
 document.addEventListener("turbolinks:load", () => {
-  AOS.init({ delay: 250 });
+  AOS.init({
+    duration: 800,
+    easing: 'slide',
+    once: true
+  }); 
 
 });

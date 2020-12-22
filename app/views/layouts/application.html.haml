@@ -21,7 +21,7 @@
   %body{id: "main", :class => "#{controller_name} #{action_name}"}
     .site-wrap
       %header.header-navbar.site-navbar.py-4{:role => "banner"}
-        .container
+        .container-flux
           .row.align-items-center
             .col-9{"data-aos" => "fade-down"}
               %h1
@@ -33,11 +33,11 @@
                   %li.nav-item
                     %a.text-white.nav-link{:href => episodes_path} Archiv
                   %li.nav-item
-                    %a.text-white.nav-link{:href => about_path } Über uns
+                    %a.text-white.text-nowrap.nav-link{:href => about_path } Über uns
                   - if user_signed_in?
                     - if current_user&.admin?
                       = link_to "Administration", admin_episodes_path, class: "nav-link text-white"
-                      = link_to "Settings", "#", class: "nav-link"
+                      = link_to "Settings", "#", class: "nav-link text-white"
                     = link_to "Account", edit_user_registration_path, class: "nav-link text-white"
                     = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white"
                   - else

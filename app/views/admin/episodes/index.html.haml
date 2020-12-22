@@ -1,25 +1,29 @@
-%h1 Episodes
+.site-section.bg-light
+  .container
+    .row
+      .col-md-12
+        %h1 Episodes
 
-%table.table.table-striped.table-bordered
-  %thead.thead-dark
-    %tr
-      %th Epsiode
-      %th Title
-      %th downloads_count
-      %th published_on
-      %th
-      %th
+        %table.table.table-striped.table-bordered
+          %thead.thead-dark
+            %tr
+              %th Epsiode
+              %th Title
+              %th downloads_count
+              %th published_on
+              %th
+              %th
 
-  %tbody
-    - @episodes.each do |episode|
-      %tr
-        %td= episode.number
-        %td= episode.title
-        %td= episode.downloads_count
-        %td= episode.published_on
-        %td= edit_button edit_admin_episode_path(episode)
-        %td= show_button episode_path(episode)
+          %tbody
+            - @episodes.each do |episode|
+              %tr
+                %td= episode.number
+                %td= episode.title
+                %td= episode.downloads_count
+                %td= episode.published_on
+                %td= edit_button edit_admin_episode_path(episode)
+                %td= show_button episode_path(episode)
 
-%br
+        %br
 
-= add_button  new_admin_episode_path
+        = add_button  new_admin_episode_path
