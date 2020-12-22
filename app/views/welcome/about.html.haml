@@ -1,0 +1,6 @@
+.site-section.bg-light
+  .container-flex
+    .row.mb-5{"data-aos" => "fade-up"}
+      .col-md-12
+        .description.text-center
+          = render_markdown(current_setting.about).html_safe
