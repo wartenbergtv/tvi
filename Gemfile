@@ -8,6 +8,7 @@ gem "rails", "~> 6.1.0"
 gem "pg", "~> 1.1"
 gem "puma", "~> 5.0"
 gem "webpacker", "~> 5.0"
+gem "turbolinks", "~> 5"
 gem "jbuilder", "~> 2.7"
 
 # gem 'bcrypt', '~> 3.1.7' # Use Active Model has_secure_password

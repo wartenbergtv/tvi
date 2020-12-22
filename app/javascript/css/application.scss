@@ -1,17 +1,33 @@
-
-.footer {
-  position: fixed;
-  bottom: 0;
-  width: 100%;
-  height: 40px;
-  line-height: 40px;
-  background-color: #f5f5f5;
- }
-
-.episode {
-  background-color :#f8f8f8;
-}
-// $body-bg: #000;
-// $body-color: rgb(233, 21, 21);
-
 @import "bootstrap/scss/bootstrap";
+
+// $primary: #7971ea;
+// $secondary: #1abb9c;
+$gray-1: #25262a;
+$gray-2: #5c626e;
+$gray-3: #c4c7ce;
+$gray-4: #edf0f5;
+
+
+/* Base */
+@import "site-base";
+/* Navbar */
+@import "site-navbar";
+/* Blocks */
+@import "site-blocks";
+
+
+a {
+  color: $gray-1
+}
+
+a:hover {
+  color: $gray-2
+}
+
+.content {
+  padding: 0;
+}
+
+.header-navbar {
+  background-color: #333;
+}

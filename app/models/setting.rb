@@ -219,8 +219,6 @@ class Setting
 
   def about
     <<~ABOUT
-      # Über Uns
-
       ## Wer sind wir
 
       und so weiter und so fort

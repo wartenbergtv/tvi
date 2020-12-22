@@ -1,16 +1,16 @@
-.row.mt-2.episode{id: episode.slug}
-  .col-sm-10.col-md-5.col-lg-4.album-arta
-    %a{:href =>  episode_path(episode)}
-      %img.img-thumbnail{src: episode.artwork_url }
-  .col-sm-11.col-md-7.col-lg-8
-    %h3
-      = link_to episode.header, episode_path(episode)
-      %span.text-muted= episode.published_on
-    %div{id: "description-#{episode.id}"}
+.d-block.d-md-flex.podcast-entry.bg-white.mb-5{"data-aos" => "fade-up"}
+  %a{:href => episode.episonde_url, class: "image" , :style => "background-image: url(#{episode.artwork_url});"}
+  .text
+    %h3.font-weight-light
+      %a{:href => episode.episonde_url }= "Episode #{episode.number}: #{episode.title}"
+    .text-white.mb-3
+      %span.text-black-opacity-05
+        %small
+          %span.sep
+            = episode.published_on
+
+    %p.mb-4
       = render_markdown episode.description
-      %br
-      %audio{:controls => ""}
-        %source{:src => episode.mp3_url, :type => "audio/mpeg"}
-        Your browser does not support the audio element.
-    - if current_user&.admin?
-      = edit_button  edit_admin_episode_path episode
+    .player
+      %audio#player2{:controls => "", :preload => "none", :style => "max-width: 100%"}
+        %source{:src => episode.mp3_url, :type => "audio/mp3"}
