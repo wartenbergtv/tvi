@@ -3,74 +3,151 @@
   %head
     %title= current_setting.title
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width,initial-scale=1", :name => "viewport"}/
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
     %meta{:content => current_setting.short_description, :name => "description"}/
     %meta{:content => current_setting.seo_keywords.join(",") , :name => "keywords"}/
     %meta{:content => current_setting.author , :name => "author"}/
     %link{:href => "/public/favicon.ico", :rel => "shortcut icon"}/
     %link{:href => "public/apple-touch-icon-144-precomposed-2.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}/
     %link{:href => current_setting.canonical_url, :rel => "canonical"}/
+
+
+
+
+    -# %link{:href => "css/magnific-popup.css", :rel => "stylesheet"}/
+
+    -# %link{:href => "css/owl.carousel.min.css", :rel => "stylesheet"}/
+    -# %link{:href => "css/owl.theme.default.min.css", :rel => "stylesheet"}/
+    -# %link{:href => "https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/mediaelementplayer.min.css", :rel => "stylesheet"}/
+    -# %link{:href => "css/aos.css", :rel => "stylesheet"}/
+
     = auto_discovery_link_tag :rss, episodes_url(:format => :rss)
     = csrf_meta_tags
     = csp_meta_tag
 
-    = javascript_pack_tag 'application'
-    = stylesheet_pack_tag 'application', media: 'all'
-  %body{:class => "#{controller_name} #{action_name}"}
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
-    %nav.nav.navbar-light.bg-light
-      %ul.nav.navbar-light.bg-light.mr-auto
-        %a.navbar-brand{:href => root_path}= current_setting.title
-        %li.nav-item
-          %a.nav-link{:href => episodes_path} Archiv
-        %li.nav-item
-          %a.nav-link{:href => about_path } Über uns
-      - if user_signed_in?
-        - if current_user&.admin?
-          = link_to "Administration", admin_episodes_path, class: "nav-link"
-          = link_to "Settings", "#", class: "nav-link"
-        = link_to "Account", edit_user_registration_path, class: "nav-link"
-        = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link"
-      - else
-        = link_to "Login", new_user_session_path, class: "nav-link"
+  %body{id: "main", :class => "#{controller_name} #{action_name}"}
+    .site-wrap
+      .site-mobile-menu
+        .site-mobile-menu-header
+          .site-mobile-menu-close.mt-3
+            %span.icon-close2.js-menu-toggle
+        .site-mobile-menu-body
+      %header.site-navbar.py-4.absolute.transparent{:role => "banner"}
+        .container
+          .row.align-items-center
+            .col-3{"data-aos" => "fade-down"}
+              %h1
+                %a.text-white.h2{:href => "#"} Wartenberger
+            .col-9{"data-aos" => "fade-down"}
+              %nav.site-navigation.position-relative.text-right.text-md-right{:role => "navigation"}
+                .d-inline-block.ml-md-0.mr-auto.py-3
+                  %a.site-menu-toggle.js-menu-toggle.text-white{:href => "#"}
+                    %span.icon-menu.h3
+                %ul.site-menu.js-clone-nav.d-none
+                  %li.has-children.active
+                    %a{:href => "index.html"} Home
+                    %ul.dropdown.arrow-top
+                      %li
+                        %a{:href => "#"} Menu One
+                      %li
+                        %a{:href => "#"} Menu Two
+                      %li
+                        %a{:href => "#"} Menu Three
+                      %li.has-children
+                        %a{:href => "#"} Sub Menu
+                        %ul.dropdown
+                          %li
+                            %a{:href => "#"} Menu One
+                          %li
+                            %a{:href => "#"} Menu Two
+                          %li
+                            %a{:href => "#"} Menu Three
+                  %li.has-children
+                    %a{:href => "#"} Dropdown
+                    %ul.dropdown.arrow-top
+                      %li
+                        %a{:href => "#"} Menu One
+                      %li
+                        %a{:href => "#"} Menu Two
+                      %li
+                        %a{:href => "#"} Menu Three
+                  %li
+                    %a{:href => "about.html"} About
+                  %li
+                    %a{:href => "contact.html"} Contact
 
+      = yield
+      %footer.site-footer
+        .container
+          .row
+            .col-lg-4
+              .mb-5
+                %h3.footer-heading.mb-4 About Podca
+                %p Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe pariatur reprehenderit vero atque, consequatur id ratione, et non dignissimos culpa? Ut veritatis, quos illum totam quis blanditiis, minima minus odio!
 
-    .container-fluid
-      .row
-        - flash.each do |name, msg|
-          - if msg.is_a?(String)
-            %div{class: "alert alert-dismissible fade show alert-#{name == :notice ? "success" : "warning"}", role: "alert"}
-              %a.close{"data-dismiss" => "alert"} ×
-              = content_tag :div, msg, :id => "flash_#{name}"
-      .row
-        .mt-8
-          &nbsp;
+            .col-lg-4.mb-5.mb-lg-0
+              .row.mb-5
+                .col-md-12
+                  %h3.footer-heading.mb-4 Quick Menu
+                .col-md-6.col-lg-6
+                  %ul.list-unstyled
+                    %li
+                      %a{:href => "#"} Home
+                .col-md-6.col-lg-6
+                  %ul.list-unstyled
+                    %li
+                      %a{:href => "#"} About Us
+                    %li
+                      %a{:href => "#"} Privacy Policy
+                    %li
+                      %a{:href => "#"} Contact Us
 
-      .row
+            .col-lg-4.mb-5.mb-lg-0
+              .mb-5
+                %h3.footer-heading.mb-4 Follow Us
+                %div
+                  %a.pl-0.pr-3{:href => "#"}
+                    %span
+                      %i.fab.fa-facebook
+                  %a.pl-3.pr-3{:href => "#"}
+                    %span
+                      %i.fab.fa-twitter
+                  %a.pl-3.pr-3{:href => "#"}
+                    %span
+                      %i.fab.fa-instagram
 
-        .col-md-8
-          = yield
-
-        .col-md-3.col-md-offset-1.mt-8
-          .sidebar
-            .card-header
-              = current_setting.short_description
-            .card
-              = image_pack_tag 'media/images/logo.png', class: "img-thumbnail rounded"
-
-            .card-body
-              %p.card-text
-                = current_setting.description
+          .row.pt-5.mt-5.text-center
+            .col-md-12
               %p
-                %a.btn.btn-itunes{href: current_setting.itunes_url, :role => "button"}
-                  %i.fa.fa-music
-                  iTunes
-                %a.btn.btn-rss{href: episodes_url(:format => :rss), :role => "button"}
-                  %i.fa.fa-rss
-                  RSS
+                / Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
+                Copyright ©
+                %script{"data-cfasync" => "false", :src => "/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"}
+                :javascript
+                  document.write(new Date().getFullYear());
+                All rights reserved | This template is made with
+                %i.icon-heart-o{"aria-hidden" => "true"}
+                by
+                %a{:href => "https://colorlib.com", :target => "_blank"} Colorlib
+                / Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0.
 
-  %footer.footer
-    .container
-      %span.text-muted= link_to "Impressum", imprint_path
-      |
-      %span.text-muted= link_to "Datenschutz", privacy_path
+
+    :javascript
+      document.addEventListener('DOMContentLoaded', function() {
+                var mediaElements = document.querySelectorAll('video, audio'), total = mediaElements.length;
+
+                for (var i = 0; i < total; i++) {
+                    new MediaElementPlayer(mediaElements[i], {
+                        pluginPath: 'https://cdn.jsdelivr.net/npm/mediaelement@4.2.7/build/',
+                        shimScriptAccess: 'always',
+                        success: function () {
+                            var target = document.body.querySelectorAll('.player'), targetTotal = target.length;
+                            for (var j = 0; j < targetTotal; j++) {
+                                target[j].style.visibility = 'visible';
+                            }
+                  }
+                });
+                }
+            });

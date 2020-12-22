@@ -270,6 +270,9 @@ GEM
     temple (0.8.2)
     thor (1.0.1)
     tilt (2.0.10)
+    turbolinks (5.2.1)
+      turbolinks-source (~> 5.2)
+    turbolinks-source (5.2.0)
     tzinfo (2.0.3)
       concurrent-ruby (~> 1.0)
     unicode-display_width (1.7.0)
@@ -326,6 +329,7 @@ DEPENDENCIES
   rubocop-rspec
   simple_form
   spring
+  turbolinks (~> 5)
   webdrivers
   webpacker (~> 5.0)
   will_paginate

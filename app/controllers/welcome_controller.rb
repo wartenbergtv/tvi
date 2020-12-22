@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @episodes = EpisodePresenter.wrap Episode.active.order("number DESC").limit(3)
+    @episodes = EpisodePresenter.wrap Episode.active. order("number DESC").limit(3)
   end
 
   def imprint
