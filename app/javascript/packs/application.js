@@ -13,11 +13,9 @@ import "@fortawesome/fontawesome-free/css/all.css";
 require("css/application.scss")
 import AOS from 'aos';
 import("aos/dist/aos.css")
-//require('jquery.stellar/jquery.stellar')
-
+import('jquery.stellar/jquery.stellar')
 
 document.addEventListener("turbolinks:load", () => {
   AOS.init({ delay: 250 });
-});
 
-//$('#main').stellar();
+});
