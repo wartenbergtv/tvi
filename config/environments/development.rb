@@ -57,4 +57,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  config.aws_access_key  = ENV["S3_ACCESS_KEY"]
+  config.aws_secret_key  = ENV["S3_SECRET_KEY"]
+  config.aws_bucket_name = ENV["S3_BUCKET_NAME"]
+  config.aws_s3_region   = ENV["S3_REGION"]
 end

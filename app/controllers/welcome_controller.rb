@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @episodes = EpisodePresenter.wrap Episode.active.order("number DESC").limit(3)
+    @episodes = EpisodePresenter.wrap Episode.published.limit(3)
 
     @last_episode = @episodes.first
   end

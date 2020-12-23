@@ -30,5 +30,5 @@ class Episode < ApplicationRecord
     slug
   end
 
-  scope :active, -> { where(active: true) }
+  scope :published, -> { where(active: true).where("published_on <= ?", Time.zone.today).order(number: :desc) }
 end

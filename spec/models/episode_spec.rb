@@ -29,9 +29,43 @@ require "rails_helper"
 
 RSpec.describe Episode, type: :model do
   it "has a valid factory" do
-    event = FactoryBot.build :episode
+    episode = FactoryBot.build :episode
 
-    expect(event).to be_valid
-    assert event.save!
+    expect(episode).to be_valid
+    assert episode.save!
+  end
+
+  describe ".published" do
+    it "find active published ones the past" do
+      episode = FactoryBot.create :episode, published_on: 1.day.ago, active: true
+
+      expect(described_class.published).to eq([episode])
+    end
+
+    it "find active published ones from today" do
+      episode = FactoryBot.create :episode, published_on: Time.zone.today, active: true
+
+      expect(described_class.published).to eq([episode])
+    end
+
+    it "dont find inactive" do
+      FactoryBot.create :episode, published_on: Time.zone.today, active: false
+
+      expect(described_class.published).to be_empty
+    end
+
+    it "dont find on from the future" do
+      FactoryBot.create :episode, published_on: Time.zone.today + 1.day, active: false
+
+      expect(described_class.published).to be_empty
+    end
+
+    it "is ordered by number" do
+      episode1 = FactoryBot.create :episode, number: 1
+      episode3 = FactoryBot.create :episode, number: 3
+      episode2 = FactoryBot.create :episode, number: 2
+
+      expect(described_class.published).to eq([episode3, episode2, episode1])
+    end
   end
 end

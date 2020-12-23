@@ -47,4 +47,8 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+  config.aws_access_key  = nil
+  config.aws_secret_key  = nil
+  config.aws_bucket_name = nil
+  config.aws_s3_region   = nil
 end
