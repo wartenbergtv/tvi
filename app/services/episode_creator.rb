@@ -13,9 +13,10 @@ class EpisodeCreator < BaseService
     active
   ].freeze
 
-  attr_accessor(*(CREATABLE_ATTRIBUTES - %w[number]))
+  attr_accessor(*(CREATABLE_ATTRIBUTES - %w[number active]))
 
-  attribute :number, :integer, default: -> { (Episode.count + 1) }
+  attribute :number, :integer, default: -> { Episode.maximum(:number).to_i + 1 }
+  attribute :active, :boolean, default: -> { true }
 
   validates(:title, presence: true)
   validates(:description, presence: true)

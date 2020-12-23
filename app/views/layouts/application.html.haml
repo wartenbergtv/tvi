@@ -12,7 +12,7 @@
     = render "shared/favicon"
     %link{:href => current_setting.canonical_url, :rel => "canonical"}/
 
-    = auto_discovery_link_tag :rss, episodes_url(:format => :rss)
+    = auto_discovery_link_tag :rss, current_setting.rss_url
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -88,21 +88,35 @@
               .mb-5
                 %h3.footer-heading.mb-4 Follow Us
                 %div
-                  %a.pl-0.pr-3{:href => "#"}
-                    %span
-                      %i.fab.fa-facebook
-                  %a.pl-3.pr-3{:href => "#"}
-                    %span
-                      %i.fab.fa-twitter
-                  %a.pl-3.pr-3{:href => "#"}
-                    %span
-                      %i.fab.fa-instagram
-                  %a.pl-3.pr-3{:href => "#"}
-                    %span
-                      %i.fas.fa-podcast
-                  %a.pl-3.pr-3{:href => "#"}
-                    %span
-                      %i.fab.fa-spotify
+                  -if current_setting.facebook_url.present?
+                    %a.pl-0.pr-3{:href => current_setting.facebook_url}
+                      %span
+                        %i.fab.fa-facebook
+
+                  -if current_setting.twitter_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.twitter_url }
+                      %span
+                        %i.fab.fa-twitter
+
+                  -if current_setting.instagram_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.instagram_url }
+                      %span
+                        %i.fab.fa-instagram
+
+                  -if current_setting.itunes_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.itunes_url }
+                      %span
+                        %i.fas.fa-podcast
+
+                  -if current_setting.spotify_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.spotify_url}
+                      %span
+                        %i.fab.fa-spotify
+
+                  -if current_setting.rss_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.rss_url}
+                      %span
+                        %i.fas.fa-rss
 
           .row.pt-5.mt-5.text-center
             .col-md-12

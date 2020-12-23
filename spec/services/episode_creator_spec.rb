@@ -14,12 +14,14 @@ RSpec.describe EpisodeCreator do
   end
 
   it "creates an uniq slug for already existing episodes" do
-    FactoryBot.create_list(:episode, 5)
+    list = FactoryBot.create_list(:episode, 5)
+
     creator = described_class.new episode_attribs.except(:number).merge title: "test mit §$1"
     episode = creator.call
 
     expect(episode).to be_truthy
-    expect(episode.number).to eq 6
-    expect(episode.slug).to eq "006-test-mit-1"
+    last_number = list.last.number + 1
+    expect(episode.number).to eq last_number
+    expect(episode.slug).to eq "00#{last_number}-test-mit-1"
   end
 end

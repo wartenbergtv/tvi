@@ -35,6 +35,6 @@ FactoryBot.define do
     file_size { 123 }
     file_duration { 321 }
     published_on { Time.current.to_date }
-    sequence(:number) { |n| n }
+    sequence(:number)
   end
 end

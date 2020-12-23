@@ -55,11 +55,6 @@ class Setting
     "News"
   end
 
-  def itunes_url
-    # "https://itunes.apple.com/us/podcast/flipping-tables/id820841907"
-    "#" # TODO
-  end
-
   def ituens_sub_category
     "Politics"
   end
@@ -225,7 +220,27 @@ class Setting
     ABOUT
   end
 
+  def about_episode_number
+    1
+  end
+
   def copyright
     "Copyright #{Time.current.year} Michael Deimel"
+  end
+
+  def facebook_url; end
+
+  def twitter_url; end
+
+  def instagram_url; end
+
+  def itunes_url
+    # "https://itunes.apple.com/us/podcast/flipping-tables/id820841907"
+  end
+
+  def spotify_url; end
+
+  def rss_url
+    Rails.application.routes.url_helpers.episodes_url(format: :rss)
   end
 end
