@@ -2,6 +2,8 @@ require "rails_helper"
 
 RSpec.describe "episodes", type: :request do
   describe "GET /episodes.rss" do
+    let(:setting) { Setting.last }
+
     it "generates a feed" do
       episode1 = FactoryBot.create :episode, number: 1, title: "Soli Wartenberg"
       episode2 = FactoryBot.create :episode, number: 2, title: "Anton Müller"
@@ -19,7 +21,7 @@ RSpec.describe "episodes", type: :request do
           <channel>
             <title>Wartenberger Podcast</title>
             <description>Der Podcast über und um den Markt Wartenberg</description>
-            <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/logo-itunes.png"/>
+            <itunes:image href="#{setting.logo_url}"/>
             <language>de-de</language>
             <itunes:category text="News">
               <itunes:category text="Politics"/>
@@ -31,6 +33,8 @@ RSpec.describe "episodes", type: :request do
               <itunes:name>Michael Deimel</itunes:name>
               <itunes:email>admin@wartenberger.de</itunes:email>
             </itunes:owner>
+            <itunes:title>Wartenberger Podcast</itunes:title>
+            <copyright>Copyright #{Time.current.year} Michael Deimel</copyright>
             <item>
               <title>Anton Müller</title>
               <enclosure url="http://wartenberger.test.com/episodes/002-anton-muller.mp3" length="123" type="audio/mpeg"/>

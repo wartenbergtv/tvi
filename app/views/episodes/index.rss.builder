@@ -43,11 +43,14 @@ xml.rss("version" => "2.0",
     xml.tag! "itunes:owner" do
       xml.tag! "itunes:name", @feed.owner_name
       xml.tag! "itunes:email", @feed.email
-
     end
+
     # The show title specific for Apple Podcasts.
     # If your show is Serial you must use this tag.
-    # xml.tag! "itunes:title",  @feed.title
+    xml.tag! "itunes:title", @feed.title
+
+    #	The show copyright details.
+    xml.copyright @feed.copyright
 
     # The new podcast RSS Feed URL.
     # xml.tag! "itunes:new-feed-url", episodes_url(:xml)

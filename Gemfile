@@ -27,6 +27,8 @@ gem "will_paginate-bootstrap4"
 gem "rollbar"
 gem "newrelic_rpm"
 
+gem "dalli"
+
 group :development, :test do
   gem "pry-nav"
   gem "pry-rails"
