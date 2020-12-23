@@ -1,24 +1,19 @@
-# README
+# Podi
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+podcast hosting
 
-Things you may want to cover:
+## setup sidemap
 
-* Ruby version
+configure s3 access
 
-* System dependencies
+S3_ACCESS_KEY
+S3_SECRET_KEY
+S3_BUCKET_NAME
+S3_REGION
 
-* Configuration
+scheduler call
+```
+rake sitemap:refresh
+```
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## TODO
