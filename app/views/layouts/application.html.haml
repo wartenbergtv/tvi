@@ -2,13 +2,14 @@
 %html{lang: current_setting.language}
   %head
     %title= current_setting.title
+
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
     %meta{:content => current_setting.short_description, :name => "description"}/
     %meta{:content => current_setting.seo_keywords.join(",") , :name => "keywords"}/
     %meta{:content => current_setting.author , :name => "author"}/
-    %link{:href => "/public/favicon.ico", :rel => "shortcut icon"}/
-    %link{:href => "public/apple-touch-icon-144-precomposed-2.png", :rel => "apple-touch-icon-precomposed", :sizes => "144x144"}/
+
+    = render "shared/favicon"
     %link{:href => current_setting.canonical_url, :rel => "canonical"}/
 
     = auto_discovery_link_tag :rss, episodes_url(:format => :rss)
@@ -41,7 +42,7 @@
                     = link_to "Account", edit_user_registration_path, class: "nav-link text-white"
                     = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white"
                   - else
-                    -#= link_to "Login", new_user_session_path, class: "nav-link text-white"
+                    -#= link_to "Login", login_path, class: "nav-link text-white"
 
       .container-fluid.content
         = yield
