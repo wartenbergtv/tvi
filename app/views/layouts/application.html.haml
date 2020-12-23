@@ -44,8 +44,16 @@
                   - else
                     -#= link_to "Login", login_path, class: "nav-link text-white"
 
-      .container-fluid.content
-        = yield
+      .container-fluid
+        - if flash.present?
+          .row
+            - flash.each do |name, msg|
+              - if msg.is_a?(String)
+                %div{class: "alert alert-dismissible fade show alert-#{name == :notice ? "success" : "warning"}", role: "alert"}
+                  %a.close{"data-dismiss" => "alert"} ×
+                  = content_tag :div, msg, :id => "flash_#{name}"
+        .content
+          = yield
       %footer.site-footer
         .container
           .row

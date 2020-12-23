@@ -224,4 +224,8 @@ class Setting
       und so weiter und so fort
     ABOUT
   end
+
+  def copyright
+    "Copyright #{Time.current.year} Michael Deimel"
+  end
 end
