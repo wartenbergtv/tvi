@@ -247,6 +247,7 @@ GEM
     rubocop-rspec (2.0.0)
       rubocop (~> 1.0)
       rubocop-ast (>= 1.1.0)
+    ruby-mp3info (0.8.10)
     ruby-progressbar (1.10.1)
     ruby_parser (3.15.0)
       sexp_processor (~> 4.9)
@@ -329,6 +330,7 @@ DEPENDENCIES
   rubocop-performance
   rubocop-rails
   rubocop-rspec
+  ruby-mp3info
   simple_form
   spring
   turbolinks (~> 5)

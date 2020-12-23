@@ -27,6 +27,7 @@ gem "will_paginate-bootstrap4"
 gem "rollbar"
 gem "newrelic_rpm"
 
+gem "ruby-mp3info"
 gem "dalli"
 
 group :development, :test do
