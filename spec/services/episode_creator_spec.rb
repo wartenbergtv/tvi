@@ -24,4 +24,30 @@ RSpec.describe EpisodeCreator do
     expect(episode.number).to eq last_number
     expect(episode.slug).to eq "00#{last_number}-test-mit-1"
   end
+
+  context "when validations" do
+    it "error when number is not uniq" do
+      FactoryBot.create :episode, number: 1
+      creator = described_class.new episode_attribs.merge number: 1
+
+      expect do
+        creator.call
+      end.not_to change(Episode, :count)
+
+      expect(creator.errors.count).to eq 1
+      expect(creator.errors.full_messages.join).to eq "Number has already been taken"
+    end
+
+    it "error when file_url is not uniq" do
+      FactoryBot.create :episode, file_url: 1
+      creator = described_class.new episode_attribs.merge file_url: 1
+
+      expect do
+        creator.call
+      end.not_to change(Episode, :count)
+
+      expect(creator.errors.count).to eq 1
+      expect(creator.errors.full_messages.join).to eq "File url has already been taken"
+    end
+  end
 end
