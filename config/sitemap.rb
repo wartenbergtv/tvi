@@ -17,7 +17,7 @@ SitemapGenerator::Sitemap.public_path = "tmp/sitemap"
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
   Rails.application.config.aws_bucket_name,
   aws_access_key_id: Rails.application.config.aws_access_key,
-  aws_secret_access_key: Rails.application.cnnfig.aws_secret_key,
+  aws_secret_access_key: Rails.application.config.aws_secret_key,
   aws_region: Rails.application.config.aws_s3_region
 )
 
