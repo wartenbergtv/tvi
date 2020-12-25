@@ -240,7 +240,7 @@ class Setting
   end
 
   def youtube_url
-    ""
+    "https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg"
   end
 
   def twitter_url; end
