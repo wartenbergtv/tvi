@@ -15,23 +15,16 @@ SitemapGenerator::Sitemap.public_path = "tmp/sitemap"
 # Where you want your sitemap.xml.gz file to be uploaded.
 
 SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
-  Rails.application.connfig.aws_bucket_name,
-  aws_access_key_id: Rails.application.connfig.aws_access_key,
-  aws_secret_access_key: Rails.application.connfig.aws_secret_key,
-  aws_region: Rails.application.connfig.aws_s3_region
+  Rails.application.config.aws_bucket_name,
+  aws_access_key_id: Rails.application.config.aws_access_key,
+  aws_secret_access_key: Rails.application.cnnfig.aws_secret_key,
+  aws_region: Rails.application.config.aws_s3_region
 )
-# SitemapGenerator::Sitemap.adapter = SitemapGenerator::S3Adapter.new(
-# aws_access_key_id: "AKIAXCA2FZPHSYMQBANA", # ENV["S3_ACCESS_KEY"],
-# aws_secret_access_key: "", #ENV["S3_SECRET_KEY"],
-# fog_provider: 'AWS',
-# fog_directory: "wartenberger-podcast", #ENV["S3_BUCKET_NAME"],
-# fog_region: "eu-central-1" #ENV["S3_REGION"]
-# )
 
 # The full path to your bucket
-SitemapGenerator::Sitemap.sitemaps_host = "https://#{Rails.application.connfig.aws_bucket_name}.s3.amazonaws.com"
+SitemapGenerator::Sitemap.sitemaps_host = "https://#{Rails.application.config.aws_bucket_name}.s3.amazonaws.com"
 
-if Rails.application.connfig.aws_bucket_name.present?
+if Rails.application.config.aws_bucket_name.present?
 
   SitemapGenerator::Sitemap.create do
     add "/about", changefreq: "weekly"

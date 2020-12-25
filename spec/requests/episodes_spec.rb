@@ -59,7 +59,6 @@ RSpec.describe "episodes", type: :request do
             </item>
           </channel>
         </rss>)
-
       expect(response.body.squish).to eq(expected_xml.squish)
     end
   end

@@ -22,7 +22,7 @@ RSpec.describe EpisodeCreator do
     expect(episode).to be_truthy
     last_number = list.last.number + 1
     expect(episode.number).to eq last_number
-    expect(episode.slug).to eq "00#{last_number}-test-mit-1"
+    expect(episode.slug).to eq "0#{last_number}-test-mit-1"
   end
 
   context "when validations" do

@@ -232,7 +232,7 @@ class Setting
   end
 
   def copyright
-    "Copyright #{Time.current.year} Michael Deimel und Thomas Rademacher"
+    "Copyright #{Time.current.year} Michael Deimel"
   end
 
   def facebook_url; end
