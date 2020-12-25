@@ -1,10 +1,13 @@
-- cache_if !current_user&.admin?, @episode do
+- if true # cache_if !current_user&.admin?, @episode do
   = render "shared/episode_show", episode: @episode
+  #fb-root
 
   .site-section.bg-light
+
     .container-fluid
       .row{"data-aos" => "fade-up"}
         .col-md-12
+
           .row.align-items-center
             .col-4
             .col-4.text-center
@@ -18,6 +21,18 @@
               %h3
                 Show Notes
               = render_markdown @episode.nodes
+          .row
+            .col-4
+            .col-4
+            .col-4.align-items-right
+              -# FACEBOOK SHAREBUTTON
+              .fb-like{
+                "data-action" => "like",
+                "data-href" => @episode.episonde_url,
+                "data-layout" => "standard",
+                "data-share" => "true",
+                "data-size" => "large",
+                "data-width" => ""}
 
   - if current_user&.admin?
     .p.mt-3
