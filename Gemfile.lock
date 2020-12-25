@@ -66,6 +66,22 @@ GEM
       activerecord (>= 3.2, < 7.0)
       rake (>= 10.4, < 14.0)
     ast (2.4.1)
+    aws-eventstream (1.1.0)
+    aws-partitions (1.412.0)
+    aws-sdk-core (3.110.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.239.0)
+      aws-sigv4 (~> 1.1)
+      jmespath (~> 1.0)
+    aws-sdk-kms (1.40.0)
+      aws-sdk-core (~> 3, >= 3.109.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.87.0)
+      aws-sdk-core (~> 3, >= 3.109.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.1)
+    aws-sigv4 (1.2.2)
+      aws-eventstream (~> 1, >= 1.0.2)
     bcrypt (3.1.16)
     bootsnap (1.5.1)
       msgpack (~> 1.0)
@@ -124,6 +140,7 @@ GEM
       concurrent-ruby (~> 1.0)
     jbuilder (2.10.1)
       activesupport (>= 5.0.0)
+    jmespath (1.4.0)
     launchy (2.5.0)
       addressable (~> 2.7)
     listen (3.3.3)
@@ -260,6 +277,8 @@ GEM
     simple_form (5.0.3)
       actionpack (>= 5.0)
       activemodel (>= 5.0)
+    sitemap_generator (6.1.2)
+      builder (~> 3.0)
     spring (2.1.1)
     sprockets (4.0.2)
       concurrent-ruby (~> 1.0)
@@ -305,6 +324,7 @@ PLATFORMS
 
 DEPENDENCIES
   annotate
+  aws-sdk-s3
   bootsnap (>= 1.4.4)
   capybara
   dalli
@@ -332,6 +352,7 @@ DEPENDENCIES
   rubocop-rspec
   ruby-mp3info
   simple_form
+  sitemap_generator
   spring
   turbolinks (~> 5)
   webdrivers

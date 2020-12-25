@@ -1,6 +1,6 @@
 class EpisodesController < ApplicationController
   def index
-    @episodes_records = Episode.active.order("number DESC").paginate(page: params[:page], per_page: params[:per_page])
+    @episodes_records = Episode.published.paginate(page: params[:page], per_page: params[:per_page])
     @episodes = EpisodePresenter.wrap @episodes_records
 
     respond_to do |format|

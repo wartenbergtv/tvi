@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  devise_scope :user do
+    get "login", to: "devise/sessions#new"
+  end
+
   namespace :admin do
     resources :episodes, only: %w[index show edit update new create]
   end
@@ -12,7 +17,5 @@ Rails.application.routes.draw do
   get "imprint", to: "welcome#imprint", as: :imprint
   get "privacy", to: "welcome#privacy", as: :privacy
 
-  devise_scope :user do
-    get "login", to: "devise/sessions#new"
-  end
+  get "/sitemap.xml.gz", to: redirect("https://wartenberger-podcast.s3.amazonaws.com/sitemap.xml.gz")
 end

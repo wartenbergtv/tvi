@@ -30,6 +30,9 @@ gem "newrelic_rpm"
 gem "ruby-mp3info"
 gem "dalli"
 
+gem "sitemap_generator"
+gem "aws-sdk-s3" # hosting the sidemap on s3
+
 group :development, :test do
   gem "pry-nav"
   gem "pry-rails"

@@ -58,3 +58,6 @@ Rails/NotNullColumn:
 
 Rails/SkipsModelValidations:
   Enabled: false
+
+Rails/Output:
+  Enabled: false

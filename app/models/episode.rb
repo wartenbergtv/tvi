@@ -31,10 +31,10 @@ class Episode < ApplicationRecord
     slug
   end
 
+  scope :published, -> { where(active: true).where("published_on <= ?", Time.zone.today).order(number: :desc) }
+
   validates(:number, uniqueness: true)
   validates(:file_url, uniqueness: true)
   validates(:slug, uniqueness: true)
   validates(:title, uniqueness: true)
-
-  scope :active, -> { where(active: true) }
 end
