@@ -235,7 +235,13 @@ class Setting
     "Copyright #{Time.current.year} Michael Deimel"
   end
 
-  def facebook_url; end
+  def facebook_url
+    "https://www.facebook.com/Wartenberger-Der-Podcast-102909105061563"
+  end
+
+  def youtube_url
+    ""
+  end
 
   def twitter_url; end
 
@@ -245,7 +251,9 @@ class Setting
     # "https://itunes.apple.com/us/podcast/flipping-tables/id820841907"
   end
 
-  def spotify_url; end
+  def spotify_url
+    "https://podcasters.spotify.com/podcast/3EkNs5dt2Uix1oRWREyTOF"
+  end
 
   def rss_url
     Rails.application.routes.url_helpers.episodes_url(format: :rss)
