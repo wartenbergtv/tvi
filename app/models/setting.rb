@@ -47,17 +47,12 @@ class Setting
   end
 
   def logo_url
-    "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/itunes-logo-1400x1400.png"
+    "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/images/itunes-logo-1400x1400.jpg"
   end
 
   # https://help.apple.com/itc/podcasts_connect/#/itc9267a2f12
   def ituens_category
     "News"
-  end
-
-  def itunes_url
-    # "https://itunes.apple.com/us/podcast/flipping-tables/id820841907"
-    "#" # TODO
   end
 
   def ituens_sub_category
@@ -75,6 +70,7 @@ class Setting
   def imprint
     <<~IMPRINT
       # Impressum
+      ---
 
       ## Angaben gemäß § 5 TMG
 
@@ -118,6 +114,8 @@ class Setting
   def privacy
     <<~PRIVACY
       # Datenschutz­erklärung
+      ---
+
 
       ## 1\. Datenschutz auf einen Blick
 
@@ -219,13 +217,37 @@ class Setting
 
   def about
     <<~ABOUT
-      ## Wer sind wir
+      Wir ratschen mit Leuten aus Wartenberg und der Umgebung über ihr Leben, ihre Vereine und ihre Unternehmen.
 
-      und so weiter und so fort
+      Wir möchten über Geschichten von früher und heute berichten.
+
+      Neuigkeiten besprechen und mit Zeitzeugen reden.
+
+      Wir werden Dinge kritisch hinterfragen, aber immer einen neutralen Standpunkt einnehmen.
     ABOUT
   end
 
+  def about_episode_number
+    1
+  end
+
   def copyright
-    "Copyright #{Time.current.year} Michael Deimel"
+    "Copyright #{Time.current.year} Michael Deimel und Thomas Rademacher"
+  end
+
+  def facebook_url; end
+
+  def twitter_url; end
+
+  def instagram_url; end
+
+  def itunes_url
+    # "https://itunes.apple.com/us/podcast/flipping-tables/id820841907"
+  end
+
+  def spotify_url; end
+
+  def rss_url
+    Rails.application.routes.url_helpers.episodes_url(format: :rss)
   end
 end

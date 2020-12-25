@@ -21,6 +21,7 @@
 # Indexes
 #
 #  index_episodes_on_file_url      (file_url) UNIQUE
+#  index_episodes_on_number        (number) UNIQUE
 #  index_episodes_on_published_on  (published_on)
 #  index_episodes_on_slug          (slug) UNIQUE
 #  index_episodes_on_title         (title) UNIQUE
@@ -31,4 +32,9 @@ class Episode < ApplicationRecord
   end
 
   scope :published, -> { where(active: true).where("published_on <= ?", Time.zone.today).order(number: :desc) }
+
+  validates(:number, uniqueness: true)
+  validates(:file_url, uniqueness: true)
+  validates(:slug, uniqueness: true)
+  validates(:title, uniqueness: true)
 end

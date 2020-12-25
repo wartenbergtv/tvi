@@ -14,12 +14,40 @@ RSpec.describe EpisodeCreator do
   end
 
   it "creates an uniq slug for already existing episodes" do
-    FactoryBot.create_list(:episode, 5)
+    list = FactoryBot.create_list(:episode, 5)
+
     creator = described_class.new episode_attribs.except(:number).merge title: "test mit §$1"
     episode = creator.call
 
     expect(episode).to be_truthy
-    expect(episode.number).to eq 6
-    expect(episode.slug).to eq "006-test-mit-1"
+    last_number = list.last.number + 1
+    expect(episode.number).to eq last_number
+    expect(episode.slug).to eq "00#{last_number}-test-mit-1"
+  end
+
+  context "when validations" do
+    it "error when number is not uniq" do
+      FactoryBot.create :episode, number: 1
+      creator = described_class.new episode_attribs.merge number: 1
+
+      expect do
+        creator.call
+      end.not_to change(Episode, :count)
+
+      expect(creator.errors.count).to eq 1
+      expect(creator.errors.full_messages.join).to eq "Number has already been taken"
+    end
+
+    it "error when file_url is not uniq" do
+      FactoryBot.create :episode, file_url: 1
+      creator = described_class.new episode_attribs.merge file_url: 1
+
+      expect do
+        creator.call
+      end.not_to change(Episode, :count)
+
+      expect(creator.errors.count).to eq 1
+      expect(creator.errors.full_messages.join).to eq "File url has already been taken"
+    end
   end
 end

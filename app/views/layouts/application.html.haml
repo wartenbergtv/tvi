@@ -12,7 +12,7 @@
     = render "shared/favicon"
     %link{:href => current_setting.canonical_url, :rel => "canonical"}/
 
-    = auto_discovery_link_tag :rss, episodes_url(:format => :rss)
+    = auto_discovery_link_tag :rss, current_setting.rss_url
     = csrf_meta_tags
     = csp_meta_tag
 
@@ -20,29 +20,28 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
   %body{id: "main", :class => "#{controller_name} #{action_name}"}
-    .site-wrap
+    .container-fluid.site-wrap
       %header.header-navbar.site-navbar.py-4{:role => "banner"}
-        .container-flux
-          .row.align-items-center
-            .col-9{"data-aos" => "fade-down"}
-              %h1.ml-3
-                %a.text-white.h2{:href => root_path }
-                  = current_setting.title
-            .col-3{"data-aos" => "fade-down"}
-              %nav.site-navigation.position-relative.text-right.text-md-right{:role => "navigation"}
-                %ul.nav.navbar-light
-                  %li.nav-item
-                    %a.text-white.nav-link{:href => episodes_path} Archiv
-                  %li.nav-item
-                    %a.text-white.text-nowrap.nav-link{:href => about_path } Über uns
-                  - if user_signed_in?
-                    - if current_user&.admin?
-                      = link_to "Administration", admin_episodes_path, class: "nav-link text-white"
-                      = link_to "Settings", "#", class: "nav-link text-white"
-                    = link_to "Account", edit_user_registration_path, class: "nav-link text-white"
-                    = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white"
-                  - else
-                    -#= link_to "Login", login_path, class: "nav-link text-white"
+        .row.align-items-center
+          .col-8{"data-aos" => "fade-down"}
+            %h1.ml-3
+              %a.text-white.h2{:href => root_path }
+                = current_setting.title
+          .col-4{"data-aos" => "fade-down"}
+            %nav.site-navigation.position-relative.text-right.text-md-right{:role => "navigation"}
+              %ul.nav.navbar-light
+                %li.nav-item
+                  %a.text-white.nav-link{:href => episodes_path} Archiv
+                %li.nav-item
+                  %a.text-white.text-nowrap.nav-link{:href => about_path } Über uns
+                - if user_signed_in?
+                  - if current_user&.admin?
+                    = link_to "Administration", admin_episodes_path, class: "nav-link text-white"
+                    = link_to "Settings", "#", class: "nav-link text-white"
+                  = link_to "Account", edit_user_registration_path, class: "nav-link text-white"
+                  = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white"
+                -# else
+                -#= link_to "Login", login_path, class: "nav-link text-white"
 
       .container-fluid
         - if flash.present?
@@ -88,21 +87,35 @@
               .mb-5
                 %h3.footer-heading.mb-4 Follow Us
                 %div
-                  %a.pl-0.pr-3{:href => "#"}
-                    %span
-                      %i.fab.fa-facebook
-                  %a.pl-3.pr-3{:href => "#"}
-                    %span
-                      %i.fab.fa-twitter
-                  %a.pl-3.pr-3{:href => "#"}
-                    %span
-                      %i.fab.fa-instagram
-                  %a.pl-3.pr-3{:href => "#"}
-                    %span
-                      %i.fas.fa-podcast
-                  %a.pl-3.pr-3{:href => "#"}
-                    %span
-                      %i.fab.fa-spotify
+                  -if current_setting.facebook_url.present?
+                    %a.pl-0.pr-3{:href => current_setting.facebook_url}
+                      %span
+                        %i.fab.fa-facebook
+
+                  -if current_setting.twitter_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.twitter_url }
+                      %span
+                        %i.fab.fa-twitter
+
+                  -if current_setting.instagram_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.instagram_url }
+                      %span
+                        %i.fab.fa-instagram
+
+                  -if current_setting.itunes_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.itunes_url }
+                      %span
+                        %i.fas.fa-podcast
+
+                  -if current_setting.spotify_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.spotify_url}
+                      %span
+                        %i.fab.fa-spotify
+
+                  -if current_setting.rss_url.present?
+                    %a.pl-3.pr-3{:href => current_setting.rss_url}
+                      %span
+                        %i.fas.fa-rss
 
           .row.pt-5.mt-5.text-center
             .col-md-12

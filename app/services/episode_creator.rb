@@ -1,5 +1,4 @@
 class EpisodeCreator < BaseService
-  include ActiveModel::Attributes
   CREATABLE_ATTRIBUTES = %w[
     title
     description
@@ -13,9 +12,7 @@ class EpisodeCreator < BaseService
     active
   ].freeze
 
-  attr_accessor(*(CREATABLE_ATTRIBUTES - %w[number]))
-
-  attribute :number, :integer, default: -> { (Episode.count + 1) }
+  attr_accessor(*CREATABLE_ATTRIBUTES)
 
   validates(:title, presence: true)
   validates(:description, presence: true)
@@ -25,11 +22,23 @@ class EpisodeCreator < BaseService
   validates(:file_size, presence: true)
   validates(:file_duration, presence: true)
 
+  def initialize(attributes = {})
+    super
+    @active ||= true
+    @number ||= Episode.maximum(:number).to_i + 1
+  end
+
   def call
     @published_on = published_on.present? ? published_on.to_date : nil
     return false if invalid?
 
-    ::Episode.create! episode_attributes.merge(slug: build_slug)
+    episode = ::Episode.new episode_attributes.merge(slug: build_slug)
+    if episode.invalid?
+      errors.merge! episode.errors
+      return false
+    end
+    episode.save!
+    episode
   end
 
   private

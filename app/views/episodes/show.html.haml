@@ -1,35 +1,23 @@
 - cache_if !current_user&.admin?, @episode do
-
-  .site-blocks-cover.overlay.inner-page-cover{"data-aos" => "fade", :style => "background-image: url(#{@episode.artwork_url});"}
-    .container-flex
-      .row.align-items-center.justify-content-center.text-center
-        .col-md-8{"data-aos" => "fade-up", "data-aos-delay" => "400"}
-          %h2.text-white.text-nowrap.font-weight-light.mb-2.display-4
-            =  "Episode #{@episode.number}: #{@episode.title}"
-          .text-white.mb-3
-            %span.text-white-opacity-05
-              %small
-                = @episode.published_on
-          .player.pt-4
-            %audio{:controls => "", :preload => "none", :style => "max-width: 100%"}
-              %source{:src => @episode.mp3_url, :type => "audio/mp3"}
+  = render "shared/episode_show", episode: @episode
 
   .site-section.bg-light
-    .container-flex
-      .row.mb-5{"data-aos" => "fade-up"}
+    .container-fluid
+      .row{"data-aos" => "fade-up"}
         .col-md-12
-          %h3.text-center
-            Beschreibung
+          .row.align-items-center
+            .col-4
+            .col-4.text-center
+              %h3
+                Beschreibung
+              = render_markdown @episode.description
 
-          .description.text-center
-            = render_markdown @episode.description
-
-      .row.mb-5{"data-aos" => "fade-up"}
-        .col-md-12
-          %h3.text-center
-            Show Notes
-          .description.text-center
-            = render_markdown @episode.nodes
+          .row.align-items-center.mt-5.show-nodes
+            .col-4
+            .col-4.text-center
+              %h3
+                Show Notes
+              = render_markdown @episode.nodes
 
   - if current_user&.admin?
     .p.mt-3

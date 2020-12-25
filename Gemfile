@@ -27,6 +27,7 @@ gem "will_paginate-bootstrap4"
 gem "rollbar"
 gem "newrelic_rpm"
 
+gem "ruby-mp3info"
 gem "dalli"
 
 gem "sitemap_generator"
@@ -57,4 +58,3 @@ group :development do
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
 end
-gem 'devise'

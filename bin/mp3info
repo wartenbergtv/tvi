@@ -1,0 +1,30 @@
+#!/usr/bin/env ruby
+require "bundler/setup"
+require "mp3Info"
+
+def uri?(string)
+  uri = URI.parse(string)
+  %w( http https ).include?(uri.scheme)
+rescue URI::BadURIError
+  false
+rescue URI::InvalidURIError
+  false
+end
+
+file_path = ARGV[0]
+
+if uri? file_path
+  `curl -L #{file_path} -o /tmp/test.mp3`
+  file_path = "/tmp/test.mp3"
+end
+
+mp3_file = File.read file_path
+
+puts "*******************************"
+puts "Size: #{mp3_file.size}"
+
+Mp3Info.open(file_path) do |mp3info|
+  puts "length in sec: #{mp3info.length.to_i}"
+  puts "*******************************"
+ #  pp mp3info
+end

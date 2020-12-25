@@ -11,7 +11,13 @@ class EpisodeUpdater < BaseService
   def call
     return false if invalid?
 
-    episode.update! episode_attributes.merge(slug: build_slug)
+    episode.assign_attributes episode_attributes.merge(slug: build_slug)
+    if episode.invalid?
+      errors.merge! episode.errors
+      return false
+    end
+    episode.save!
+    episode
   end
 
   private

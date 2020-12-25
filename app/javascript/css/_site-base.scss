@@ -119,6 +119,8 @@ a {
 
 .site-section {
 	padding: 2.5em 0;
+	margin-right: -15px;
+	margin-left: -15px;
 
 	@include media-breakpoint-up(md) {
 		padding: 5em 0;
