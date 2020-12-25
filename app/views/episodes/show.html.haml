@@ -2,21 +2,27 @@
   = render "shared/episode_show", episode: @episode
 
   .site-section.bg-light
-    .container-flex
-      .row.mb-5{"data-aos" => "fade-up"}
+    .container-fluid
+      .row{"data-aos" => "fade-up"}
         .col-md-12
-          %h3.text-center
-            Beschreibung
+          .row.align-items-center
+            .col-4
+            .col-4.text-center
+              %h3
+                Beschreibung
+              = render_markdown @episode.description
 
-          .description.text-center
-            = render_markdown @episode.description
 
-      .row.mb-5{"data-aos" => "fade-up"}
-        .col-md-12
-          %h3.text-center
-            Show Notes
-          .description.text-center
-            = render_markdown @episode.nodes
+
+          .row.align-items-center.mt-5.show-nodes
+            .col-4
+            .col-4.text-center
+              %h3
+                Show Notes
+              = render_markdown @episode.nodes
+
+
+
 
   - if current_user&.admin?
     .p.mt-3

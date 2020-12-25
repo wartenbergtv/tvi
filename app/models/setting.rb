@@ -70,6 +70,7 @@ class Setting
   def imprint
     <<~IMPRINT
       # Impressum
+      ---
 
       ## Angaben gemäß § 5 TMG
 
@@ -113,6 +114,8 @@ class Setting
   def privacy
     <<~PRIVACY
       # Datenschutz­erklärung
+      ---
+
 
       ## 1\. Datenschutz auf einen Blick
 
@@ -214,9 +217,13 @@ class Setting
 
   def about
     <<~ABOUT
-      ## Wer sind wir
+      Wir ratschen mit Leuten aus Wartenberg und der Umgebung über ihr Leben, ihre Vereine und ihre Unternehmen.
 
-      und so weiter und so fort
+      Wir möchten über Geschichten von früher und heute berichten.
+
+      Neuigkeiten besprechen und mit Zeitzeugen reden.
+
+      Wir werden Dinge kritisch hinterfragen, aber immer einen neutralen Standpunkt einnehmen.
     ABOUT
   end
 
@@ -225,7 +232,7 @@ class Setting
   end
 
   def copyright
-    "Copyright #{Time.current.year} Michael Deimel"
+    "Copyright #{Time.current.year} Michael Deimel und Thomas Rademacher"
   end
 
   def facebook_url; end

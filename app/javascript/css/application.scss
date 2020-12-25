@@ -1,7 +1,5 @@
 @import "bootstrap/scss/bootstrap";
 
-// $primary: #7971ea;
-// $secondary: #1abb9c;
 $gray-1: #25262a;
 $gray-2: #5c626e;
 $gray-3: #c4c7ce;
@@ -30,4 +28,14 @@ a:hover {
 
 .header-navbar {
   background-color: #333;
+}
+
+.show-nodes {
+	li {
+		text-align: left;
+  }
+
+  a:hover {
+    color: blue;
+  }
 }

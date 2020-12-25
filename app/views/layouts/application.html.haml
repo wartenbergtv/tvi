@@ -20,29 +20,28 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
   %body{id: "main", :class => "#{controller_name} #{action_name}"}
-    .site-wrap
+    .container-fluid.site-wrap
       %header.header-navbar.site-navbar.py-4{:role => "banner"}
-        .container-flux
-          .row.align-items-center
-            .col-9{"data-aos" => "fade-down"}
-              %h1.ml-3
-                %a.text-white.h2{:href => root_path }
-                  = current_setting.title
-            .col-3{"data-aos" => "fade-down"}
-              %nav.site-navigation.position-relative.text-right.text-md-right{:role => "navigation"}
-                %ul.nav.navbar-light
-                  %li.nav-item
-                    %a.text-white.nav-link{:href => episodes_path} Archiv
-                  %li.nav-item
-                    %a.text-white.text-nowrap.nav-link{:href => about_path } Über uns
-                  - if user_signed_in?
-                    - if current_user&.admin?
-                      = link_to "Administration", admin_episodes_path, class: "nav-link text-white"
-                      = link_to "Settings", "#", class: "nav-link text-white"
-                    = link_to "Account", edit_user_registration_path, class: "nav-link text-white"
-                    = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white"
-                  - else
-                    -#= link_to "Login", login_path, class: "nav-link text-white"
+        .row.align-items-center
+          .col-8{"data-aos" => "fade-down"}
+            %h1.ml-3
+              %a.text-white.h2{:href => root_path }
+                = current_setting.title
+          .col-4{"data-aos" => "fade-down"}
+            %nav.site-navigation.position-relative.text-right.text-md-right{:role => "navigation"}
+              %ul.nav.navbar-light
+                %li.nav-item
+                  %a.text-white.nav-link{:href => episodes_path} Archiv
+                %li.nav-item
+                  %a.text-white.text-nowrap.nav-link{:href => about_path } Über uns
+                - if user_signed_in?
+                  - if current_user&.admin?
+                    = link_to "Administration", admin_episodes_path, class: "nav-link text-white"
+                    = link_to "Settings", "#", class: "nav-link text-white"
+                  = link_to "Account", edit_user_registration_path, class: "nav-link text-white"
+                  = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white"
+                -# else
+                -#= link_to "Login", login_path, class: "nav-link text-white"
 
       .container-fluid
         - if flash.present?

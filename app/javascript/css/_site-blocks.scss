@@ -1,8 +1,12 @@
+
 .site-blocks-cover {
+
 	background-size: cover !important;
 	background-repeat: no-repeat;
 	background-position: top;
-	background-position: center center;
+
+	padding-left: 15px;
+	padding-right: 15px;
 	margin-right: -15px;
 	margin-left: -15px;
 	&.overlay {
@@ -40,7 +44,7 @@
 	&,
 	.row {
 		min-height: 600px;
-		height: calc(100vh);
+		height: calc(150vh);
 	}
 
 	&.inner-page-cover {
