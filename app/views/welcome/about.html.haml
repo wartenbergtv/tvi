@@ -5,5 +5,63 @@
   .container-flex
     .row.mb-5{"data-aos" => "fade-up"}
       .col-md-12
-        .description.text-center
+        %h3.text-center Über den Podcast
+
+        .description.text-center.pt-2
           = render_markdown(current_setting.about).html_safe
+
+.site-section
+  .container{"data-aos" => "fade-up"}
+    .row.mb-5
+      .col-md-12.text-center
+        %h2.font-weight-bold.text-black Die Gastgeber
+    .row
+
+      .col-md-6.col-lg-64.mb-5.mb-lg-5
+        .team-member.text-center
+          = image_pack_tag("media/images/michael.jpg", class: "img-fluid")
+          .text
+            %h2.mb-2.font-weight-light.h4 Michael Deimel
+            %span.d-block.mb-2.text-white-opacity-05 &nbsp;
+            %p.mb-4 &nbsp;
+            %p
+              %a.text-white.p-2{:href => "mailto:michael@wartenberger.de"}
+                %span
+                  %i.far.fa-envelope.fa-3x
+              %a.text-white.p-2{:href => "https://twitter.com/stereosonnig"}
+                %span
+                  %i.fab.fa-twitter.fa-3x
+              %a.text-white.p-2{:href => "https://www.facebook.com/michael.deimel.52"}
+                %span
+                  %i.fab.fa-facebook.fa-3x
+              %a.text-white.p-2{:href => "https://www.xing.com/profile/Michael_Deimel"}
+                %span
+                  %i.fab.fa-xing.fa-3x
+              %a.text-white.p-2{:href => "https://www.linkedin.com/in/michael-deimel-8a404b17b"}
+                %span
+                  %i.fab.fa-linkedin.fa-3x
+
+      .col-md-6.col-lg-6.mb-5.mb-lg-5
+        .team-member.text-center
+          = image_pack_tag("media/images/thomas.jpg", class: "img-fluid")
+          .text
+            %h2.mb-2.font-weight-light.h4 Thomas Rademacher
+            %span.d-block.mb-2.text-white-opacity-05 &nbsp;
+            %p.mb-4 &nbsp;
+            %p
+              %a.text-white.p-2{:href => "mailto:thomas@wartenberger.de"}
+                %span
+                  %i.far.fa-envelope.fa-3x
+              %a.text-white.p-2{:href => "https://twitter.com/radiceu"}
+                %span
+                  %i.fab.fa-twitter.fa-3x
+
+              %a.text-white.p-2{:href => "https://www.facebook.com/thomas.rademacher1"}
+                %span
+                  %i.fab.fa-facebook.fa-3x
+              %a.text-white.p-2{:href => "https://www.xing.com/profile/Thomas_Rademacher#"}
+                %span
+                  %i.fab.fa-xing.fa-3x
+              %a.text-white.p-2{:href => "https://www.linkedin.com/in/thomas-rademacher-652b683"}
+                %span
+                  %i.fab.fa-linkedin.fa-3x

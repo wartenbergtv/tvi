@@ -12,17 +12,12 @@
                 Beschreibung
               = render_markdown @episode.description
 
-
-
           .row.align-items-center.mt-5.show-nodes
             .col-4
             .col-4.text-center
               %h3
                 Show Notes
               = render_markdown @episode.nodes
-
-
-
 
   - if current_user&.admin?
     .p.mt-3
