@@ -254,7 +254,7 @@ class CreateSettings < ActiveRecord::Migration[6.1]
     end
 
     def spotify_url
-      "https://podcasters.spotify.com/podcast/3EkNs5dt2Uix1oRWREyTOF"
+      "https://open.spotify.com/show/3EkNs5dt2Uix1oRWREyTOF"
     end
 
     def rss_url
