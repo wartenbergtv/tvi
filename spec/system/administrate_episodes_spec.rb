@@ -84,7 +84,7 @@ describe "Administrate Episodes", type: :system do
       fill_in "Title", with: "test"
       fill_in "Nodes", with: "# my notes here *there*"
       fill_in "Artwork url", with: "https:\\blah.test\001-test-1.png"
-
+      fill_in "Published on", with: 1.day.ago
       click_on "Save"
 
       expect(page).to have_content "Episode was successfully updated."
@@ -98,7 +98,7 @@ describe "Administrate Episodes", type: :system do
                                                    ["002",
                                                     "test",
                                                     "1",
-                                                    episode.published_on.strftime("%d.%m.%Y"),
+                                                    1.day.ago.strftime("%d.%m.%Y"),
                                                     "Edit",
                                                     "Show"]
                                                  ])

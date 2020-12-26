@@ -17,6 +17,8 @@
 
             = f.input :artwork_url, hint: "Path for episodes logo"
 
+            = f.input :published_on, as: :date, html5: true
+
             = f.input :active, as: :boolean
           .form-actions
             = submit_button

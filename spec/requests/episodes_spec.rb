@@ -27,7 +27,7 @@ RSpec.describe "episodes", type: :request do
               <itunes:category text="Politics"/>
             </itunes:category>
             <itunes:explicit>false</itunes:explicit>
-            <itunes:author>Michael Deimel</itunes:author>
+            <itunes:author>Michael Deimel, Thomas Rademacher</itunes:author>
             <link>http://wartenberger.test.com</link>
             <itunes:owner>
               <itunes:name>Michael Deimel</itunes:name>
