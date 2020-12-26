@@ -31,7 +31,7 @@ class Setting
   end
 
   def author
-    owner_name
+    "Michael Deimel, Thomas Rademacher"
   end
 
   def owner_name
