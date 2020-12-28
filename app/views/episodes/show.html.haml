@@ -1,4 +1,4 @@
-- if true # cache_if !current_user&.admin?, @episode do
+- cache_if !current_user&.admin?, @episode do
   = render "shared/episode_show", episode: @episode
   #fb-root
 

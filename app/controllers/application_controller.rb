@@ -3,6 +3,8 @@ class ApplicationController < ActionController::Base
 
   rescue_from ActiveRecord::RecordNotFound, ActionController::RoutingError, with: :render404
 
+  before_action :record_newrelic_custom_parameters
+
   def not_found
     raise ActionController::RoutingError, "Not Found"
   end
@@ -25,6 +27,14 @@ class ApplicationController < ActionController::Base
 
   def authorize_admin
     redirect_to root_path, alert: "Access Denied" unless current_user&.admin?
+  end
+
+  def record_newrelic_custom_parameters
+    custom_parameters = {
+      request_uuid: request.uuid,
+      params: request.filtered_parameters
+    }
+    ::NewRelic::Agent.add_custom_attributes(custom_parameters)
   end
 
   def markdown_processor
