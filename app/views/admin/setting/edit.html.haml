@@ -1,0 +1,47 @@
+%h1 Edit setting
+
+
+.site-section.bg-light
+  .container
+    .row
+      .col-md-12
+        %h1 Editing Episode
+
+        = simple_form_for([:admin, @setting], method: :patch, html: { class: 'form-horizontal' })do |f|
+          = show_button "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet", "Markdown Help"
+          .form-inputs
+            = f.input :title
+
+            = f.input :short_description, as: :text, input_html: { cols: 5, rows: 10 }
+            = f.input :description, as: :text, input_html: { cols: 5, rows: 10 }
+            = f.input :language
+            = f.input :seo_keyword, as: :text, input_html: { cols: 5, rows: 10 }
+
+            = f.input :author, hint: "used for itunes"
+            = f.input :owner, hint: "used for itunes"
+            = f.input :email, hint: "used for itunes"
+            = f.input :ituens_category, hint: "used for itunes"
+            = f.input :ituens_sub_category, hint: "used for itunes"
+
+            = f.input :logo_url
+            = f.input :default_episode_artwork_url, hint: "fallback if an episode has no image"
+
+            = f.input :imprint_page, as: :text, input_html: { cols: 5, rows: 10 }
+            = f.input :privacy_page, as: :text, input_html: { cols: 5, rows: 10 }
+            = f.input :about_page, as: :text, input_html: { cols: 5, rows: 10 }
+            = f.input :copyright
+            = f.input :about_episode_number
+
+            = f.input :facebook_url
+            = f.input :youtube_url
+            = f.input :twitter_url
+            = f.input :instagram_url
+            = f.input :itunes_url
+            = f.input :spotify_url
+            = f.input :google_url
+            = f.input :itunes_url
+
+          .form-actions
+            = submit_button
+
+        = back_button root_url
