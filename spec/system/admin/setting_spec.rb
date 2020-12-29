@@ -12,10 +12,22 @@ describe "Setting", type: :system do
       visit "/"
       click_on "Setting"
       expect(page).to have_selector "h1", text: "Edit Setting"
+      save_and_open_page
+      fill_in "Title", with: "Pod Blah"
+      fill_in "Description", with: "more Talk about shit"
+      fill_in "Short description", with: "snall talk about shit"
+      fill_in "Seo keywords", with: "bayern, oberbayern "
+      fill_in "Author", with: "Joe Doe, Mr. Tee"
 
-      fill_in "Title", with: "Talk about shit"
-      fill_in "Description", with: "more alk about shit"
-      fill_in "Language", with: "de"
+      fill_in "Owner", with: "Joe Doe"
+      fill_in "Email", with: "j.doe@test.de"
+      fill_in "Ituens category", with: "Olds"
+      fill_in "Ituens sub category", with: "jokes"
+      fill_in "Logo ur", with: "https://test.de/pic.jpg"
+      fill_in "Default episode artwork url", with: "https://test.de/art.jpg"
+      fill_in "About episode number", with: 2
+      todo
+      fill_in "Facebook ulr", with: "asd"
 
       click_on "Save"
 

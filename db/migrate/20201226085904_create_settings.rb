@@ -5,7 +5,7 @@ class CreateSettings < ActiveRecord::Migration[6.1]
       t.text :short_description, null: false
       t.text :description, null: false
       t.string :language, null: false, defult: :de
-      t.text :seo_keywords, array: true
+      t.text :seo_keywords
 
       t.string :author, null: false
       t.string :owner, null: false

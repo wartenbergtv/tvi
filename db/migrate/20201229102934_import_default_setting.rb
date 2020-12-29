@@ -9,7 +9,7 @@ class ImportDefaultSetting < ActiveRecord::Migration[6.1]
 
       setting.language = :de
 
-      setting.seo_keywords = %w[Podcast Wartenberg Oberbayern München Bayern Regional]
+      setting.seo_keywords = %w[Podcast Wartenberg Oberbayern München Bayern Regional].join(",")
 
       setting.author = "Michael Deimel, Thomas Rademacher"
 
@@ -34,6 +34,9 @@ class ImportDefaultSetting < ActiveRecord::Migration[6.1]
       setting.youtube_url = "https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg"
 
       setting.spotify_url = "https://open.spotify.com/show/3EkNs5dt2Uix1oRWREyTOF"
+
+      setting.itunes_url  = "https://podcasts.apple.com/de/podcast/wartenberger-podcast/id1546458413"
+      setting.google_url  = "https://podcasts.apple.com/de/podcast/wartenberger-podcast/id1546458413"
     end
   end
 end

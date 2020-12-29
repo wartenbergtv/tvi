@@ -30,12 +30,12 @@ module Admin
                                         logo_url
                                         default_episode_artwork_url
                                         about_episode_number
-                                        facebook_u
-                                        youtube_ur
-                                        twitter_ur
-                                        instagram_
+                                        facebook_url
+                                        youtube_url
+                                        twitter_url
+                                        instagram_url
                                         itunes_url
-                                        spotify_ur
+                                        spotify_url
                                         google_url
                                         itunes_url
                                       ])
