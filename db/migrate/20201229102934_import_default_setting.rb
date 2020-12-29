@@ -36,6 +36,7 @@ class ImportDefaultSetting < ActiveRecord::Migration[6.1]
       setting.spotify_url = "https://open.spotify.com/show/3EkNs5dt2Uix1oRWREyTOF"
 
       setting.itunes_url  = "https://podcasts.apple.com/de/podcast/wartenberger-podcast/id1546458413"
+
       setting.google_url  = "https://podcasts.apple.com/de/podcast/wartenberger-podcast/id1546458413"
     end
   end

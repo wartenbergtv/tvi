@@ -28,6 +28,12 @@ describe "Setting", type: :system do
       fill_in "About episode number", with: 2
       todo
       fill_in "Facebook ulr", with: "asd"
+      fill_in "Youtube ulr", with: "asd"
+      fill_in "Twitter ulr", with: "asd"
+      fill_in "Instagram ulr", with: "asd"
+      fill_in "Itunes ulr", with: "asd"
+      fill_in "Spotify ulr", with: "asd"
+      fill_in "Google ulr", with: "asd"
 
       click_on "Save"
 
