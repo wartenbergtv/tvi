@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "episodes", type: :request do
   describe "GET /episodes.rss" do
-    let(:setting) { Setting.last }
+    let!(:setting) { FactoryBot.create(:setting) }
 
     it "generates a feed" do
       episode1 = FactoryBot.create :episode, number: 1, title: "Soli Wartenberg"

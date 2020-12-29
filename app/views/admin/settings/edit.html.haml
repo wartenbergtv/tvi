@@ -5,7 +5,7 @@
   .container
     .row
       .col-md-12
-        %h1 Editing Episode
+        %h1 Edit Setting
 
         = simple_form_for([:admin, @setting], method: :patch, html: { class: 'form-horizontal' })do |f|
           = show_button "https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet", "Markdown Help"
@@ -15,7 +15,7 @@
             = f.input :short_description, as: :text, input_html: { cols: 5, rows: 10 }
             = f.input :description, as: :text, input_html: { cols: 5, rows: 10 }
             = f.input :language
-            = f.input :seo_keyword, as: :text, input_html: { cols: 5, rows: 10 }
+            = f.input :seo_keywords, as: :text, input_html: { cols: 5, rows: 10 }
 
             = f.input :author, hint: "used for itunes"
             = f.input :owner, hint: "used for itunes"
@@ -26,11 +26,7 @@
             = f.input :logo_url
             = f.input :default_episode_artwork_url, hint: "fallback if an episode has no image"
 
-            = f.input :imprint_page, as: :text, input_html: { cols: 5, rows: 10 }
-            = f.input :privacy_page, as: :text, input_html: { cols: 5, rows: 10 }
-            = f.input :about_page, as: :text, input_html: { cols: 5, rows: 10 }
-            = f.input :copyright
-            = f.input :about_episode_number
+            = f.input :about_episode_number, hint: "Episode is shown on the about page "
 
             = f.input :facebook_url
             = f.input :youtube_url

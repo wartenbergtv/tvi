@@ -26,7 +26,7 @@ class EpisodePresenter < ApplicationPresenter
     # in JPEG or PNG format, 72 dpi, with appropriate file extensions (.jpg, .png), and in the RGB colorspace.
     # These requirements are different from the standard RSS image tag specifications.
     # Make sure the file type in the URL matches the actual file type of the image file.d
-    o.artwork_url.presence || current_setting.default_episode_artwork
+    o.artwork_url.presence || current_setting.default_episode_artwork_url
   end
 
   def mp3_url
@@ -41,6 +41,6 @@ class EpisodePresenter < ApplicationPresenter
   protected
 
   def current_setting
-    @current_setting ||= Setting.last
+    @current_setting ||= Setting.current
   end
 end

@@ -1,0 +1,44 @@
+module Admin
+  class SettingsController < BaseController
+    def edit
+      @setting = Setting.current
+    end
+
+    def update
+      @setting = Setting.current
+
+      if @setting.update update_params
+        redirect_to root_path, notice: "Setting was successfully updated."
+      else
+        render :edit
+      end
+    end
+
+    protected
+
+    def update_params
+      params.require(:setting).permit(*%i[
+                                        title
+                                        short_description
+                                        description language
+                                        seo_keywords
+                                        author
+                                        owner
+                                        email
+                                        ituens_category
+                                        ituens_sub_category
+                                        logo_url
+                                        default_episode_artwork_url
+                                        about_episode_number
+                                        facebook_u
+                                        youtube_ur
+                                        twitter_ur
+                                        instagram_
+                                        itunes_url
+                                        spotify_ur
+                                        google_url
+                                        itunes_url
+                                      ])
+    end
+  end
+end

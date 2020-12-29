@@ -41,7 +41,7 @@ xml.rss("version" => "2.0",
 
     # The podcast owner contact information.
     xml.tag! "itunes:owner" do
-      xml.tag! "itunes:name", @feed.owner_name
+      xml.tag! "itunes:name", @feed.owner
       xml.tag! "itunes:email", @feed.email
     end
 

@@ -1,7 +1,7 @@
 require "capybara_helper"
 
 describe "welcome", type: :system do
-  let(:setting) { Setting.last }
+  let!(:setting) { FactoryBot.create(:setting) }
 
   context "when not logged in" do
     it "shows some basic informations" do

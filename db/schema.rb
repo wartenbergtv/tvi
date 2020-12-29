@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_201_226_085_904) do
+ActiveRecord::Schema.define(version: 20_201_229_102_934) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20_201_226_085_904) do
     t.text "short_description", null: false
     t.text "description", null: false
     t.string "language", null: false
-    t.text "seo_keyword", array: true
+    t.text "seo_keywords", array: true
     t.string "author", null: false
     t.string "owner", null: false
     t.string "email", null: false
@@ -49,10 +49,7 @@ ActiveRecord::Schema.define(version: 20_201_226_085_904) do
     t.string "default_episode_artwork_url", null: false
     t.string "ituens_category", null: false
     t.string "ituens_sub_category", null: false
-    t.text "imprint_page", null: false
-    t.text "privacy_page", null: false
-    t.text "about_page", null: false
-    t.text "copyright", null: false
+    t.string "ituens_language", null: false
     t.integer "about_episode_number", null: false
     t.string "facebook_url"
     t.string "youtube_url"

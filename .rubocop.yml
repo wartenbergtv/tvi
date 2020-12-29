@@ -61,3 +61,12 @@ Rails/SkipsModelValidations:
 
 Rails/Output:
   Enabled: false
+
+Metrics/MethodLength:
+  Enabled: false
+
+Metrics/AbcSize:
+  Enabled: false
+
+RSpec/LetSetup:
+  Enabled: false

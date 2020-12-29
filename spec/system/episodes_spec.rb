@@ -1,6 +1,8 @@
 require "capybara_helper"
 
 describe "Episodes", type: :system do
+  let!(:setting) { FactoryBot.create(:setting) }
+
   it "overview page" do
     episode = FactoryBot.create :episode
 

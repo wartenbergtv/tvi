@@ -1,6 +1,8 @@
 require "capybara_helper"
 
 describe "Administrate Episodes", type: :system do
+  let!(:setting) { FactoryBot.create(:setting) }
+
   context "when logged in as admin" do
     let(:admin) { FactoryBot.create :user, :admin }
 
