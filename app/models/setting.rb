@@ -38,6 +38,13 @@ class Setting < ApplicationRecord
   validates(:owner, presence: true)
   validates(:author, presence: true)
   validates(:default_episode_artwork_url, presence: true, url: true)
+  validates(:facebook_url, url: true)
+  validates(:youtube_url, url: true)
+  validates(:twitter_url, url: true)
+  validates(:instagram_url, url: true)
+  validates(:itunes_url, url: true)
+  validates(:spotify_url, url: true)
+  validates(:google_url, url: true)
 
   def self.current
     Setting.last || raise("no setting")
