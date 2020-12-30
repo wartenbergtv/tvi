@@ -35,4 +35,18 @@ RSpec.describe Setting, type: :model do
     expect(setting).to be_valid
     assert setting.save!
   end
+
+  it "validates for a valid logo_url" do
+    setting = FactoryBot.build :setting, logo_url: "blah"
+
+    expect(setting).to be_invalid
+    expect(setting.errors.full_messages.join).to eq "Logo url is not a valid URL"
+  end
+
+  it "validates for a valid default_episode_artwork_url" do
+    setting = FactoryBot.build :setting, default_episode_artwork_url: "blah"
+
+    expect(setting).to be_invalid
+    expect(setting.errors.full_messages.join).to eq "Default episode artwork url is not a valid URL"
+  end
 end

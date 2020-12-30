@@ -43,7 +43,7 @@ RSpec.describe "episodes", type: :request do
               <description>we talk about bikes and things</description>
               <itunes:duration>321</itunes:duration>
               <link>http://wartenberger.test.com/episodes/002-anton-muller</link>
-              <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/episode-default-logo.png"/>
+              <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/002-anton-muller.jpg"/>
               <itunes:explicit>false</itunes:explicit>
             </item>
             <item>
@@ -54,7 +54,7 @@ RSpec.describe "episodes", type: :request do
               <description>we talk about bikes and things</description>
               <itunes:duration>321</itunes:duration>
               <link>http://wartenberger.test.com/episodes/001-soli-wartenberg</link>
-              <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/episode-default-logo.png"/>
+              <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/001-soli-wartenberg.jpg"/>
               <itunes:explicit>false</itunes:explicit>
             </item>
           </channel>

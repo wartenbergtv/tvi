@@ -30,14 +30,14 @@ class Setting < ApplicationRecord
   validates(:title, presence: true)
   validates(:description, presence: true)
   validates(:email, presence: true)
-  validates(:logo_url, presence: true)
+  validates(:logo_url, presence: true, url: true)
   validates(:language, presence: true)
   validates(:itunes_language, presence: true)
   validates(:itunes_category, presence: true)
   validates(:itunes_sub_category, presence: true)
   validates(:owner, presence: true)
   validates(:author, presence: true)
-  validates(:default_episode_artwork_url, presence: true)
+  validates(:default_episode_artwork_url, presence: true, url: true)
 
   def self.current
     Setting.last || raise("no setting")

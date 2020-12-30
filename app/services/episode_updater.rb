@@ -8,7 +8,8 @@ class EpisodeUpdater < BaseService
 
   validates(*UPDATEABLE_ATTRIBUTES, presence: true)
   validates(:episode, presence: true)
-
+  validates(:file_url, url: true)
+  validates(:artwork_url, url: true)
   def call
     return false if invalid?
 
