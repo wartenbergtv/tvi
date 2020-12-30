@@ -9,7 +9,7 @@ describe "welcome", type: :system do
 
       expect(page).to have_link "Wartenberger Podcast"
       expect(page).to have_title "Wartenberger Podcast"
-      expect(page).to have_content setting.short_description
+      expect(page).to have_content setting.description
     end
 
     it "shows the title" do

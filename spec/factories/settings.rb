@@ -19,7 +19,6 @@
 #  logo_url                    :string           not null
 #  owner                       :string           not null
 #  seo_keywords                :text
-#  short_description           :text             not null
 #  spotify_url                 :string
 #  title                       :string           not null
 #  twitter_url                 :string
@@ -31,15 +30,11 @@ FactoryBot.define do
   factory :setting do
     title { "Wartenberger Podcast" }
 
-    short_description { "Der Podcast über und um den Markt Wartenberg" }
-
-    description do
-      %( Der Podcast über und um den Markt Wartenberg
-    und noch mehr blah)
-    end
+    description { "Der Podcast über und um den Markt Wartenberg" }
 
     language { :de }
-    seo_keywords { %w[Podcast Wartenberg Oberbayern München Bayern Regional] }
+
+    seo_keywords { %w[Podcast Wartenberg Oberbayern München Bayern Regional].join(",") }
 
     author { "Michael Deimel, Thomas Rademacher" }
 

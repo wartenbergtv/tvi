@@ -2,7 +2,6 @@ class CreateSettings < ActiveRecord::Migration[6.1]
   def change
     create_table :settings do |t|
       t.string :title, null: false
-      t.text :short_description, null: false
       t.text :description, null: false
       t.string :language, null: false, defult: :de
       t.text :seo_keywords

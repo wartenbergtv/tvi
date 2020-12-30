@@ -19,8 +19,8 @@ module Admin
     def update_params
       params.require(:setting).permit(*%i[
                                         title
-                                        short_description
-                                        description language
+                                        description
+                                        language
                                         seo_keywords
                                         author
                                         owner

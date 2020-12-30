@@ -19,7 +19,6 @@
 #  logo_url                    :string           not null
 #  owner                       :string           not null
 #  seo_keywords                :text
-#  short_description           :text             not null
 #  spotify_url                 :string
 #  title                       :string           not null
 #  twitter_url                 :string
@@ -28,6 +27,18 @@
 #  updated_at                  :datetime         not null
 #
 class Setting < ApplicationRecord
+  validates(:title, presence: true)
+  validates(:description, presence: true)
+  validates(:email, presence: true)
+  validates(:logo_url, presence: true)
+  validates(:language, presence: true)
+  validates(:ituens_language, presence: true)
+  validates(:ituens_category, presence: true)
+  validates(:ituens_sub_category, presence: true)
+  validates(:owner, presence: true)
+  validates(:author, presence: true)
+  validates(:default_episode_artwork_url, presence: true)
+
   def self.current
     Setting.last || raise("no setting")
   end

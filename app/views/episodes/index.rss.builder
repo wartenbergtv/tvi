@@ -17,7 +17,7 @@ xml.rss("version" => "2.0",
     xml.title @feed.title
 
     # The show description. max 4000
-    xml.description strip_tags @feed.short_description
+    xml.description strip_tags @feed.description
 
     # The artwork for the show
     xml.tag! "itunes:image", href: @feed.logo_url

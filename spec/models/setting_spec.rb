@@ -19,7 +19,6 @@
 #  logo_url                    :string           not null
 #  owner                       :string           not null
 #  seo_keywords                :text
-#  short_description           :text             not null
 #  spotify_url                 :string
 #  title                       :string           not null
 #  twitter_url                 :string

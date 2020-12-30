@@ -5,8 +5,8 @@
 
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
-    %meta{:content => current_setting.short_description, :name => "description"}/
-    %meta{:content => current_setting.seo_keywords.join(",") , :name => "keywords"}/
+    %meta{:content => current_setting.description, :name => "description"}/
+    %meta{:content => current_setting.seo_keywords , :name => "keywords"}/
     %meta{:content => current_setting.author , :name => "author"}/
 
     = render "shared/favicon"
@@ -62,7 +62,7 @@
               .mb-5
                 %h3.footer-heading.mb-4 Wartenberger Podcast
                 %p
-                  = current_setting.short_description
+                  = current_setting.description
 
             .col-lg-4.mb-5.mb-lg-0
               .row.mb-5
