@@ -5,10 +5,6 @@ module Admin
       @episodes        = EpisodePresenter.wrap @episode_records
     end
 
-    def show
-      @episode = EpisodePresenter.new find_episode
-    end
-
     def new
       @episode_creator = EpisodeCreator.new
     end

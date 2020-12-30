@@ -74,19 +74,31 @@ describe "Administrate Episodes", type: :system do
     end
 
     it "edits a existin episode" do
+      FactoryBot.create :episode, title: "balh", number: 1
       episode = FactoryBot.create :episode, title: "foo", number: 2
 
       visit "/"
       click_on "Administration"
 
-      click_on "Edit"
-
+      within "#episode-#{episode.id}" do
+        click_on "Edit"
+      end
       expect(page).to have_text "Editing Episode"
 
-      fill_in "Title", with: "test"
+      fill_in "Title", with: ""
+      click_on "Save"
+
+      expect(page).to have_content "Title can't be blank"
+
+      fill_in "Title", with: "balh"
       fill_in "Nodes", with: "# my notes here *there*"
       fill_in "Artwork url", with: "https://blah.com/001-test-1.png"
       fill_in "Published on", with: 1.day.ago
+      click_on "Save"
+
+      expect(page).to have_content "Title has already been taken"
+
+      fill_in "Title", with: "test"
       click_on "Save"
 
       expect(page).to have_content "Episode was successfully updated."
@@ -101,6 +113,12 @@ describe "Administrate Episodes", type: :system do
                                                     "test",
                                                     "1",
                                                     1.day.ago.strftime("%d.%m.%Y"),
+                                                    "Edit",
+                                                    "Show"],
+                                                   ["001",
+                                                    "balh",
+                                                    "1",
+                                                    Time.current.strftime("%d.%m.%Y"),
                                                     "Edit",
                                                     "Show"]
                                                  ])

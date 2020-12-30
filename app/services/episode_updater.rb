@@ -11,6 +11,7 @@ class EpisodeUpdater < BaseService
   validates(:file_url, url: true)
   validates(:artwork_url, url: true)
   def call
+    @published_on = published_on.present? ? published_on.to_date : nil
     return false if invalid?
 
     episode.assign_attributes episode_attributes.merge(slug: build_slug)

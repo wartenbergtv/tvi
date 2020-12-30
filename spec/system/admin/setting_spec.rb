@@ -12,6 +12,10 @@ describe "Setting", type: :system do
       visit "/"
       click_on "Setting"
       expect(page).to have_selector "h1", text: "Edit Setting"
+      fill_in "Title", with: ""
+
+      click_on "Save"
+      expect(page).to have_content "Title can't be blank"
 
       fill_in "Title", with: "Pod Blah"
       fill_in "Description", with: "more Talk about shit"

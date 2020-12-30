@@ -1,10 +1,6 @@
 class EpisodePresenter < ApplicationPresenter
   delegate :file_size, to: :o
 
-  def header
-    "##{number} - #{published_on} #{title}"
-  end
-
   def number
     o.number.to_s.rjust(3, "0")
   end
@@ -36,11 +32,5 @@ class EpisodePresenter < ApplicationPresenter
   def episonde_url
     # This is used when an episode has a corresponding webpage. For example:
     Rails.application.routes.url_helpers.episode_url(o)
-  end
-
-  protected
-
-  def current_setting
-    @current_setting ||= Setting.current
   end
 end
