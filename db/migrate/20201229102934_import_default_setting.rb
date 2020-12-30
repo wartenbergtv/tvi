@@ -1,6 +1,6 @@
 class ImportDefaultSetting < ActiveRecord::Migration[6.1]
-  def create
-    Setting.create do |setting|
+  def up
+    Setting.create! do |setting|
       setting.title = "Wartenberger Podcast"
 
       setting.description = "Der Podcast über und um den Markt Wartenberg"
@@ -17,7 +17,7 @@ class ImportDefaultSetting < ActiveRecord::Migration[6.1]
 
       setting.logo_url = "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/images/itunes-logo-1400x1400.jpg"
 
-      setting.tuens_category = "News"
+      setting.ituens_category = "News"
 
       setting.ituens_sub_category = "Politics"
 

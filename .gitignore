@@ -46,3 +46,4 @@ capybara-*.html
 buzzsprout_rss.xml
 .DS_Store
 public/sitemap.xml.gz
+*.dump

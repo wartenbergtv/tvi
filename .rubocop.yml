@@ -9,6 +9,7 @@ AllCops:
     - '**/*.rb'
   Exclude:
     - '**/tmp/**/*'
+    - 'db/schema.rb'
     - '**/vendor/**/*'
     - '**/node_modules/**/*'
     - 'bin/**/*'
