@@ -19,8 +19,8 @@ describe "Setting", type: :system do
 
       fill_in "Language", with: "en"
       fill_in "Itunes language", with: "en-en"
-      fill_in "Ituens category", with: "Olds"
-      fill_in "Ituens sub category", with: "jokes"
+      fill_in "Itunes category", with: "Olds"
+      fill_in "Itunes sub category", with: "jokes"
 
       fill_in "Seo keywords", with: "bayern, oberbayern"
       fill_in "Author", with: "Joe Doe, Mr. Tee"
@@ -47,13 +47,13 @@ describe "Setting", type: :system do
       expect(setting.title).to eq "Pod Blah"
       expect(setting.description).to eq "more Talk about shit"
       expect(setting.language).to eq "en"
-      expect(setting.ituens_language).to eq "en-en"
+      expect(setting.itunes_language).to eq "en-en"
       expect(setting.seo_keywords).to eq "bayern, oberbayern"
       expect(setting.author).to eq "Joe Doe, Mr. Tee"
       expect(setting.owner).to eq "Joe Doe"
       expect(setting.email).to eq "j.doe@test.de"
-      expect(setting.ituens_category).to eq "Olds"
-      expect(setting.ituens_sub_category).to eq "jokes"
+      expect(setting.itunes_category).to eq "Olds"
+      expect(setting.itunes_sub_category).to eq "jokes"
       expect(setting.logo_url).to eq "https://test.de/pic.jpg"
       expect(setting.default_episode_artwork_url).to eq "https://test.de/art.jpg"
       expect(setting.about_episode_number).to eq 2

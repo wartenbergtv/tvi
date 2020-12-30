@@ -47,9 +47,9 @@ ActiveRecord::Schema.define(version: 2020_12_29_102934) do
     t.string "email", null: false
     t.string "logo_url", null: false
     t.string "default_episode_artwork_url", null: false
-    t.string "ituens_category", null: false
-    t.string "ituens_sub_category", null: false
-    t.string "ituens_language", null: false
+    t.string "itunes_category", null: false
+    t.string "itunes_sub_category", null: false
+    t.string "itunes_language", null: false
     t.integer "about_episode_number", null: false
     t.string "facebook_url"
     t.string "youtube_url"

@@ -17,11 +17,11 @@ class ImportDefaultSetting < ActiveRecord::Migration[6.1]
 
       setting.logo_url = "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/images/itunes-logo-1400x1400.jpg"
 
-      setting.ituens_category = "News"
+      setting.itunes_category = "News"
 
-      setting.ituens_sub_category = "Politics"
+      setting.itunes_sub_category = "Politics"
 
-      setting.ituens_language = "de-de"
+      setting.itunes_language = "de-de"
 
       setting.default_episode_artwork_url = "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/episode-default-logo.png"
 

@@ -11,9 +11,9 @@
 #  facebook_url                :string
 #  google_url                  :string
 #  instagram_url               :string
-#  ituens_category             :string           not null
-#  ituens_language             :string           not null
-#  ituens_sub_category         :string           not null
+#  itunes_category             :string           not null
+#  itunes_language             :string           not null
+#  itunes_sub_category         :string           not null
 #  itunes_url                  :string
 #  language                    :string           not null
 #  logo_url                    :string           not null
@@ -32,9 +32,9 @@ class Setting < ApplicationRecord
   validates(:email, presence: true)
   validates(:logo_url, presence: true)
   validates(:language, presence: true)
-  validates(:ituens_language, presence: true)
-  validates(:ituens_category, presence: true)
-  validates(:ituens_sub_category, presence: true)
+  validates(:itunes_language, presence: true)
+  validates(:itunes_category, presence: true)
+  validates(:itunes_sub_category, presence: true)
   validates(:owner, presence: true)
   validates(:author, presence: true)
   validates(:default_episode_artwork_url, presence: true)

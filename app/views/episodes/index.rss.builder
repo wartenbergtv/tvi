@@ -23,11 +23,11 @@ xml.rss("version" => "2.0",
     xml.tag! "itunes:image", href: @feed.logo_url
 
     # The language spoken on the show. ISO 639 e.g. en-us
-    xml.language @feed.ituens_language
+    xml.language @feed.itunes_language
 
     # The show category information.
-    xml.tag! "itunes:category", text: @feed.ituens_category do
-      xml.tag! "itunes:category", text: @feed.ituens_sub_category
+    xml.tag! "itunes:category", text: @feed.itunes_category do
+      xml.tag! "itunes:category", text: @feed.itunes_sub_category
     end
 
     # The podcast parental advisory information.

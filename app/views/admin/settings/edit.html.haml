@@ -14,14 +14,14 @@
             = f.input :description, as: :text, input_html: { cols: 5, rows: 10 }, hint: "The show description. max 4000"
 
             = f.input :language
-            = f.input :ituens_language, hint: "The language spoken on the show. ISO 639 e.g. en-us"
+            = f.input :itunes_language, hint: "The language spoken on the show. ISO 639 e.g. en-us"
             = f.input :seo_keywords, hint: "comma separated words", as: :text, input_html: { cols: 5, rows: 10 }
 
             = f.input :author, hint: "used for feed"
             = f.input :owner, hint: "used for feed"
             = f.input :email, hint: "used for feed"
-            = f.input :ituens_category, hint: "used for feed"
-            = f.input :ituens_sub_category, hint: "used for feed"
+            = f.input :itunes_category, hint: "used for feed"
+            = f.input :itunes_sub_category, hint: "used for feed"
 
             = f.input :logo_url, hint: "The artwork for the show"
             = f.input :default_episode_artwork_url, hint: "fallback if an episode has no image"

@@ -40,10 +40,8 @@ describe "welcome", type: :system do
       expect(page).to have_selector "h1", text: "Datenschutz"
     end
 
-    xit "dont shows special links when you are not an admin" do
+    it "dont shows special links when you are not an admin" do
       visit "/"
-
-      expect(page).to have_link "Login"
 
       expect(page).not_to have_link "Administration"
       expect(page).not_to have_link "Account"

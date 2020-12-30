@@ -11,9 +11,9 @@
 #  facebook_url                :string
 #  google_url                  :string
 #  instagram_url               :string
-#  ituens_category             :string           not null
-#  ituens_language             :string           not null
-#  ituens_sub_category         :string           not null
+#  itunes_category             :string           not null
+#  itunes_language             :string           not null
+#  itunes_sub_category         :string           not null
 #  itunes_url                  :string
 #  language                    :string           not null
 #  logo_url                    :string           not null
@@ -44,11 +44,11 @@ FactoryBot.define do
 
     logo_url { "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/images/itunes-logo-1400x1400.jpg" }
 
-    ituens_category { "News" }
+    itunes_category { "News" }
 
-    ituens_sub_category {  "Politics" }
+    itunes_sub_category {  "Politics" }
 
-    ituens_language { "de-de" }
+    itunes_language { "de-de" }
 
     default_episode_artwork_url { "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/episode-default-logo.png" }
 

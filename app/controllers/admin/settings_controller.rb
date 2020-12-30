@@ -25,8 +25,9 @@ module Admin
                                         author
                                         owner
                                         email
-                                        ituens_category
-                                        ituens_sub_category
+                                        itunes_category
+                                        itunes_language
+                                        itunes_sub_category
                                         logo_url
                                         default_episode_artwork_url
                                         about_episode_number
