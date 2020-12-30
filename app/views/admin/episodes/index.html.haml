@@ -16,7 +16,7 @@
 
           %tbody
             - @episodes.each do |episode|
-              %tr
+              %tr{id: "episode-#{episode.id}"}
                 %td= episode.number
                 %td= episode.title
                 %td= episode.downloads_count

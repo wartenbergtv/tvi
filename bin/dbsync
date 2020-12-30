@@ -43,7 +43,7 @@ else
 end
 
 puts "resetting the database"
-safe_system "SKIP_SEEDING=1 bundle exec rake db:reset --trace"
+safe_system "DISABLE_DATABASE_ENVIRONMENT_CHECK=1 SKIP_SEEDING=1 bundle exec rake db:reset --trace"
 
 puts "start import dump file"
 postgres_pw = development_db_password ? { "PGPASSWORD" => development_db_password } : {}

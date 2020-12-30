@@ -5,8 +5,8 @@
 
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
-    %meta{:content => current_setting.short_description, :name => "description"}/
-    %meta{:content => current_setting.seo_keywords.join(",") , :name => "keywords"}/
+    %meta{:content => current_setting.description, :name => "description"}/
+    %meta{:content => current_setting.seo_keywords , :name => "keywords"}/
     %meta{:content => current_setting.author , :name => "author"}/
 
     = render "shared/favicon"
@@ -39,7 +39,7 @@
                 - if user_signed_in?
                   - if current_user&.admin?
                     = link_to "Administration", admin_episodes_path, class: "nav-link text-white"
-                    = link_to "Settings", "#", class: "nav-link text-white"
+                    = link_to "Settings", edit_admin_setting_path, class: "nav-link text-white"
                   = link_to "Account", edit_user_registration_path, class: "nav-link text-white"
                   = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white"
                 -# else
@@ -62,7 +62,7 @@
               .mb-5
                 %h3.footer-heading.mb-4 Wartenberger Podcast
                 %p
-                  = current_setting.short_description
+                  = current_setting.description
 
             .col-lg-4.mb-5.mb-lg-0
               .row.mb-5
@@ -90,36 +90,36 @@
                 %h3.footer-heading.mb-4 Follow Us
                 %div
                   -if current_setting.facebook_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.facebook_url}
+                    %a.pl-0.pr-3{:href => current_setting.facebook_url.strip}
                       %span
                         %i.fab.fa-facebook
 
                   -if current_setting.youtube_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.youtube_url}
+                    %a.pl-0.pr-3{:href => current_setting.youtube_url.strip}
                       %span
                         %i.fab.fa-youtube
                   -if current_setting.twitter_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.twitter_url }
+                    %a.pl-0.pr-3{:href => current_setting.twitter_url.strip }
                       %span
                         %i.fab.fa-twitter
 
                   -if current_setting.instagram_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.instagram_url }
+                    %a.pl-0.pr-3{:href => current_setting.instagram_url.strip }
                       %span
                         %i.fab.fa-instagram
 
                   -if current_setting.itunes_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.itunes_url }
+                    %a.pl-0.pr-3{:href => current_setting.itunes_url.strip }
                       %span
                         %i.fas.fa-podcast
 
                   -if current_setting.spotify_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.spotify_url}
+                    %a.pl-0.pr-3{:href => current_setting.spotify_url.strip}
                       %span
                         %i.fab.fa-spotify
 
                   -if current_setting.rss_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.rss_url}
+                    %a.pl-0.pr-3{:href => current_setting.rss_url.strip}
                       %span
                         %i.fas.fa-rss
 

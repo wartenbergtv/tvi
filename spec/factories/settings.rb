@@ -26,35 +26,44 @@
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
 #
-class Setting < ApplicationRecord
-  validates(:title, presence: true)
-  validates(:description, presence: true)
-  validates(:email, presence: true)
-  validates(:logo_url, presence: true, url: true)
-  validates(:language, presence: true)
-  validates(:itunes_language, presence: true)
-  validates(:itunes_category, presence: true)
-  validates(:itunes_sub_category, presence: true)
-  validates(:owner, presence: true)
-  validates(:author, presence: true)
-  validates(:default_episode_artwork_url, presence: true, url: true)
-  validates(:facebook_url, url: true)
-  validates(:youtube_url, url: true)
-  validates(:twitter_url, url: true)
-  validates(:instagram_url, url: true)
-  validates(:itunes_url, url: true)
-  validates(:spotify_url, url: true)
-  validates(:google_url, url: true)
+FactoryBot.define do
+  factory :setting do
+    title { "Wartenberger Podcast" }
 
-  def self.current
-    Setting.last || raise("no setting")
-  end
+    description { "Der Podcast über und um den Markt Wartenberg" }
 
-  def rss_url
-    Rails.application.routes.url_helpers.episodes_url(format: :rss)
-  end
+    language { :de }
 
-  def canonical_url
-    Rails.application.routes.url_helpers.root_url.chomp("/")
+    seo_keywords { %w[Podcast Wartenberg Oberbayern München Bayern Regional].join(",") }
+
+    author { "Michael Deimel, Thomas Rademacher" }
+
+    owner {  "Michael Deimel" }
+
+    email { "admin@wartenberger.de" }
+
+    logo_url { "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/images/itunes-logo-1400x1400.jpg" }
+
+    itunes_category { "News" }
+
+    itunes_sub_category {  "Politics" }
+
+    itunes_language { "de-de" }
+
+    default_episode_artwork_url { "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/episode-default-logo.png" }
+
+    about_episode_number { 1 }
+
+    facebook_url { "https://www.facebook.com/Wartenberger-Der-Podcast-102909105061563" }
+
+    youtube_url {  "https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg" }
+
+    twitter_url {  "" }
+
+    instagram_url { "" }
+
+    itunes_url { "" }
+
+    spotify_url { "https://open.spotify.com/show/3EkNs5dt2Uix1oRWREyTOF" }
   end
 end

@@ -1,7 +1,7 @@
 require "capybara_helper"
 
 describe "welcome", type: :system do
-  let(:setting) { Setting.last }
+  let!(:setting) { FactoryBot.create(:setting) }
 
   context "when not logged in" do
     it "shows some basic informations" do
@@ -9,7 +9,7 @@ describe "welcome", type: :system do
 
       expect(page).to have_link "Wartenberger Podcast"
       expect(page).to have_title "Wartenberger Podcast"
-      expect(page).to have_content setting.short_description
+      expect(page).to have_content setting.description
     end
 
     it "shows the title" do
@@ -40,10 +40,8 @@ describe "welcome", type: :system do
       expect(page).to have_selector "h1", text: "Datenschutz"
     end
 
-    xit "dont shows special links when you are not an admin" do
+    it "dont shows special links when you are not an admin" do
       visit "/"
-
-      expect(page).to have_link "Login"
 
       expect(page).not_to have_link "Administration"
       expect(page).not_to have_link "Account"

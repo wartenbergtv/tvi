@@ -45,6 +45,7 @@ group :development, :test do
   gem "webdrivers"
 end
 
+
 group :development do
   gem "listen", "~> 3.3"
   gem "rack-mini-profiler", "~> 2.0"
@@ -57,4 +58,20 @@ group :development do
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
+end
+
+group :development, :test do
+  gem "pry-nav"
+  gem "pry-rails"
+
+  gem "factory_bot_rails"
+  gem "rspec-rails"
+  # capybara
+  gem "capybara"
+  gem "launchy" # for capybara save_and_open_page
+  gem "webdrivers"
+end
+
+group :test do
+  gem 'simplecov', require: false
 end

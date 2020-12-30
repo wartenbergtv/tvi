@@ -17,17 +17,17 @@ xml.rss("version" => "2.0",
     xml.title @feed.title
 
     # The show description. max 4000
-    xml.description strip_tags @feed.short_description
+    xml.description strip_tags @feed.description
 
     # The artwork for the show
     xml.tag! "itunes:image", href: @feed.logo_url
 
     # The language spoken on the show. ISO 639 e.g. en-us
-    xml.language @feed.ituens_language
+    xml.language @feed.itunes_language
 
     # The show category information.
-    xml.tag! "itunes:category", text: @feed.ituens_category do
-      xml.tag! "itunes:category", text: @feed.ituens_sub_category
+    xml.tag! "itunes:category", text: @feed.itunes_category do
+      xml.tag! "itunes:category", text: @feed.itunes_sub_category
     end
 
     # The podcast parental advisory information.
@@ -41,7 +41,7 @@ xml.rss("version" => "2.0",
 
     # The podcast owner contact information.
     xml.tag! "itunes:owner" do
-      xml.tag! "itunes:name", @feed.owner_name
+      xml.tag! "itunes:name", @feed.owner
       xml.tag! "itunes:email", @feed.email
     end
 

@@ -1,6 +1,8 @@
 # https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/000-markus-loibl.mp3
 # https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/test-001.mp3
 
+FactoryBot.create :setting
+
 FactoryBot.create :user, email: "joe@test.com", password: "test123", password_confirmation: "test123"
 FactoryBot.create :user, :admin, email: "admin@test.com", password: "test123", password_confirmation: "test123"
 

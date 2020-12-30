@@ -26,35 +26,24 @@
 #  created_at                  :datetime         not null
 #  updated_at                  :datetime         not null
 #
-class Setting < ApplicationRecord
-  validates(:title, presence: true)
-  validates(:description, presence: true)
-  validates(:email, presence: true)
-  validates(:logo_url, presence: true, url: true)
-  validates(:language, presence: true)
-  validates(:itunes_language, presence: true)
-  validates(:itunes_category, presence: true)
-  validates(:itunes_sub_category, presence: true)
-  validates(:owner, presence: true)
-  validates(:author, presence: true)
-  validates(:default_episode_artwork_url, presence: true, url: true)
-  validates(:facebook_url, url: true)
-  validates(:youtube_url, url: true)
-  validates(:twitter_url, url: true)
-  validates(:instagram_url, url: true)
-  validates(:itunes_url, url: true)
-  validates(:spotify_url, url: true)
-  validates(:google_url, url: true)
+require "rails_helper"
 
-  def self.current
-    Setting.last || raise("no setting")
+RSpec.describe Setting, type: :model do
+  it "has a valid factory" do
+    setting = FactoryBot.build :setting
+
+    expect(setting).to be_valid
+    assert setting.save!
   end
 
-  def rss_url
-    Rails.application.routes.url_helpers.episodes_url(format: :rss)
-  end
+  %w[logo_url default_episode_artwork_url facebook_url youtube_url twitter_url instagram_url itunes_url spotify_url
+     google_url].each do |url|
+    it "validates for a valid logo_url" do
+      setting = FactoryBot.build(:setting)
+      setting.send("#{url}=", "invalid url")
 
-  def canonical_url
-    Rails.application.routes.url_helpers.root_url.chomp("/")
+      expect(setting).to be_invalid
+      expect(setting.errors[url].join.to_s).to eq "is not a valid URL"
+    end
   end
 end

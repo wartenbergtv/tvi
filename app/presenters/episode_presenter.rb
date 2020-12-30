@@ -1,10 +1,6 @@
 class EpisodePresenter < ApplicationPresenter
   delegate :file_size, to: :o
 
-  def header
-    "##{number} - #{published_on} #{title}"
-  end
-
   def number
     o.number.to_s.rjust(3, "0")
   end
@@ -26,7 +22,7 @@ class EpisodePresenter < ApplicationPresenter
     # in JPEG or PNG format, 72 dpi, with appropriate file extensions (.jpg, .png), and in the RGB colorspace.
     # These requirements are different from the standard RSS image tag specifications.
     # Make sure the file type in the URL matches the actual file type of the image file.d
-    o.artwork_url.presence || current_setting.default_episode_artwork
+    o.artwork_url.presence || current_setting.default_episode_artwork_url
   end
 
   def mp3_url
@@ -36,11 +32,5 @@ class EpisodePresenter < ApplicationPresenter
   def episonde_url
     # This is used when an episode has a corresponding webpage. For example:
     Rails.application.routes.url_helpers.episode_url(o)
-  end
-
-  protected
-
-  def current_setting
-    @current_setting ||= Setting.last
   end
 end

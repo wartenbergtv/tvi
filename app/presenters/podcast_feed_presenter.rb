@@ -9,9 +9,13 @@ class PodcastFeedPresenter
     @episodes = EpisodeFeedPresenter.wrap episondes
   end
 
+  def copyright
+    "Copyright #{Time.current.year} #{owner}"
+  end
+
   private
 
   def current_setting
-    @current_setting ||= Setting.last
+    @current_setting ||= Setting.current
   end
 end
