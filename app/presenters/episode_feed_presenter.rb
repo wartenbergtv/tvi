@@ -47,9 +47,12 @@ class EpisodeFeedPresenter < EpisodePresenter
     #   <![CDATA[
     #     <a href="http://www.apple.com">Apple</a>
     #   ]]>
-    render_markdown(o.description) +
-      render_markdown("## Show Notes ") +
-      render_markdown(o.nodes)
+    description = render_markdown(o.description)
+    if o.nodes.present?
+      description = description + render_markdown("## Show Notes ") +
+                    render_markdown(o.nodes)
+    end
+    description
   end
 
   def pub_date
@@ -68,5 +71,4 @@ class EpisodeFeedPresenter < EpisodePresenter
   def markdown_processor
     @markdown_processor ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
   end
-
 end

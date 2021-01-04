@@ -6,7 +6,8 @@ RSpec.describe "episodes", type: :request do
 
     it "generates a feed" do
       episode1 = FactoryBot.create :episode, number: 1, title: "Soli Wartenberg"
-      episode2 = FactoryBot.create :episode, number: 2, title: "Anton Müller", nodes: " *some notes about the show* \n [link](https://test.com)"
+      episode2 = FactoryBot.create :episode, number: 2, title: "Anton Müller",
+                                             nodes: " *some notes about the show* \n [link](https://test.com)"
 
       get "/episodes.rss"
 
@@ -40,7 +41,14 @@ RSpec.describe "episodes", type: :request do
               <enclosure url="http://wartenberger.test.com/episodes/002-anton-muller.mp3" length="123" type="audio/mpeg"/>
               <guid>http://wartenberger.test.com/episodes/002-anton-muller.mp3</guid>
               <pubDate>#{episode2.published_on.to_date.rfc822}</pubDate>
-              <description>we talk about bikes and things</description>
+              <description>
+                <![CDATA[<p>we talk about bikes and things</p> <h2>Show Notes</h2> <p><em>some notes about the show</em>
+                  <a href="https://test.com">link</a></p> ]]>
+              </description>
+              <content:encoded>
+                <![CDATA[<p>we talk about bikes and things</p> <h2>Show Notes</h2> <p><em>some notes about the show</em>
+                  <a href="https://test.com">link</a></p> ]]>
+              </content:encoded>
               <itunes:duration>321</itunes:duration>
               <link>http://wartenberger.test.com/episodes/002-anton-muller</link>
               <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/002-anton-muller.jpg"/>
@@ -51,7 +59,12 @@ RSpec.describe "episodes", type: :request do
               <enclosure url="http://wartenberger.test.com/episodes/001-soli-wartenberg.mp3" length="123" type="audio/mpeg"/>
               <guid>http://wartenberger.test.com/episodes/001-soli-wartenberg.mp3</guid>
               <pubDate>#{episode1.published_on.to_date.rfc822}</pubDate>
-              <description>we talk about bikes and things</description>
+              <description>
+                <![CDATA[<p>we talk about bikes and things</p> ]]>
+              </description>
+              <content:encoded>
+                <![CDATA[<p>we talk about bikes and things</p> ]]>
+              </content:encoded>
               <itunes:duration>321</itunes:duration>
               <link>http://wartenberger.test.com/episodes/001-soli-wartenberg</link>
               <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/001-soli-wartenberg.jpg"/>
@@ -59,7 +72,10 @@ RSpec.describe "episodes", type: :request do
             </item>
           </channel>
         </rss>)
-      puts response.body.squish
+
+      # Debugging
+      # File.write("response.xml", response.body.squish)
+      # File.write("expected_xml.xml", expected_xml.squish)
       expect(response.body.squish).to eq(expected_xml.squish)
     end
   end
