@@ -12,8 +12,8 @@ xml.item do
   xml.pubDate episode.pub_date
 
   # An episode description. max 4000
-  xml.description strip_tags episode.description
-
+  xml.description { xml.cdata!(episode.description_with_show_notes_html) }
+  xml.tag!("content:encoded") { xml.cdata!(episode.description_with_show_notes_html) }
   # The duration of an episode.
   xml.tag! "itunes:duration", episode.duration
 
