@@ -5,11 +5,8 @@ $gray-2: #5c626e;
 $gray-3: #c4c7ce;
 $gray-4: #edf0f5;
 
-
 /* Base */
 @import "site-base";
-/* Navbar */
-@import "site-navbar";
 /* Blocks */
 @import "site-blocks";
 
@@ -21,13 +18,10 @@ a {
 a:hover {
   color: $gray-2
 }
-
-.content {
-  padding: 0;
-}
-
-.header-navbar {
-  background-color: #333;
+#top-alert {
+  position: fixed;
+  top: 0;
+  z-index: 99999;
 }
 
 .show-nodes {

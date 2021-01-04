@@ -22,111 +22,111 @@
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
 
   %body{id: "main", :class => "#{controller_name} #{action_name}"}
-    .container-fluid.site-wrap
-      %header.header-navbar.site-navbar.py-4{:role => "banner"}
-        .row.align-items-center
-          .col-8{"data-aos" => "fade-down"}
-            %h1.ml-3
-              %a.text-white.h2{:href => root_path }
-                = current_setting.title
-          .col-4{"data-aos" => "fade-down"}
-            %nav.site-navigation.position-relative.text-right.text-md-right{:role => "navigation"}
-              %ul.nav.navbar-light
-                %li.nav-item
-                  %a.text-white.nav-link{:href => episodes_path} Archiv
-                %li.nav-item
-                  %a.text-white.text-nowrap.nav-link{:href => about_path } Über uns
-                - if user_signed_in?
-                  - if current_user&.admin?
-                    = link_to "Administration", admin_episodes_path, class: "nav-link text-white"
-                    = link_to "Settings", edit_admin_setting_path, class: "nav-link text-white"
-                  = link_to "Account", edit_user_registration_path, class: "nav-link text-white"
-                  = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white"
-                -# else
-                -#= link_to "Login", login_path, class: "nav-link text-white"
+    %header
+      - if flash.present?
+        - flash.each do |name, msg|
+          - if msg.is_a?(String)
+            %div{id: "top-alert", class: "alert alert-dismissible fade show alert-#{name == :notice ? "success" : "warning"}", role: "alert"}
+              %a.close{"data-dismiss" => "alert"} ×
+              = content_tag :div, msg, :id => "flash_#{name}"
 
+      %nav.navbar.navbar-dark.bg-dark.navbar-expand-lg{"data-aos" => "fade-down"}
+        %h1
+          %a.text-white{:href => root_path}
+            = current_setting.title
+        %button.navbar-toggler{"aria-controls" => "navbarNav", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#navbarNav", "data-toggle" => "collapse", :type => "button"}
+          %span.navbar-toggler-icon
+
+        #navbarNav.collapse.text-white.navbar-collapse{"data-aos" => "fade-down"}
+          %ul.navbar-nav.ml-auto
+            %li.nav-item
+              %a.text-white.nav-link{:href => episodes_path} Episoden
+            %li.nav-item
+              %a.text-white.text-nowrap.nav-link{:href => about_path } Über uns
+            - if user_signed_in?
+              - if current_user&.admin?
+                = link_to "Administration", admin_episodes_path, class: "nav-link text-white"
+                = link_to "Settings", edit_admin_setting_path, class: "nav-link text-white"
+              = link_to "Account", edit_user_registration_path, class: "nav-link text-white"
+              = link_to "Logout", destroy_user_session_path, method: :delete, class: "nav-link text-white"
+    %main
       .container-fluid
-        - if flash.present?
-          .row
-            - flash.each do |name, msg|
-              - if msg.is_a?(String)
-                %div{class: "alert alert-dismissible fade show alert-#{name == :notice ? "success" : "warning"}", role: "alert"}
-                  %a.close{"data-dismiss" => "alert"} ×
-                  = content_tag :div, msg, :id => "flash_#{name}"
+
         .content
           = yield
-      %footer.site-footer
-        .container
-          .row
-            .col-lg-4
-              .mb-5
-                %h3.footer-heading.mb-4 Wartenberger Podcast
-                %p
-                  = current_setting.description
 
-            .col-lg-4.mb-5.mb-lg-0
-              .row.mb-5
-                .col-md-12
-                  %h3.footer-heading.mb-4 Navigation
-                .col-md-6.col-lg-6
-                  %ul.list-unstyled
-                    %li
-                      %a{:href => root_path } Home
-                    %li
-                      %a{:href => episodes_path } Archiv
-                    -# %li
-                    -#   %a{:href => new_user_session_path } Login
-                .col-md-6.col-lg-6
-                  %ul.list-unstyled
-                    %li
-                      %a{:href => about_path} Über Uns
-                    %li
-                      %a{:href => imprint_path} Impressum
-                    %li
-                      %a{:href => privacy_path} Datenschutz
-
-            .col-lg-4.mb-5.mb-lg-0
-              .mb-5
-                %h3.footer-heading.mb-4 Follow Us
-                %div
-                  -if current_setting.facebook_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.facebook_url.strip}
-                      %span
-                        %i.fab.fa-facebook
-
-                  -if current_setting.youtube_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.youtube_url.strip}
-                      %span
-                        %i.fab.fa-youtube
-                  -if current_setting.twitter_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.twitter_url.strip }
-                      %span
-                        %i.fab.fa-twitter
-
-                  -if current_setting.instagram_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.instagram_url.strip }
-                      %span
-                        %i.fab.fa-instagram
-
-                  -if current_setting.itunes_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.itunes_url.strip }
-                      %span
-                        %i.fas.fa-podcast
-
-                  -if current_setting.spotify_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.spotify_url.strip}
-                      %span
-                        %i.fab.fa-spotify
-
-                  -if current_setting.rss_url.present?
-                    %a.pl-0.pr-3{:href => current_setting.rss_url.strip}
-                      %span
-                        %i.fas.fa-rss
-
-          .row.pt-5.mt-5.text-center
-            .col-md-12
+    %footer.site-footer
+      .container
+        .row
+          .col-lg-4
+            .mb-5
+              %h3.footer-heading.mb-4 Wartenberger Podcast
               %p
-                Copyright ©
-                = Date.current.year
-                %a{:href => "mailto:admin@wartenberger.de", :target => "_blank"}
-                  Wartenberger
+                = current_setting.description
+
+          .col-lg-4.mb-5.mb-lg-0
+            .row.mb-5
+              .col-md-12
+                %h3.footer-heading.mb-4 Navigation
+              .col-md-6.col-lg-6
+                %ul.list-unstyled
+                  %li
+                    %a{:href => root_path } Home
+                  %li
+                    %a{:href => episodes_path } Episoden
+                  -# %li
+                  -#   %a{:href => new_user_session_path } Login
+              .col-md-6.col-lg-6
+                %ul.list-unstyled
+                  %li
+                    %a{:href => about_path} Über Uns
+                  %li
+                    %a{:href => imprint_path} Impressum
+                  %li
+                    %a{:href => privacy_path} Datenschutz
+
+          .col-lg-4.mb-5.mb-lg-0
+            .mb-5
+              %h3.footer-heading.mb-4 Follow Us
+              %div
+                -if current_setting.facebook_url.present?
+                  %a.pl-0.pr-3{:href => current_setting.facebook_url.strip}
+                    %span
+                      %i.fab.fa-facebook
+
+                -if current_setting.youtube_url.present?
+                  %a.pl-0.pr-3{:href => current_setting.youtube_url.strip}
+                    %span
+                      %i.fab.fa-youtube
+                -if current_setting.twitter_url.present?
+                  %a.pl-0.pr-3{:href => current_setting.twitter_url.strip }
+                    %span
+                      %i.fab.fa-twitter
+
+                -if current_setting.instagram_url.present?
+                  %a.pl-0.pr-3{:href => current_setting.instagram_url.strip }
+                    %span
+                      %i.fab.fa-instagram
+
+                -if current_setting.itunes_url.present?
+                  %a.pl-0.pr-3{:href => current_setting.itunes_url.strip }
+                    %span
+                      %i.fas.fa-podcast
+
+                -if current_setting.spotify_url.present?
+                  %a.pl-0.pr-3{:href => current_setting.spotify_url.strip}
+                    %span
+                      %i.fab.fa-spotify
+
+                -if current_setting.rss_url.present?
+                  %a.pl-0.pr-3{:href => current_setting.rss_url.strip}
+                    %span
+                      %i.fas.fa-rss
+
+        .row.text-center
+          .col-md-12
+            %p
+              Copyright ©
+              = Date.current.year
+              %a{:href => "mailto:admin@wartenberger.de", :target => "_blank"}
+                Wartenberger
