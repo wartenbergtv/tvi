@@ -33,12 +33,40 @@ class EpisodeFeedPresenter < EpisodePresenter
     mp3_url
   end
 
-  def description
-    h.truncate(o.description, length: 4000)
+  def description_with_show_notes_html
+    # An episode description.
+    # description is text containing one or more sentences describing your episode to potential listeners.
+    # You can specify up to 4000 characters.
+    # You can use rich text formatting and some HTML (<p>, <ol>, <ul>, <li>, <a>) if wrapped in the <CDATA> tag.
+    #
+    # To include links in your description or rich HTML, adhere to the following technical guidelines:
+    # enclose all portions of your XML that contain embedded HTML in a CDATA section to prevent formatting issues,
+    # and to ensure proper
+    #  link functionality. For example:
+    #
+    #   <![CDATA[
+    #     <a href="http://www.apple.com">Apple</a>
+    #   ]]>
+    render_markdown(o.description) +
+      render_markdown("## Show Notes ") +
+      render_markdown(o.nodes)
   end
 
   def pub_date
     # # The date and time when an episode was released. RFC 2822
     o.published_on.to_date.rfc822
   end
+
+  private
+
+  def render_markdown(text)
+    return "" if text.blank?
+
+    markdown_processor.render(text.to_s).html_safe
+  end
+
+  def markdown_processor
+    @markdown_processor ||= Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+  end
+
 end

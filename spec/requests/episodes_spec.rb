@@ -6,7 +6,7 @@ RSpec.describe "episodes", type: :request do
 
     it "generates a feed" do
       episode1 = FactoryBot.create :episode, number: 1, title: "Soli Wartenberg"
-      episode2 = FactoryBot.create :episode, number: 2, title: "Anton Müller"
+      episode2 = FactoryBot.create :episode, number: 2, title: "Anton Müller", nodes: " *some notes about the show* \n [link](https://test.com)"
 
       get "/episodes.rss"
 
@@ -59,6 +59,7 @@ RSpec.describe "episodes", type: :request do
             </item>
           </channel>
         </rss>)
+      puts response.body.squish
       expect(response.body.squish).to eq(expected_xml.squish)
     end
   end
