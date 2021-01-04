@@ -7,9 +7,9 @@ describe "Episodes", type: :system do
     episode = FactoryBot.create :episode
 
     visit "/"
-    click_on "Archiv", match: :first
+    click_on "Episoden", match: :first
 
-    expect(page).to have_selector "h2", text: "Archive"
+    expect(page).to have_selector "h2", text: "Episoden"
     expect(page).to have_content episode.title
     expect(page).to have_content episode.description
   end
