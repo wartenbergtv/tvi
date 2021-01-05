@@ -18,15 +18,23 @@ a {
 a:hover {
   color: $gray-2
 }
+
 #top-alert {
   position: fixed;
   top: 0;
   z-index: 99999;
 }
 
-.show-nodes {
-	li {
-		text-align: left;
+.show-notes {
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+
+    @include media-breakpoint-up(md) {
+      width: 50%;
+    }
   }
 
   a:hover {
