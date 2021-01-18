@@ -345,6 +345,7 @@ DEPENDENCIES
   launchy
   listen (~> 3.3)
   newrelic_rpm
+  nokogiri (~> 1.11.0)
   pg (~> 1.1)
   pry-nav
   pry-rails
