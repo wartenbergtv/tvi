@@ -1,7 +1,10 @@
+- title = "Episoden"
+- content_for(:html_title) { title }
 .container-fluid
   .row.align-items-center.justify-content-center.text-center
     .col-md-8{"data-aos" => "fade-up", "data-aos-delay" => "400"}
-      %h2.text-white.font-weight-light.mb-2.display-4 Episoden
+      %h2.text-white.font-weight-light.mb-2.display-4
+        = title
       - @episodes.each do |episode|
         = render "shared/episode", episode: episode
 
