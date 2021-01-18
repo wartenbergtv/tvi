@@ -1,4 +1,4 @@
-Sitemap: http://wartenberger.de/sitemap.xml.gz
+Sitemap: https://www.wartenberger.de/sitemap.xml.gz
 
 User-Agent: *
 Allow: /

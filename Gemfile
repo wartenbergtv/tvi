@@ -30,7 +30,7 @@ gem "newrelic_rpm"
 gem "ruby-mp3info"
 gem "dalli"
 
-gem "sitemap_generator"
+gem "sitemap_generator" # https://github.com/kjvarga/sitemap_generator
 gem "aws-sdk-s3" # hosting the sidemap on s3
 
 group :development, :test do
