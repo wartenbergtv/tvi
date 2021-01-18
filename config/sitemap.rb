@@ -27,7 +27,6 @@ SitemapGenerator::Sitemap.sitemaps_host = "https://#{Rails.application.config.aw
 if Rails.application.config.aws_bucket_name.present?
 
   SitemapGenerator::Sitemap.create do
-
     add episodes_path, priority: 0.7, changefreq: "daily"
 
     Episode.published.each do |episode|
@@ -37,7 +36,6 @@ if Rails.application.config.aws_bucket_name.present?
     add "/about", changefreq: "monthly"
     add "/imprint", changefreq: "monthly"
     add "/privacy", changefreq: "monthly"
-
   end
 
 else

@@ -52,6 +52,12 @@ describe "welcome", type: :system do
       expect(page).not_to have_link "Setting"
       expect(page).not_to have_link "Logout"
     end
+
+    it "visit not existing bot url" do
+      visit "/wp-login.php"
+
+      expect(page).to have_content "Forbidden"
+    end
   end
 
   context "when logged in as user" do

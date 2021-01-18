@@ -33,6 +33,8 @@ gem "dalli"
 gem "sitemap_generator" # https://github.com/kjvarga/sitemap_generator
 gem "aws-sdk-s3" # hosting the sidemap on s3
 
+gem "rack-attack"
+
 group :development, :test do
   gem "pry-nav"
   gem "pry-rails"
