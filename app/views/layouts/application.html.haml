@@ -1,7 +1,7 @@
 !!!
 %html{lang: current_setting.language}
   %head
-    %title= current_setting.title
+    %title= content_for?(:html_title) ? yield(:html_title) : current_setting.title
 
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
