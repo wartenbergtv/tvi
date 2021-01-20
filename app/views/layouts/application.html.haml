@@ -94,10 +94,7 @@
                     %span
                       %i.fab.fa-facebook
 
-                -if current_setting.youtube_url.present?
-                  %a.pl-0.pr-3{:href => current_setting.youtube_url.strip}
-                    %span
-                      %i.fab.fa-youtube
+
                 -if current_setting.twitter_url.present?
                   %a.pl-0.pr-3{:href => current_setting.twitter_url.strip }
                     %span
@@ -111,7 +108,7 @@
                 -if current_setting.itunes_url.present?
                   %a.pl-0.pr-3{:href => current_setting.itunes_url.strip }
                     %span
-                      %i.fas.fa-podcast
+                      %i.fab.fa-apple
 
                 -if current_setting.spotify_url.present?
                   %a.pl-0.pr-3{:href => current_setting.spotify_url.strip}
@@ -122,7 +119,10 @@
                   %a.pl-0.pr-3{:href => current_setting.google_url.strip}
                     %span
                       %i.fab.fa-google
-
+                -if current_setting.youtube_url.present?
+                  %a.pl-0.pr-3{:href => current_setting.youtube_url.strip}
+                    %span
+                      %i.fab.fa-youtube
                 -if current_setting.rss_url.present?
                   %a.pl-0.pr-3{:href => current_setting.rss_url.strip}
                     %span

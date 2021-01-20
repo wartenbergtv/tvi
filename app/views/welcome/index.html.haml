@@ -6,12 +6,36 @@
   .container-fluid
     .row.align-items-center.justify-content-center.text-center
       .col-md-8{"data-aos" => "fade-up", "data-aos-delay" => "400"}
+        = render "shared/episode_inline", episode: @last_episode
 -# **************************
 -#  episodes
 -# **************************
+
 .site-section.bg-light
   .container
-    .row.mb-5{"data-aos" => "fade-up"}
+    .row.mb-3{"data-aos" => "fade-up"}
+      .col-md-12.text-center
+        .subscribe-buttons.justify-content-center.text-white
+          -if current_setting.itunes_url.present?
+            = link_to(current_setting.itunes_url.strip, class: "btn btn-secondary rounded-pill") do
+              %i.fab.fa-apple
+              Apple Podcast
+          -if current_setting.spotify_url.present?
+            = link_to(current_setting.spotify_url.strip, class: " btn btn-secondary rounded-pill") do
+              %i.fab.fa-spotify
+              Spotify
+          -if current_setting.google_url.present?
+            = link_to(current_setting.google_url.strip, class: " btn btn-secondary  rounded-pill") do
+              %i.fab.fa-google
+              Google
+          -if current_setting.youtube_url.present?
+            = link_to(current_setting.youtube_url.strip, class: " btn btn-secondary rounded-pill") do
+              %i.fab.fa-youtube
+              Youtube
+          = link_to(episodes_path, class: " btn btn-secondary rounded-pill") do
+            Alle Episoden
+
+    .row.mb-3{"data-aos" => "fade-up"}
       .col-md-12.text-center
         %h2.font-weight-bold.text-black Letzte Episoden
 

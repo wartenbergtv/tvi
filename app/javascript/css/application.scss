@@ -25,6 +25,15 @@ a:hover {
   z-index: 99999;
 }
 
+.subscribe-buttons {
+  padding-bottom: 20px;
+}
+
+.subscribe-buttons .btn {
+  margin-left: 5px;
+  margin-bottom: 5px
+}
+
 .show-notes {
 
   img {
@@ -40,4 +49,8 @@ a:hover {
   a:hover {
     color: blue;
   }
+}
+
+.inline-podcast {
+  background-color: rgba(0, 0, 0, 0.4);
 }
