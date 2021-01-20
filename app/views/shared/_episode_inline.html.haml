@@ -1,0 +1,18 @@
+- if episode
+  .inline-podcast.align-middle.border.border-dark.rounded
+
+    %h2.text-white.font-weight-light.mb-2.display-4
+      Letzte Episode
+
+    %h4.text-white.font-weight-light.mb-2
+      = link_to "#{episode.title}", episode.episonde_url, class: "text-white"
+
+    .text-white.mb-3
+      %span.text-white-opacity-05
+        %small
+          %span.sep.text-white
+          = episode.published_on
+    %p.mb-4
+      .player
+        %audio{:controls => "", :preload => "none", :style => "max-width: 100%"}
+          %source{:src => episode.mp3_url, :type => "audio/mp3"}
