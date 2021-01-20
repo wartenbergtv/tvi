@@ -1,8 +1,11 @@
+- title = "Datenschutz­erklärung"
+- content_for(:html_title) { title }
 .site-section.bg-light
   .container-flex
     .row.mb-5{"data-aos" => "fade-up"}
       .col-md-12
-        %h1.text-center Datenschutz­erklärung
+        %h1.text-center
+          = title
 
         .description.text-center.pt-2
           %h2#1-datenschutz-auf-einen-blick 1. Datenschutz auf einen Blick

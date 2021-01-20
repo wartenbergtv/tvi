@@ -16,6 +16,7 @@ gem "jbuilder", "~> 2.7"
 gem "simple_form"
 gem "bootsnap", ">= 1.4.4", require: false
 gem "haml-rails", "~> 2.0"
+gem "nokogiri", "~> 1.10.0"
 gem "rails-i18n"
 gem "redcarpet"
 
@@ -30,8 +31,10 @@ gem "newrelic_rpm"
 gem "ruby-mp3info"
 gem "dalli"
 
-gem "sitemap_generator"
+gem "sitemap_generator" # https://github.com/kjvarga/sitemap_generator
 gem "aws-sdk-s3" # hosting the sidemap on s3
+
+gem "rack-attack"
 
 group :development, :test do
   gem "pry-nav"

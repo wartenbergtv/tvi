@@ -1,7 +1,7 @@
 !!!
 %html{lang: current_setting.language}
   %head
-    %title= current_setting.title
+    %title= content_for?(:html_title) ? yield(:html_title) : current_setting.title
 
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
     %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
@@ -117,6 +117,11 @@
                   %a.pl-0.pr-3{:href => current_setting.spotify_url.strip}
                     %span
                       %i.fab.fa-spotify
+
+                -if current_setting.google_url.present?
+                  %a.pl-0.pr-3{:href => current_setting.google_url.strip}
+                    %span
+                      %i.fab.fa-google
 
                 -if current_setting.rss_url.present?
                   %a.pl-0.pr-3{:href => current_setting.rss_url.strip}

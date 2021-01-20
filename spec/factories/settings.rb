@@ -58,12 +58,14 @@ FactoryBot.define do
 
     youtube_url {  "https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg" }
 
-    twitter_url {  "" }
+    twitter_url {  "https://www.instagram.com/wartenbergerpodcast" }
 
-    instagram_url { "" }
+    instagram_url { "https://www.instagram.com/wartenbergerpodcast" }
 
-    itunes_url { "" }
+    itunes_url { "https://podcasts.apple.com/de/podcast/wartenberger-podcast/id1546458413" }
 
     spotify_url { "https://open.spotify.com/show/3EkNs5dt2Uix1oRWREyTOF" }
+
+    google_url { "https://www.google.com/podcasts?feed=aHR0cHM6Ly93d3cud2FydGVuYmVyZ2VyLmRlL2VwaXNvZGVzLnJzcw%3D%3D" }
   end
 end

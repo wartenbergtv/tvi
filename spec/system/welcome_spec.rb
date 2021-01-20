@@ -15,7 +15,8 @@ describe "welcome", type: :system do
     it "shows the title" do
       visit "/"
 
-      expect(page).to have_content("Wartenberger Podcast")
+      expect(page).to have_content "Wartenberger Podcast"
+      expect(page).to have_title "Wartenberger Podcast"
     end
 
     it "shows the about page" do
@@ -23,6 +24,7 @@ describe "welcome", type: :system do
       click_link "Über uns"
 
       expect(page).to have_content "Über Uns"
+      expect(page).to have_title "Über den Podcast"
     end
 
     it "shows the impressum page" do
@@ -30,6 +32,7 @@ describe "welcome", type: :system do
       click_link "Impressum"
 
       expect(page).to have_selector "h1", text: "Impressum"
+      expect(page).to have_title "Impressum"
     end
 
     it "shows the privacy page" do
@@ -38,6 +41,7 @@ describe "welcome", type: :system do
       click_link "Datenschutz"
 
       expect(page).to have_selector "h1", text: "Datenschutz"
+      expect(page).to have_title "Datenschutz"
     end
 
     it "dont shows special links when you are not an admin" do
@@ -47,6 +51,12 @@ describe "welcome", type: :system do
       expect(page).not_to have_link "Account"
       expect(page).not_to have_link "Setting"
       expect(page).not_to have_link "Logout"
+    end
+
+    it "visit not existing bot url" do
+      visit "/wp-login.php"
+
+      expect(page).to have_content "Forbidden"
     end
   end
 

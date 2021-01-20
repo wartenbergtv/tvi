@@ -11,6 +11,7 @@ describe "Episodes", type: :system do
 
     expect(page).to have_selector "h2", text: "Episoden"
     expect(page).to have_content episode.title
+    expect(page).to have_title "Episoden"
     expect(page).to have_content episode.description
   end
 
@@ -21,6 +22,7 @@ describe "Episodes", type: :system do
 
     expect(page).to have_content "001"
     expect(page).to have_content "Blah Test"
+    expect(page).to have_title "Blah Test"
   end
 
   it "gets an 404 by unknow slug" do
