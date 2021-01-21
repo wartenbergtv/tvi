@@ -38,7 +38,7 @@ module Admin
     protected
 
     def find_episode
-      Episode.find_by(slug: params[:id]) || not_found
+      Episode.find_by!(slug: params[:id])
     end
 
     def create_params

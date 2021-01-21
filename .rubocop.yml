@@ -71,3 +71,6 @@ Metrics/AbcSize:
 
 RSpec/LetSetup:
   Enabled: false
+
+RSpec/ContextWording:
+  Enabled: false

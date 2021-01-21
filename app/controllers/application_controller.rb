@@ -5,10 +5,6 @@ class ApplicationController < ActionController::Base
 
   before_action :record_newrelic_custom_parameters
 
-  def not_found
-    raise ActionController::RoutingError, "Not Found"
-  end
-
   def render404
     respond_to do |format|
       format.html { render file: Rails.root.join("public/404.html"), layout: false, status: :not_found }

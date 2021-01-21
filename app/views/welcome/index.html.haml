@@ -35,9 +35,12 @@
           = link_to(episodes_path, class: " btn btn-secondary rounded-pill") do
             Alle Episoden
 
-    .row.mb-3{"data-aos" => "fade-up"}
-      .col-md-12.text-center
-        %h2.font-weight-bold.text-black Letzte Episoden
+    - if @episodes.present?
+      #last-episodes
+        .row.mb-3{"data-aos" => "fade-up"}
+          .col-md-12.text-center
+            %h2.font-weight-bold.text-black Letzte Episoden
 
-    - @episodes.each do |episode|
-      = render "shared/episode", episode: episode
+        - @episodes.each do |episode|
+          .row{"data-aos" => "fade-up"}
+            = render "shared/episode", episode: episode

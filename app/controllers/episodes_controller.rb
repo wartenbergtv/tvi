@@ -13,7 +13,7 @@ class EpisodesController < ApplicationController
   end
 
   def show
-    episode_record = Episode.find_by(slug: params[:slug], active: true) || not_found
+    episode_record = Episode.find_by!(slug: params[:slug])
     @episode = EpisodePresenter.new episode_record
     respond_to do |format|
       format.html

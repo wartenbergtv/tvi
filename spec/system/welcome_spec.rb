@@ -58,6 +58,71 @@ describe "welcome", type: :system do
 
       expect(page).to have_content "Forbidden"
     end
+
+    context "with last episodes" do
+      it "shows nothing without a episode" do
+        visit "/"
+
+        expect(page).not_to have_css("#last-episodes")
+        expect(page).not_to have_content "Letzte Episoden "
+      end
+
+      it "shows the last two episode" do
+        FactoryBot.create :episode, title: "future Test", number: 5, published_on: 1.day.since
+        FactoryBot.create :episode, title: "last Test", number: 4, published_on: Time.zone.today
+        FactoryBot.create :episode, title: "inactive Test", number: 3, published_on: Time.zone.today, active: false
+        FactoryBot.create :episode, title: "second Test", number: 2, published_on: 1.day.ago
+        FactoryBot.create :episode, title: "first Test", number: 1, published_on: 2.weeks.ago
+        visit "/"
+
+        expect(page).to have_css("#last-episodes")
+        expect(page).to have_content "Letzte Episoden"
+        expect(page).to have_content "second Test"
+        expect(page).to have_content "last Test"
+        expect(page).not_to have_content "first Test"
+        expect(page).not_to have_content "future Test"
+        expect(page).not_to have_content "nactive Test"
+      end
+    end
+
+    context "with last episode" do
+      it "shows nothing without a episode" do
+        visit "/"
+
+        expect(page).not_to have_css("#last-episode")
+        expect(page).not_to have_content "Letzte Episode "
+      end
+
+      it "shows the last episode" do
+        FactoryBot.create :episode, title: "last Test", number: 2, published_on: Time.zone.today
+        FactoryBot.create :episode, title: "first Test", number: 1, published_on: 2.weeks.ago
+        visit "/"
+
+        expect(page).to have_css("#last-episode")
+        expect(page).to have_content "Letzte Episode"
+        expect(page).to have_content "last Test"
+      end
+
+      it "shows the last episode not inactive" do
+        FactoryBot.create :episode, title: "last Test", number: 2, published_on: Time.zone.today, active: false
+        FactoryBot.create :episode, title: "first Test", number: 1, published_on: 2.weeks.ago
+        visit "/"
+
+        expect(page).to have_css("#last-episode")
+        expect(page).to have_content "Letzte Episode"
+        expect(page).to have_content "first Test"
+      end
+
+      it "shows the last episode not published" do
+        FactoryBot.create :episode, title: "last Test", number: 2, published_on: 1.day.since
+        FactoryBot.create :episode, title: "first Test", number: 1, published_on: 2.weeks.ago
+        visit "/"
+
+        expect(page).to have_css("#last-episode")
+        expect(page).to have_content "Letzte Episode"
+        expect(page).to have_content "first Test"
+      end
+    end
   end
 
   context "when logged in as user" do
