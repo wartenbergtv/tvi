@@ -16,13 +16,15 @@ describe "Administrate Episodes", type: :system do
       expect(page).to have_selector "h1", text: "Episodes"
 
       expect(page).to have_table_with_exact_data([
-                                                   ["Epsiode",
+                                                   ["Published",
+                                                    "Epsiode",
                                                     "Title",
                                                     "downloads_count",
                                                     "published_on",
                                                     "",
                                                     ""],
-                                                   ["001",
+                                                   ["",
+                                                    "001",
                                                     "Soli Wartenberg",
                                                     "1",
                                                     episode.published_on.strftime("%d.%m.%Y"),
@@ -61,8 +63,15 @@ describe "Administrate Episodes", type: :system do
 
       expect(page).to have_content "Episode was successfully created."
       expect(page).to have_table_with_exact_data([
-                                                   ["Epsiode", "Title", "downloads_count", "published_on", "", ""],
-                                                   ["001",
+                                                   ["Published",
+                                                    "Epsiode",
+                                                    "Title",
+                                                    "downloads_count",
+                                                    "published_on",
+                                                    "",
+                                                    ""],
+                                                   ["",
+                                                    "001",
                                                     "Talk about shit",
                                                     "0",
                                                     published_on.strftime("%d.%m.%Y"),
@@ -103,19 +112,22 @@ describe "Administrate Episodes", type: :system do
 
       expect(page).to have_content "Episode was successfully updated."
       expect(page).to have_table_with_exact_data([
-                                                   ["Epsiode",
+                                                   ["Published",
+                                                    "Epsiode",
                                                     "Title",
                                                     "downloads_count",
                                                     "published_on",
                                                     "",
                                                     ""],
-                                                   ["002",
+                                                   ["",
+                                                    "002",
                                                     "test",
                                                     "1",
                                                     1.day.ago.strftime("%d.%m.%Y"),
                                                     "Edit",
                                                     "Show"],
-                                                   ["001",
+                                                   ["",
+                                                    "001",
                                                     "balh",
                                                     "1",
                                                     Time.current.strftime("%d.%m.%Y"),

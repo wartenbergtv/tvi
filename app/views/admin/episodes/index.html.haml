@@ -7,6 +7,7 @@
         %table.table.table-striped.table-bordered
           %thead.thead-dark
             %tr
+              %th Published
               %th Epsiode
               %th Title
               %th downloads_count
@@ -16,7 +17,8 @@
 
           %tbody
             - @episodes.each do |episode|
-              %tr{id: "episode-#{episode.id}"}
+              %tr{id: "episode-#{episode.id}", class: "#{'inactive' unless episode.published?}"}
+                %td= show_boolean_value episode.published?
                 %td= episode.number
                 %td= episode.title
                 %td= episode.downloads_count

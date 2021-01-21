@@ -1,6 +1,10 @@
 class EpisodePresenter < ApplicationPresenter
   delegate :file_size, to: :o
 
+  def published?
+    o.active? && !o.published_on.future?
+  end
+
   def number
     o.number.to_s.rjust(3, "0")
   end
