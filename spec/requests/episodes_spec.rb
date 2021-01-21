@@ -8,6 +8,8 @@ RSpec.describe "episodes", type: :request do
       episode1 = FactoryBot.create :episode, number: 1, title: "Soli Wartenberg"
       episode2 = FactoryBot.create :episode, number: 2, title: "Anton Müller",
                                              nodes: " *some notes about the show* \n [link](https://test.com)"
+      FactoryBot.create :episode, number: 3, title: "Future", published_on: 1.day.since
+      FactoryBot.create :episode, number: 4, title: "inactive", active: false
 
       get "/episodes.rss"
 
