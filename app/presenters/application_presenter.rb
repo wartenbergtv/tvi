@@ -19,6 +19,10 @@ class ApplicationPresenter < SimpleDelegator
     h.format_datetime o.created_at
   end
 
+  def current_setting
+    @current_setting ||= Setting.current
+  end
+
   alias h helpers
   alias o object
 end

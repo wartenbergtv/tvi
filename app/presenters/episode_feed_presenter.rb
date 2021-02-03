@@ -47,12 +47,40 @@ class EpisodeFeedPresenter < EpisodePresenter
     #   <![CDATA[
     #     <a href="http://www.apple.com">Apple</a>
     #   ]]>
-    description = render_markdown(o.description)
-    if o.nodes.present?
-      description = description + render_markdown("## Show Notes ") +
-                    render_markdown(o.nodes)
-    end
-    description
+    [
+      render_markdown(o.description),
+      render_markdown("### Show Notes"),
+      render_markdown(o.nodes.presence || "no notes available"),
+      stay_in_contact_html.html_safe
+    ].join("<br>").html_safe
+  end
+
+  def stay_in_contact_html
+    <<~HTML.strip
+      <br>
+      <h2>Kontakt</h2>
+      <p>
+        <br>
+        <b>Schreibt uns!</b>
+        <br>
+        Schickt uns eure Themenwünsche und euer Feedback.<br>
+        <a href='mailto:#{current_setting.email}'>#{current_setting.email}</a>
+        <br>
+        <br>
+        <b>Folgt uns!</b>
+        <br>
+        Bleibt auf dem Laufenden über zukünftige Folgen
+        <br>
+        <a href='#{current_setting.twitter_url}'>Twitter</a>
+        <br>
+        <a href='#{current_setting.instagram_url}'>Instagram</a>
+        <br>
+        <a href='#{current_setting.facebook_url}'>Facebook</a>
+        <br>
+        <a href='#{current_setting.youtube_url}'>YouTube</a>
+        <br>
+      </p>
+    HTML
   end
 
   def pub_date
