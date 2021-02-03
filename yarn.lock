@@ -840,6 +840,11 @@
   dependencies:
     mkdirp "^1.0.4"
 
+"@podlove/web-player@^5.4.0":
+  version "5.4.0"
+  resolved "https://registry.yarnpkg.com/@podlove/web-player/-/web-player-5.4.0.tgz#0c7a4440d19c078c3c4d0cca5a9315eba7e0a233"
+  integrity sha512-DXOexn3xZq6fLMhBVEmxRnRhgo//5AuRrCBDHnxNmbe91Xf3tfwZMUb5Hck6lNNBaElIAloXR0/FyMcD8hnO5A==
+
 "@rails/ujs@^6.0.0":
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.1.0.tgz#9a48df6511cb2b472c9f596c1f37dc0af022e751"

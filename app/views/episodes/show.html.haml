@@ -1,33 +1,38 @@
-- cache_if !current_user&.admin?, @episode do
-  - content_for(:html_title) { @episode.title }
-  = render "shared/episode_show", episode: @episode
-  #fb-root
+%h3 Player
 
-  .site-section.bg-light
-
-    .container-fluid
-      .row{"data-aos" => "fade-up"}
-        .col-12
-          %h3
-            Beschreibung
-          = render_markdown @episode.description
+#player.player
 
 
-          %h3
-            Show Notes
-          .show-notes
-            = render_markdown @episode.nodes
 
-          .align-items-right
-            -# FACEBOOK SHAREBUTTON
-            .fb-like{
-              "data-action" => "like",
-              "data-href" => @episode.episonde_url,
-              "data-layout" => "standard",
-              "data-share" => "true",
-              "data-size" => "large",
-              "data-width" => ""}
+:javascript
+  config = {"base": "js/player/"};
 
-  - if current_user&.admin?
-    .p.mt-3
-      = edit_button  edit_admin_episode_path @episode
+  epoisode = {
+    title: "#{@episode.title}",
+    //subtitle: 'test',
+    //summary: 'summary',
+    //publicationDate: 'podcast.date',
+    poster: "#{@episode.artwork_url}",
+    duration: '1234',
+    audio: [{
+        url: "#{@episode.mp3_url}",
+        mimeType: 'audio/mp3',
+        size: '123',
+        title: 'Audio MP3'
+    }],
+    files: [{
+    "url": "https://forschergeist.de/podlove/file/2017/s/webplayer/c/episode/fg072-verantwortung-in-der-informatik.m4a",
+    "size": "71862603",
+    "title": "Episode",
+    "mimeType": "audio/mp4"
+  }],
+  contributors: []
+  };
+
+  window
+  .podlovePlayer("#player",epoisode, config)
+  .then(store => {
+    store.subscribe(() => {
+      console.log(store.getState());
+    });
+  });

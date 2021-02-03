@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.1",
+    "@podlove/web-player": "^5.4.0",
     "@rails/ujs": "^6.0.0",
     "@rails/webpacker": "5.2.1",
     "aos": "^2.3.4",

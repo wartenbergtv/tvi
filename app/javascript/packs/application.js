@@ -6,7 +6,8 @@ const images = require.context('../images', true)
 const imagePath = (name) => images(name, true)
 require("@rails/ujs").start()
 require("turbolinks").start()
-
+import "@podlove/web-player/embed.js"
+// import PodlovePlayer from "/podlove-web-player/embed.js"
 import 'bootstrap/dist/js/bootstrap'
 import "@fortawesome/fontawesome-free/css/all.css";
 // custom css
@@ -15,6 +16,8 @@ import AOS from 'aos';
 import("aos/dist/aos.css")
 
 document.addEventListener("turbolinks:load", () => {
+
+
   AOS.init({
     duration: 800,
     easing: 'slide',
