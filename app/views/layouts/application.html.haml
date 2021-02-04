@@ -18,7 +18,7 @@
     %meta{ name: "twitter:site",     content: "@WartenbergerPod" }
     %meta{ name: "twitter:creator",  content: "@WartenbergerPod" }
 
-    - if  content_for?(:meta_tags)
+    - if content_for?(:meta_tags)
       = yield(:meta_tags)
     - else
       %meta{:property => "og:title",       :content => current_setting.title }
