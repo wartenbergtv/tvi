@@ -7,7 +7,10 @@ RSpec.describe "episodes", type: :request do
     it "generates a feed" do
       episode1 = FactoryBot.create :episode, number: 1, title: "Soli Wartenberg"
       episode2 = FactoryBot.create :episode, number: 2, title: "Anton Müller",
-                                             nodes: " *some notes about the show* \n [link](https://test.com)"
+                                             nodes: <<~MARKDOWN
+                                               * [link](https://test.com)
+                                               * [link2](https://test.com)
+                                             MARKDOWN
       FactoryBot.create :episode, number: 3, title: "Future", published_on: 1.day.since
       FactoryBot.create :episode, number: 4, title: "inactive", active: false
 
@@ -44,12 +47,29 @@ RSpec.describe "episodes", type: :request do
               <guid>http://wartenberger.test.com/episodes/002-anton-muller.mp3</guid>
               <pubDate>#{episode2.published_on.to_date.rfc822}</pubDate>
               <description>
-                <![CDATA[<p>we talk about bikes and things</p> <h2>Show Notes</h2> <p><em>some notes about the show</em>
-                  <a href="https://test.com">link</a></p> ]]>
+                <![CDATA[<p>we talk about bikes and things</p> <br><h3>Show Notes</h3> <br><ul>
+                  <li><a href="https://test.com">link</a></li> <li><a href="https://test.com">link2</a></li> </ul>
+                  <br><br> <h2>Kontakt</h2> <p> <br> <b>Schreibt uns!</b>
+                  <br> Schickt uns eure Themenwünsche und euer Feedback.<br>
+                  <a href='mailto:admin@wartenberger.de'>admin@wartenberger.de</a> <br> <br> <b>Folgt uns!</b>
+                  <br> Bleibt auf dem Laufenden über zukünftige Folgen <br>
+                  <a href='https://twitter.com/WartenbergerPod'>Twitter</a> <br>
+                  <a href='https://www.instagram.com/wartenbergerpodcast'>Instagram</a> <br>
+                  <a href='https://www.facebook.com/Wartenberger-Der-Podcast-102909105061563'>Facebook</a> <br>
+                  <a href='https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg'>YouTube</a> <br> </p>]]>
               </description>
               <content:encoded>
-                <![CDATA[<p>we talk about bikes and things</p> <h2>Show Notes</h2> <p><em>some notes about the show</em>
-                  <a href="https://test.com">link</a></p> ]]>
+                <![CDATA[<p>we talk about bikes and things</p> <br><h3>Show Notes</h3> <br><ul>
+                  <li><a href="https://test.com">link</a></li>
+                  <li><a href="https://test.com">link2</a></li> </ul>
+                  <br><br> <h2>Kontakt</h2> <p> <br> <b>Schreibt uns!</b>
+                  <br> Schickt uns eure Themenwünsche und euer Feedback.<br>
+                  <a href='mailto:admin@wartenberger.de'>admin@wartenberger.de</a> <br> <br>
+                  <b>Folgt uns!</b> <br> Bleibt auf dem Laufenden über zukünftige Folgen <br>
+                  <a href='https://twitter.com/WartenbergerPod'>Twitter</a> <br>
+                  <a href='https://www.instagram.com/wartenbergerpodcast'>Instagram</a> <br>
+                  <a href='https://www.facebook.com/Wartenberger-Der-Podcast-102909105061563'>Facebook</a> <br>
+                  <a href='https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg'>YouTube</a> <br> </p>]]>
               </content:encoded>
               <itunes:duration>321</itunes:duration>
               <link>http://wartenberger.test.com/episodes/002-anton-muller</link>
@@ -62,10 +82,25 @@ RSpec.describe "episodes", type: :request do
               <guid>http://wartenberger.test.com/episodes/001-soli-wartenberg.mp3</guid>
               <pubDate>#{episode1.published_on.to_date.rfc822}</pubDate>
               <description>
-                <![CDATA[<p>we talk about bikes and things</p> ]]>
+                <![CDATA[<p>we talk about bikes and things</p> <br><h3>Show Notes</h3>
+                  <br><p>no notes available</p> <br><br> <h2>Kontakt</h2> <p> <br>
+                  <b>Schreibt uns!</b> <br> Schickt uns eure Themenwünsche und euer Feedback.<br>
+                  <a href='mailto:admin@wartenberger.de'>admin@wartenberger.de</a> <br> <br>
+                  <b>Folgt uns!</b> <br> Bleibt auf dem Laufenden über zukünftige Folgen <br>
+                  <a href='https://twitter.com/WartenbergerPod'>Twitter</a> <br>
+                  <a href='https://www.instagram.com/wartenbergerpodcast'>Instagram</a> <br>
+                  <a href='https://www.facebook.com/Wartenberger-Der-Podcast-102909105061563'>Facebook</a> <br>
+                  <a href='https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg'>YouTube</a> <br> </p>]]>
               </description>
               <content:encoded>
-                <![CDATA[<p>we talk about bikes and things</p> ]]>
+                <![CDATA[<p>we talk about bikes and things</p> <br><h3>Show Notes</h3> <br><p>no notes available</p> <br><br>
+                  <h2>Kontakt</h2> <p> <br> <b>Schreibt uns!</b> <br> Schickt uns eure Themenwünsche und euer Feedback.<br>
+                  <a href='mailto:admin@wartenberger.de'>admin@wartenberger.de</a> <br> <br> <b>Folgt uns!</b> <br>
+                  Bleibt auf dem Laufenden über zukünftige Folgen <br>
+                  <a href='https://twitter.com/WartenbergerPod'>Twitter</a> <br>
+                  <a href='https://www.instagram.com/wartenbergerpodcast'>Instagram</a> <br>
+                  <a href='https://www.facebook.com/Wartenberger-Der-Podcast-102909105061563'>Facebook</a> <br>
+                  <a href='https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg'>YouTube</a> <br> </p>]]>
               </content:encoded>
               <itunes:duration>321</itunes:duration>
               <link>http://wartenberger.test.com/episodes/001-soli-wartenberg</link>
@@ -76,8 +111,8 @@ RSpec.describe "episodes", type: :request do
         </rss>)
 
       # Debugging
-      # File.write("response.xml", response.body.squish)
-      # File.write("expected_xml.xml", expected_xml.squish)
+      File.write("response.xml", response.body.squish)
+      File.write("expected_xml.xml", expected_xml.squish)
       expect(response.body.squish).to eq(expected_xml.squish)
     end
   end

@@ -47,3 +47,5 @@ buzzsprout_rss.xml
 .DS_Store
 public/sitemap.xml.gz
 *.dump
+expected_xml.xml
+response.xml

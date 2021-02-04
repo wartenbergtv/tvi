@@ -205,12 +205,11 @@
   }
 
   .image {
-
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
     height: 300px;
-
+    min-height: 360px;
     @include media-breakpoint-up(md) {
       width: 300px;
       height: auto;

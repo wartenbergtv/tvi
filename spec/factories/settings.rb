@@ -34,7 +34,7 @@ FactoryBot.define do
 
     language { :de }
 
-    seo_keywords { %w[Podcast Wartenberg Oberbayern München Bayern Regional].join(",") }
+    seo_keywords { %w[Podcast Wartenberg Oberbayern München Bayern Regional].join(", ") }
 
     author { "Michael Deimel, Thomas Rademacher" }
 
@@ -58,7 +58,7 @@ FactoryBot.define do
 
     youtube_url {  "https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg" }
 
-    twitter_url {  "https://www.instagram.com/wartenbergerpodcast" }
+    twitter_url {  "https://twitter.com/WartenbergerPod" }
 
     instagram_url { "https://www.instagram.com/wartenbergerpodcast" }
 

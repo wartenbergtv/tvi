@@ -3,20 +3,37 @@
   %head
     %title= content_for?(:html_title) ? yield(:html_title) : current_setting.title
 
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
-    %meta{:content => current_setting.description, :name => "description"}/
-    %meta{:content => current_setting.seo_keywords , :name => "keywords"}/
-    %meta{:content => current_setting.author , :name => "author"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport" }
 
+    %meta{:content => current_setting.description,  :name => "description"}
+    %meta{:content => current_setting.seo_keywords, :name => "keywords" }
+    %meta{:content => current_setting.author,       :name => "author" }
+
+    - # Open Graph
+    - # https://stackoverflow.com/questions/19778620/provide-an-image-for-whatsapp-link-sharing
+    %meta{:property => "og:locale", :content => "de_DE"}
+    - # twitter
+    %meta{ name: "twitter:card",     content: "summary" }
+    %meta{ name: "twitter:site",     content: "@WartenbergerPod" }
+    %meta{ name: "twitter:creator",  content: "@WartenbergerPod" }
+
+    - if  content_for?(:meta_tags)
+      = yield(:meta_tags)
+    - else
+      %meta{:property => "og:title",       :content => current_setting.title }
+      %meta{:property => "og:url",         :content => current_setting.canonical_url }
+      %meta{:property => "og:description", :content => current_setting.description }
+      %meta{:property => "og:image",       :content => current_setting.logo_url, itemprop: "image"}
+
+    - # all favicon
     = render "shared/favicon"
-    %link{:href => current_setting.canonical_url, :rel => "canonical"}/
+
+    %link{:href => current_setting.canonical_url, :rel => "canonical"}
 
     = auto_discovery_link_tag :rss, current_setting.rss_url
     = csrf_meta_tags
     = csp_meta_tag
-    -# FACEBOOK SHAREBUTTON
-    = javascript_include_tag "https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v9.0", async: true, defer: true, :nonce => "aUdakFg0"
 
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -87,7 +104,7 @@
 
           .col-lg-4.mb-5.mb-lg-0
             .mb-5
-              %h3.footer-heading.mb-4 Follow Us
+              %h3.footer-heading.mb-4 Folge uns
               %div
                 -if current_setting.facebook_url.present?
                   %a.pl-0.pr-3{:href => current_setting.facebook_url.strip}
