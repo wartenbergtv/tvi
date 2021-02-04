@@ -32,6 +32,7 @@ describe "Episodes", type: :system do
       expect(page).to have_content "001"
       expect(page).to have_content "Blah Test"
       expect(page).to have_title "Blah Test"
+      # meta tags
     end
 
     it "gets an inactive epsiode by slug" do

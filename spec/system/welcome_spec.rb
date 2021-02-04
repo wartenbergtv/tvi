@@ -19,6 +19,14 @@ describe "welcome", type: :system do
       expect(page).to have_title "Wartenberger Podcast"
     end
 
+    it "has some global meta tags" do
+      visit "/"
+
+      expect(page).to have_meta("author", "Michael Deimel, Thomas Rademacher")
+      expect(page).to have_meta("keywords", "Podcast, Wartenberg, Oberbayern, München, Bayern, Regional")
+      expect(page).to have_meta("description", "Der Podcast über und um den Markt Wartenberg")
+    end
+
     it "shows the about page" do
       visit "/"
       click_link "Über uns"
