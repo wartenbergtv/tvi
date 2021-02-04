@@ -10,5 +10,4 @@
 
         .col-md-8.position-relative
           .player.pt-4.position-absolute.fixed-bottom.mb-2
-            %audio{:controls => "", :preload => "none", :style => "max-width: 100%"}
-              %source{:src => episode.mp3_url, :type => "audio/mp3"}
+            = render "shared/audio", mp3_url: episode.mp3_url
