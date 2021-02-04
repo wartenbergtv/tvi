@@ -25,6 +25,15 @@ describe "welcome", type: :system do
       expect(page).to have_meta("author", "Michael Deimel, Thomas Rademacher")
       expect(page).to have_meta("keywords", "Podcast, Wartenberg, Oberbayern, München, Bayern, Regional")
       expect(page).to have_meta("description", "Der Podcast über und um den Markt Wartenberg")
+      expect(page).to have_meta("og:locale", "de_DE")
+      expect(page).to have_meta "og:title", "Wartenberger Podcast"
+      expect(page).to have_meta "og:url", "http://wartenberger.test.com"
+      expect(page).to have_meta "og:description", "Der Podcast über und um den Markt Wartenberg"
+      expect(page).to have_meta "og:image", "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/images/itunes-logo-1400x1400.jpg"
+
+      expect(page).to have_meta "twitter:card", "summary"
+      expect(page).to have_meta "twitter:site", "@WartenbergerPod"
+      expect(page).to have_meta "twitter:creator", "@WartenbergerPod"
     end
 
     it "shows the about page" do

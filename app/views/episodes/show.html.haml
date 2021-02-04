@@ -1,5 +1,13 @@
 - cache_if !current_user&.admin?, @episode do
   - content_for(:html_title) { @episode.title }
+  - content_for(:meta_tags) do
+    %meta{ property: "og:type",        content: "article" }
+    %meta{ property: "og:title",       content: @episode.title }
+    %meta{ property: "og:url",         content: @episode.episonde_url }
+    %meta{ property: "og:description", content: truncate(@episode.description, length: 155) }
+    %meta{ property: "og:image",       content: @episode.artwork_url }
+    %meta{ property: "og:audio",       content: @episode.mp3_url }
+
   = render "shared/episode_show", episode: @episode
   #fb-root
 

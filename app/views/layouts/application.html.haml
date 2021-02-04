@@ -3,14 +3,33 @@
   %head
     %title= content_for?(:html_title) ? yield(:html_title) : current_setting.title
 
-    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport"}/
-    %meta{:content => current_setting.description, :name => "description"}/
-    %meta{:content => current_setting.seo_keywords , :name => "keywords"}/
-    %meta{:content => current_setting.author , :name => "author"}/
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}
+    %meta{:content => "width=device-width, initial-scale=1, shrink-to-fit=no", :name => "viewport" }
 
+    %meta{:content => current_setting.description,  :name => "description"}
+    %meta{:content => current_setting.seo_keywords, :name => "keywords" }
+    %meta{:content => current_setting.author,       :name => "author" }
+
+    - # Open Graph
+    - # https://stackoverflow.com/questions/19778620/provide-an-image-for-whatsapp-link-sharing
+    %meta{:property => "og:locale", :content => "de_DE"}
+    - # twitter
+    %meta{ name: "twitter:card",     content: "summary" }
+    %meta{ name: "twitter:site",     content: "@WartenbergerPod" }
+    %meta{ name: "twitter:creator",  content: "@WartenbergerPod" }
+
+    - if  content_for?(:meta_tags)
+      = yield(:meta_tags)
+    - else
+      %meta{:property => "og:title",       :content => current_setting.title }
+      %meta{:property => "og:url",         :content => current_setting.canonical_url }
+      %meta{:property => "og:description", :content => current_setting.description }
+      %meta{:property => "og:image",       :content => current_setting.logo_url }
+
+    - # all favicon
     = render "shared/favicon"
-    %link{:href => current_setting.canonical_url, :rel => "canonical"}/
+
+    %link{:href => current_setting.canonical_url, :rel => "canonical"}
 
     = auto_discovery_link_tag :rss, current_setting.rss_url
     = csrf_meta_tags
