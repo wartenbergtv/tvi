@@ -4,21 +4,19 @@
     %meta{ property: "og:type",        content: "article" }
     %meta{ property: "og:title",       content: @episode.title }
     %meta{ property: "og:url",         content: @episode.episonde_url }
-    %meta{ property: "og:description", content: truncate(@episode.description, length: 155) }
-    %meta{ property: "og:image",       content: @episode.artwork_url }
+    %meta{ property: "og:description", content: truncate(@episode.description, omission: "", separator: " ",length: 120).squish }
+    %meta{ property: "og:image",       content: @episode.artwork_url, itemprop: "image" }
     %meta{ property: "og:audio",       content: @episode.mp3_url }
 
   = render "shared/episode_show", episode: @episode
 
   .site-section.bg-light
-
     .container-fluid
       .row{"data-aos" => "fade-up"}
         .col-12
           %h3
             Beschreibung
           = render_markdown @episode.description
-
 
           %h3
             Show Notes

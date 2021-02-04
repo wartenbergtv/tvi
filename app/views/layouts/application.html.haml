@@ -24,7 +24,7 @@
       %meta{:property => "og:title",       :content => current_setting.title }
       %meta{:property => "og:url",         :content => current_setting.canonical_url }
       %meta{:property => "og:description", :content => current_setting.description }
-      %meta{:property => "og:image",       :content => current_setting.logo_url }
+      %meta{:property => "og:image",       :content => current_setting.logo_url, itemprop: "image"}
 
     - # all favicon
     = render "shared/favicon"

@@ -29,7 +29,6 @@ describe "Episodes", type: :system do
 
       visit "/episodes/001-blah-test"
 
-      expect(page).to have_content "001"
       expect(page).to have_content "Blah Test"
       expect(page).to have_title "Blah Test"
       expect(page).to have_meta "og:type", "article"
@@ -45,7 +44,6 @@ describe "Episodes", type: :system do
 
       visit "/episodes/001-blah-test"
 
-      expect(page).to have_content "001"
       expect(page).to have_content "Blah Test"
       expect(page).to have_title "Blah Test"
     end
@@ -55,7 +53,6 @@ describe "Episodes", type: :system do
 
       visit "/episodes/001-blah-test"
 
-      expect(page).to have_content "001"
       expect(page).to have_content "Blah Test"
       expect(page).to have_title "Blah Test"
     end
