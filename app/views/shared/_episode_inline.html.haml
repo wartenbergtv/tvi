@@ -15,5 +15,4 @@
             = episode.published_on
       %p.mb-4
         .player
-          %audio{:controls => "", :preload => "none", :style => "max-width: 100%"}
-            %source{:src => episode.mp3_url, :type => "audio/mp3"}
+          = render "shared/audio", mp3_url: episode.mp3_url

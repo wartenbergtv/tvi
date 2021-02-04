@@ -2,7 +2,9 @@
   = link_to image_tag(episode.artwork_url, class: "image img-fluid mx-auto d-block", alt: "episode artwork"), episode.episonde_url
   .text
     %h3.font-weight-light
-      = link_to "Episode #{episode.number}: #{episode.title}", episode.episonde_url
+      = link_to "Episode #{episode.number}", episode.episonde_url
+    %h4.font-weight-light
+      = link_to episode.title, episode.episonde_url
     .text-white.mb-3
       %span.text-black-opacity-05
         %small
@@ -12,8 +14,7 @@
     %p.mb-4
       = render_markdown truncate(episode.description, length: 100) { link_to " Mehr",  episode.episonde_url }
       .player
-        %audio{:controls => "", :preload => "none", :style => "max-width: 100%"}
-          %source{:src => episode.mp3_url, :type => "audio/mp3"}
+        = render "shared/audio", mp3_url: episode.mp3_url
 
   - if current_user&.admin?
     .p.mt-3

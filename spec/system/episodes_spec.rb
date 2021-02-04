@@ -32,6 +32,12 @@ describe "Episodes", type: :system do
       expect(page).to have_content "001"
       expect(page).to have_content "Blah Test"
       expect(page).to have_title "Blah Test"
+      expect(page).to have_meta "og:type", "article"
+      expect(page).to have_meta "og:title", "Blah Test"
+      expect(page).to have_meta "og:url", "http://wartenberger.test.com/episodes/001-blah-test"
+      expect(page).to have_meta "og:description", "we talk about bikes and things"
+      expect(page).to have_meta "og:image", "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/001-blah-test.jpg"
+      expect(page).to have_meta "og:audio", "http://wartenberger.test.com/episodes/001-blah-test.mp3"
     end
 
     it "gets an inactive epsiode by slug" do
