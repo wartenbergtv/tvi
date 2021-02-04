@@ -9,7 +9,6 @@
     %meta{ property: "og:audio",       content: @episode.mp3_url }
 
   = render "shared/episode_show", episode: @episode
-  #fb-root
 
   .site-section.bg-light
 
@@ -25,16 +24,6 @@
             Show Notes
           .show-notes
             = render_markdown @episode.nodes
-
-          .align-items-right
-            -# FACEBOOK SHAREBUTTON
-            .fb-like{
-              "data-action" => "like",
-              "data-href" => @episode.episonde_url,
-              "data-layout" => "standard",
-              "data-share" => "true",
-              "data-size" => "large",
-              "data-width" => ""}
 
   - if current_user&.admin?
     .p.mt-3

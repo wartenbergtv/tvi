@@ -35,6 +35,9 @@ a:hover {
 }
 
 .show-notes {
+  li {
+    margin-bottom: 20px;
+  }
 
   img {
     display: block;
@@ -46,8 +49,18 @@ a:hover {
     }
   }
 
+  a {
+    color: rgb(0, 0, 255);
+  }
+
+  a::after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    content: "  \f35d  ";
+  }
+
   a:hover {
-    color: blue;
+    font-weight: bold;
   }
 }
 

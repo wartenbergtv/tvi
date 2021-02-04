@@ -34,8 +34,6 @@
     = auto_discovery_link_tag :rss, current_setting.rss_url
     = csrf_meta_tags
     = csp_meta_tag
-    -# FACEBOOK SHAREBUTTON
-    = javascript_include_tag "https://connect.facebook.net/de_DE/sdk.js#xfbml=1&version=v9.0", async: true, defer: true, :nonce => "aUdakFg0"
 
     = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
     = stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
@@ -106,7 +104,7 @@
 
           .col-lg-4.mb-5.mb-lg-0
             .mb-5
-              %h3.footer-heading.mb-4 Follow Us
+              %h3.footer-heading.mb-4 Folge uns
               %div
                 -if current_setting.facebook_url.present?
                   %a.pl-0.pr-3{:href => current_setting.facebook_url.strip}
