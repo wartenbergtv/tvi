@@ -1,4 +1,9 @@
-.podloveplayer
+.podloveplayer{ data: { mp3_url: episode.mp3_url,
+                        poster: episode.artwork_url,
+                        title: episode.title,
+                        link: episode.episonde_url,
+                        variant: "xl"
+                      } }
 
 -# %audio{controls: "", controlsList: "nodownload", preload: "none" }
   %source{src: mp3_url, type: "audio/mp3"}
