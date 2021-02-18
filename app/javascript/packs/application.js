@@ -29,17 +29,17 @@ $(document).on('turbolinks:load', function() {
       "show": {
       },
       "title": player.dataset.title,
-      "subtitle": "Ein Einführungskurs für Informatiker vermittelt unterschiedliche Denkweisen die gesellschaftliche Bedeutung des Fachs zu vermitteln",
-      "summary": "Informatik- ein Fach nur für Nerds? Keinesfalls, denn der Code, den Programmierer schreiben, existiert ja nicht im luftleeren Raum. Software bezieht sich letzten Endes immer auf den Menschen, interagiert mit ihm, beeinflusst das soziale Leben. Und mittlerweile ist auch an technisch geprägten Fakultäten angekommen, dass Informatik eine hohe gesellschaftliche Relevanz besitzt.\r\n\r\nPeter Purgathofer lehrt an der TU Wien am Institut für Visual Computing. Der 56-Jährige tritt dafür ein, dass Software-Entwickler sich der Verantwortung bewusst sind, die ihre Arbeit hat. Denn Informatik wird zunehmend zur zentralen Disziplin schlechthin, ja sogar zum Betriebssystem unserer Gesellschaft. Tracking und Werbenetzwerke fördern eine Mediennutzung, bei der aufmerksamkeitsheischendes Clickbate mehr zählt als inhaltliche Tiefe und Seriosität. Automatisierte Entscheidungen können katastrophale Folgen haben, wie etwa bei tödlichen Unfällen autonom fahrender Autos oder den Abstürzen der Boeing 737 Max. Algorithmen sind eben keine Lösung für alles, denn wie zuverlässig sind eigentlich die Datengrundlagen, auf denen sie aufsetzen?\r\n\r\nPurgathofer hat deshalb an seiner Hochschule einen Einführungskurs für Studienanfänger entwickelt. Dabei geht es darum, der nächsten Informatikergeneration fundamentales Metawissen zu vermitteln und sie damit zu befähigen, mit einem tieferen Verständnis durch ihr Studium zu navigieren: Wie sieht die Wissenschaft auf die Welt, mit welchen Denkweisen wird Wissen geschaffen? Was sind die Konsequenzen und wo liegen die Grenzen? Es wird klar: Das Leben lässt sich nicht nur mit Einsen und Nullen erklären, es entzieht sich immer wieder der Berechenbarkeit. Informatik ist eng mit Sozialwissenschaften, Philosophie und Psychologie verwoben – und Problemlösung eben nicht nur eine technische Frage. Purgathofer kritisiert nebenbei auch die mangelnde Offenheit der vor allem unternehmensgetriebenen Forschung im Bereich Künstlicher Intelligenz. Diese Closed Science hat für die Wissenschaft als Ganzes schädliche Effekte, die verblüffend an die Zeit der Alchimisten erinnern.",
-      "publicationDate": "2019-10-01T11:00:44+01:00",
+      "subtitle": "",
+      "summary":  player.datase.description,
+      "publicationDate": player.dataset.published_on,
       "poster": player.dataset.poster,
-      "duration": "01:53:23.298",
+      "duration": player.dataset.duration,
       "link": player.dataset.link,
       "audio": [
 
         {
           "url": player.dataset.mp3Url,
-          "size": "95522160",
+          "size": player.dataset.file_size,
           "title": "MP3 Audio (mp3)",
           "mimeType": "audio/mpeg"
         }
@@ -107,10 +107,10 @@ $(document).on('turbolinks:load', function() {
         }
       },
       "subscribe-button": {
-        "feed": "https://forschergeist.de/feed/m4a/",
+        "feed": "https://www.wartenberger.de/episodes.rss",
         "clients": [{
             "id": "apple-podcasts",
-            "service": "id934797989"
+            "service": "id1546458413"
           },
           {
             "id": "antenna-pod"
@@ -133,7 +133,7 @@ $(document).on('turbolinks:load', function() {
           },
           {
             "id": "google-podcasts",
-            "service": "https://forschergeist.de/feed/m4a/"
+            "service": "https://podcasts.google.com/feed/aHR0cHM6Ly93d3cud2FydGVuYmVyZ2VyLmRlL2VwaXNvZGVzLnJzcw"
           },
           {
             "id": "gpodder"
@@ -158,7 +158,7 @@ $(document).on('turbolinks:load', function() {
           },
           {
             "id": "pocket-casts",
-            "service": "https://forschergeist.de/feed/m4a/"
+            "service": "https://wartenberger.de/feed/m4a/"
           },
           {
             "id": "pod-grasp"
