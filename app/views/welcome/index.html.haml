@@ -42,5 +42,6 @@
             %h2.font-weight-bold.text-black Letzte Episoden
 
         - @episodes.each do |episode|
-          .row{"data-aos" => "fade-up"}
-            = render "shared/episode", episode: episode
+          .row
+            .col-md-12
+              = render "shared/episode", episode: episode

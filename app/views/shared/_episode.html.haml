@@ -12,7 +12,7 @@
             = episode.published_on
 
     %p.mb-4
-      = render_markdown truncate(episode.description, length: 100) { link_to " Mehr",  episode.episonde_url }
+      = render_markdown truncate(episode.description, length: 100) { link_to " mehr",  episode.episonde_url }
       .player
         = render "shared/audio", mp3_url: episode.mp3_url
 
