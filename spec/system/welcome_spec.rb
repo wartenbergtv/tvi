@@ -90,13 +90,15 @@ describe "welcome", type: :system do
         FactoryBot.create :episode, title: "inactive Test", number: 3, published_on: Time.zone.today, active: false
         FactoryBot.create :episode, title: "second Test", number: 2, published_on: 1.day.ago
         FactoryBot.create :episode, title: "first Test", number: 1, published_on: 2.weeks.ago
+        FactoryBot.create :episode, title: "about us", number: 0, published_on: 3.weeks.ago
         visit "/"
 
         expect(page).to have_css("#last-episodes")
         expect(page).to have_content "Letzte Episoden"
         expect(page).to have_content "second Test"
         expect(page).to have_content "last Test"
-        expect(page).not_to have_content "first Test"
+        expect(page).to have_content "first Test"
+        expect(page).not_to have_content "about us"
         expect(page).not_to have_content "future Test"
         expect(page).not_to have_content "nactive Test"
       end
