@@ -1,20 +1,23 @@
-.d-block.d-md-flex.podcast-entry.bg-white.mb-5{"data-aos" => "fade-up"}
-  = link_to image_tag(episode.artwork_url, class: "image img-fluid mx-auto d-block", alt: "episode artwork"), episode.episonde_url
-  .text
-    %h3.font-weight-light
-      = link_to "Episode #{episode.number}", episode.episonde_url
-    %h4.font-weight-light
-      = link_to episode.title, episode.episonde_url
-    .text-white.mb-3
-      %span.text-black-opacity-05
-        %small
-          %span.sep
-            = episode.published_on
+.podcast-entry.bg-white.mb-5{"data-aos" => "fade-up"}
+  .row
+    .col-md-4
+      = link_to image_tag(episode.artwork_url, class: "image img-fluid mx-auto d-block", alt: "episode artwork"), episode.episonde_url
+    .col-md-8
+      %h3.font-weight-light
+        = link_to "Episode #{episode.number}", episode.episonde_url
+      %h4.font-weight-light
+        = link_to episode.title, episode.episonde_url
+      .text-white.mb-3
+        %span.text-black-opacity-05
+          %small
+            %span.sep
+              = episode.published_on
 
-    %p.mb-4
-      = render_markdown truncate(episode.description, length: 100) { link_to " mehr",  episode.episonde_url }
-      .player
-        = render "shared/audio", mp3_url: episode.mp3_url
+      %p.mb-0
+        = render_markdown truncate(episode.description, length: 100) { link_to " mehr",  episode.episonde_url }
+  .row
+    .col-md-12
+      = render "shared/webplayer", webplayer_config: WebplayerConfig.new(episode, theme: "minimal").to_json
 
   - if current_user&.admin?
     .p.mt-3
