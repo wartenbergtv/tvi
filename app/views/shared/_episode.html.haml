@@ -17,7 +17,7 @@
         = render_markdown truncate(episode.description, length: 100) { link_to " mehr",  episode.episonde_url }
   .row
     .col-md-12
-      = render "shared/webplayer", webplayer_config: WebplayerConfig.new(episode, theme: "minimal").to_json
+      = render "shared/webplayer", webplayer_config: PodigeeWebplayerConfigBuilder.new(episode, theme: "minimal").to_json
 
   - if current_user&.admin?
     .p.mt-3

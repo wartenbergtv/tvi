@@ -15,4 +15,4 @@
             = episode.published_on
       %p.mb-4
         .player
-          = render "shared/webplayer", webplayer_config: WebplayerConfig.new(episode, theme: "default", info: true, title: true).to_json
+          = render "shared/webplayer", webplayer_config: PodigeeWebplayerConfigBuilder.new(episode, theme: "default", info: true, title: true).to_json
