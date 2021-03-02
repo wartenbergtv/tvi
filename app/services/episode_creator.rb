@@ -10,6 +10,7 @@ class EpisodeCreator < BaseService
     nodes
     number
     active
+    chapter_marks
   ].freeze
 
   attr_accessor(*CREATABLE_ATTRIBUTES)

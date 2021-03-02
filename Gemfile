@@ -36,19 +36,6 @@ gem "aws-sdk-s3" # hosting the sidemap on s3
 
 gem "rack-attack"
 
-group :development, :test do
-  gem "pry-nav"
-  gem "pry-rails"
-
-  gem "factory_bot_rails"
-  gem "rspec-rails"
-  # capybara
-  gem "capybara"
-  gem "launchy" # for capybara save_and_open_page
-  gem "webdrivers"
-end
-
-
 group :development do
   gem "listen", "~> 3.3"
   gem "rack-mini-profiler", "~> 2.0"

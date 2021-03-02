@@ -141,6 +141,20 @@ describe "welcome", type: :system do
         expect(page).to have_content "Letzte Episode"
         expect(page).to have_content "first Test"
       end
+
+      it "has an short cut with the nummer" do
+        FactoryBot.create :episode, title: "first Test", number: 1, published_on: 2.weeks.ago
+        visit "/001"
+
+        expect(page).to have_title "first Test"
+        expect(page).to have_content "we talk about bikes and things"
+      end
+
+      it "has an short cut with the nummer and redirects to 404 if number not exits" do
+        visit "/001"
+
+        expect(page).to have_title "The page you were looking for doesn't exist (404)"
+      end
     end
   end
 
