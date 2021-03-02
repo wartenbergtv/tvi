@@ -1,12 +1,13 @@
 class EpisodeUpdater < BaseService
   UPDATEABLE_ATTRIBUTES = %w[title description file_url file_size
-                             file_duration nodes active artwork_url published_on].freeze
+                             file_duration nodes active artwork_url chapter_marks published_on].freeze
 
   attr_accessor(*UPDATEABLE_ATTRIBUTES, :episode)
 
   delegate :id, to: :episode
 
-  validates(*UPDATEABLE_ATTRIBUTES, presence: true)
+  validates(:title, :description, :file_url, :file_size,
+            :file_duration, :nodes, :artwork_url, :published_on, presence: true)
   validates(:episode, presence: true)
   validates(:file_url, url: true)
   validates(:artwork_url, url: true)

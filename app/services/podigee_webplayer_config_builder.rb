@@ -11,8 +11,8 @@ class PodigeeWebplayerConfigBuilder
     {
       options: {
         # https://github.com/podigee/podigee-podcast-player/blob/master/docs/theming.md
-        theme: options.fetch(:theme, "default"),
-        startPanel: "ChapterMarks"
+        theme: options.fetch(:theme, "default")
+        # startPanel: "ChapterMarks"
       },
       extensions: {
         ChapterMarks: {},
@@ -53,7 +53,7 @@ class PodigeeWebplayerConfigBuilder
       episode.chapter_marks.each_line do |line|
         next if line.blank?
 
-        start, title = *line.squish.split(/\s+/)
+        start, title = *line.squish.split(/\s+/, 2)
         result << { start: start, title: title }
       end
     end

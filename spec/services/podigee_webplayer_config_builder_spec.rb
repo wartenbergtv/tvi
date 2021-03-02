@@ -10,23 +10,29 @@ RSpec.describe PodigeeWebplayerConfigBuilder do
       {
         "episode" =>
         { "chaptermarks" => nil,
-          "coverUrl" => nil, "description" => nil,
-          "media" => { "mp3" => "http://wartenberger.test.com/episodes/001-soli-wartenberg-1.mp3" },
+          "coverUrl" => nil,
+          "description" => nil,
+          "media" => { "mp3" => "http://wartenberger.test.com/episodes/#{episode.slug}.mp3" },
           "subtitle" => nil,
           "title" => nil,
-          "url" => "http://wartenberger.test.com/episodes/001-soli-wartenberg-1" },
+          "url" => "http://wartenberger.test.com/episodes/#{episode.slug}" },
         "extensions" =>
-      { "ChapterMarks" => {}, "SubscribeBar" => {} },
+      {
+        "ChapterMarks" => {},
+        "SubscribeBar" => {}
+      },
         "options" =>
-      { "startPanel" => "ChapterMarks", "theme" => "default" }
+      {
+        "theme" => "default"
+      }
       }
     )
   end
 
   it "builds a valid chapter marks config" do
     episode.chapter_marks = %(
-     00:00:00 Intro
-     00:00:41 Begrüßung
+     00:00:01 Intro
+     00:00:41 Begrüßung der Mannschaft
      00:01:30 Vorstellung
     )
     episode.save!
@@ -34,6 +40,10 @@ RSpec.describe PodigeeWebplayerConfigBuilder do
     json_config = described_class.new(episode).to_json
     hash_config = JSON.parse(json_config)
 
-    expect(hash_config["episode"]["chaptermarks"]).to eq([title: 1])
+    expect(hash_config["episode"]["chaptermarks"]).to eq(
+      [{ "start" => "00:00:01", "title" => "Intro" },
+       { "start" => "00:00:41", "title" => "Begrüßung der Mannschaft" },
+       { "start" => "00:01:30", "title" => "Vorstellung" }]
+    )
   end
 end

@@ -1,7 +1,7 @@
 .podcast-entry.bg-white.mb-5{"data-aos" => "fade-up"}
   .row
     .col-md-4
-      = link_to image_tag(episode.artwork_url, class: "image img-fluid mx-auto d-block", alt: "episode artwork"), episode.episonde_url
+      = link_to image_tag(episode.artwork_url, class: "image img-fluid d-block", alt: "episode artwork"), episode.episonde_url
     .col-md-8
       %h3.font-weight-light
         = link_to "Episode #{episode.number}", episode.episonde_url
@@ -13,11 +13,11 @@
             %span.sep
               = episode.published_on
 
-      %p.mb-0
+      %p.mb-4
         = render_markdown truncate(episode.description, length: 100) { link_to " mehr",  episode.episonde_url }
-  .row
-    .col-md-12
-      = render "shared/webplayer", webplayer_config: PodigeeWebplayerConfigBuilder.new(episode, theme: "minimal").to_json
+
+      .player
+        = render "shared/audio", episode: episode
 
   - if current_user&.admin?
     .p.mt-3

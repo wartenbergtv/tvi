@@ -57,6 +57,12 @@ describe "Administrate Episodes", type: :system do
       fill_in "Published on", with: published_on
       fill_in "File size", with: 1000
       fill_in "File duration", with: 123_456
+
+      fill_in "Chapter marks", with: %(
+        00:00:01 Intro
+        00:00:41 Begrüßung der Mannschaft
+        00:01:30 Vorstellung
+      )
       fill_in "Artwork url", with: "https://test.com/001-test.png"
 
       click_on "Save"
@@ -80,6 +86,9 @@ describe "Administrate Episodes", type: :system do
                                                  ])
       episode = Episode.last
       expect(episode.artwork_url).to eq "https://test.com/001-test.png"
+      expect(episode.chapter_marks.squish).to eq %(00:00:01 Intro
+        00:00:41 Begrüßung der Mannschaft
+        00:01:30 Vorstellung).squish
     end
 
     it "edits a existin episode" do
@@ -103,6 +112,12 @@ describe "Administrate Episodes", type: :system do
       fill_in "Nodes", with: "# my notes here *there*"
       fill_in "Artwork url", with: "https://blah.com/001-test-1.png"
       fill_in "Published on", with: 1.day.ago
+
+      fill_in "Chapter marks", with: %(
+        00:00:01 Intro
+        00:00:41 Begrüßung der Leute
+        00:01:30 Bereitstellung
+      )
       click_on "Save"
 
       expect(page).to have_content "Title has already been taken"
@@ -137,6 +152,9 @@ describe "Administrate Episodes", type: :system do
 
       expect(episode.reload.slug).to eq "002-test"
       expect(episode.reload.artwork_url).to eq "https://blah.com/001-test-1.png"
+      expect(episode.chapter_marks.squish).to eq %(00:00:01 Intro
+        00:00:41 Begrüßung der Leute
+        00:01:30 Bereitstellung).squish
     end
   end
 
