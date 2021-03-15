@@ -4,7 +4,7 @@ class EpisodeFeedPresenter < EpisodePresenter
   def duration
     # Different duration formats are accepted however
     # it is recommended to convert the length of the episode into seconds.
-    o.file_duration
+    file_duration
   end
 
   def audio_type
@@ -17,7 +17,7 @@ class EpisodeFeedPresenter < EpisodePresenter
   def length
     # The length attribute is the file size in bytes.
     # You can find this information in the properties of your podcast file
-    o.file_size
+    file_size
   end
 
   def guid

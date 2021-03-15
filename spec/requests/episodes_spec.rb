@@ -14,6 +14,12 @@ RSpec.describe "episodes", type: :request do
       FactoryBot.create :episode, number: 3, title: "Future", published_on: 1.day.since
       FactoryBot.create :episode, number: 4, title: "inactive", active: false
 
+      # update metadata because active_storage analysers are not running
+      episode1.audio.blob.metadata[:duration] = 321
+      episode1.audio.blob.save!
+      episode2.audio.blob.metadata[:duration] = 321
+      episode2.audio.blob.save!
+
       get "/episodes.rss"
 
       expected_xml = %(<?xml version="1.0" encoding="UTF-8"?>
@@ -43,7 +49,7 @@ RSpec.describe "episodes", type: :request do
             <copyright>Copyright #{Time.current.year} Michael Deimel</copyright>
             <item>
               <title>Anton Müller</title>
-              <enclosure url="http://wartenberger.test.com/episodes/002-anton-muller.mp3" length="123" type="audio/mpeg"/>
+              <enclosure url="http://wartenberger.test.com/episodes/002-anton-muller.mp3" length="52632" type="audio/mpeg"/>
               <guid>http://wartenberger.test.com/episodes/002-anton-muller.mp3</guid>
               <pubDate>#{episode2.published_on.to_date.rfc822}</pubDate>
               <description>
@@ -78,7 +84,7 @@ RSpec.describe "episodes", type: :request do
             </item>
             <item>
               <title>Soli Wartenberg</title>
-              <enclosure url="http://wartenberger.test.com/episodes/001-soli-wartenberg.mp3" length="123" type="audio/mpeg"/>
+              <enclosure url="http://wartenberger.test.com/episodes/001-soli-wartenberg.mp3" length="52632" type="audio/mpeg"/>
               <guid>http://wartenberger.test.com/episodes/001-soli-wartenberg.mp3</guid>
               <pubDate>#{episode1.published_on.to_date.rfc822}</pubDate>
               <description>
@@ -123,8 +129,8 @@ RSpec.describe "episodes", type: :request do
 
       get episode.mp3_url
 
-      expect(response.body).to eq "<html><body>You are being " \
-      "<a href=\"https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/004-test.mp3\">redirected</a>.</body></html>"
+      expect(response.body).to match(/<html><body>You are being <a href=.*>redirected<\/a>\.<\/body><\/html>/)
+      expect(response.body).to match(/http:\/\/wartenberger\.test\.com\/.*\/test-001\.mp3/)
       expect(episode.reload.downloads_count).to eq 1
     end
   end

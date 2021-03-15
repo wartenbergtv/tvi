@@ -12,6 +12,10 @@ module ApplicationHelper
     date&.strftime "%d.%m.%Y %H:%M"
   end
 
+  def format_duration(seconds:)
+    Time.at(seconds).utc.strftime("%H:%M:%S")
+  end
+
   # buttons
   def icon_tag(icon, options = {})
     html_class = "fa fa-#{icon} " + options[:class].to_s
