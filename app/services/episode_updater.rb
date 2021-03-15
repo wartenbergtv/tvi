@@ -1,21 +1,21 @@
 class EpisodeUpdater < BaseService
   UPDATEABLE_ATTRIBUTES = %w[title
-                             description
-                             file_url
-                             file_size
-                             file_duration
-                             nodes active
-                             artwork_url
-                             chapter_marks
-                             audio
-                             published_on].freeze
+    description
+    file_url
+    file_size
+    file_duration
+    nodes active
+    artwork_url
+    chapter_marks
+    audio
+    published_on].freeze
 
   attr_accessor(*UPDATEABLE_ATTRIBUTES, :episode)
 
   delegate :id, to: :episode
 
   validates(:title, :description, :file_url, :file_size,
-            :file_duration, :nodes, :artwork_url, :published_on, presence: true)
+    :file_duration, :nodes, :artwork_url, :published_on, presence: true)
   validates(:episode, presence: true)
   validates(:file_url, url: true)
   validates(:artwork_url, url: true)
@@ -35,7 +35,7 @@ class EpisodeUpdater < BaseService
   private
 
   def build_slug
-    "#{episode.number.to_s.rjust(3, '0')} #{title}".parameterize
+    "#{episode.number.to_s.rjust(3, "0")} #{title}".parameterize
   end
 
   def episode_attributes

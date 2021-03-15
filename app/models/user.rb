@@ -26,7 +26,7 @@ class User < ApplicationRecord
   # :registerable handles signing up users through a registration process, also allowing them to edit and destroy their account.
   # :recoverable resets the user password and sends reset instructions.
   devise :database_authenticatable,
-         :registerable,
-         :rememberable,
-         :validatable
+    :registerable,
+    :rememberable,
+    :validatable
 end

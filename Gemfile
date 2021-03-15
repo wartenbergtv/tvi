@@ -44,10 +44,6 @@ group :development do
   gem "spring"
 
   gem "haml_lint"
-  gem "rubocop"
-  gem "rubocop-performance", require: false
-  gem "rubocop-rails", require: false
-  gem "rubocop-rspec", require: false
 end
 
 group :development, :test do
@@ -60,8 +56,9 @@ group :development, :test do
   gem "capybara"
   gem "launchy" # for capybara save_and_open_page
   gem "webdrivers"
+  gem "standard"
 end
 
 group :test do
-  gem 'simplecov', require: false
+  gem "simplecov", require: false
 end

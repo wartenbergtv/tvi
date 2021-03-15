@@ -262,13 +262,6 @@ GEM
     rubocop-performance (1.10.1)
       rubocop (>= 0.90.0, < 2.0)
       rubocop-ast (>= 0.4.0)
-    rubocop-rails (2.9.1)
-      activesupport (>= 4.2.0)
-      rack (>= 1.1)
-      rubocop (>= 0.90.0, < 2.0)
-    rubocop-rspec (2.2.0)
-      rubocop (~> 1.0)
-      rubocop-ast (>= 1.1.0)
     ruby-mp3info (0.8.10)
     ruby-progressbar (1.11.0)
     ruby_parser (3.15.1)
@@ -298,6 +291,9 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    standard (1.0.4)
+      rubocop (= 1.11.0)
+      rubocop-performance (= 1.10.1)
     sysexits (1.2.0)
     temple (0.8.2)
     thor (1.1.0)
@@ -358,15 +354,12 @@ DEPENDENCIES
   redcarpet
   rollbar
   rspec-rails
-  rubocop
-  rubocop-performance
-  rubocop-rails
-  rubocop-rspec
   ruby-mp3info
   simple_form
   simplecov
   sitemap_generator
   spring
+  standard
   turbolinks (~> 5)
   webdrivers
   webpacker (~> 5.0)
@@ -377,4 +370,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.9
+   2.2.14

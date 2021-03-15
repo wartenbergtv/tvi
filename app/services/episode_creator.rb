@@ -48,7 +48,7 @@ class EpisodeCreator < BaseService
   private
 
   def build_slug
-    "#{number.to_s.rjust(3, '0')} #{title}".parameterize
+    "#{number.to_s.rjust(3, "0")} #{title}".parameterize
   end
 
   def episode_attributes

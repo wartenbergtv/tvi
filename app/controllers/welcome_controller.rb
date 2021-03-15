@@ -5,9 +5,11 @@ class WelcomeController < ApplicationController
     @last_episode = @episodes.first
   end
 
-  def imprint; end
+  def imprint
+  end
 
-  def privacy; end
+  def privacy
+  end
 
   def epsiode
     epsiode_id = params[:id].to_i.positive? ? params[:id].to_i : nil

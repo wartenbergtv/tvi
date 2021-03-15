@@ -16,21 +16,21 @@ describe "Administrate Episodes", type: :system do
       expect(page).to have_selector "h1", text: "Episodes"
 
       expect(page).to have_table_with_exact_data([
-                                                   ["Published",
-                                                    "Epsiode",
-                                                    "Title",
-                                                    "downloads_count",
-                                                    "published_on",
-                                                    "",
-                                                    ""],
-                                                   ["",
-                                                    "001",
-                                                    "Soli Wartenberg",
-                                                    "1",
-                                                    episode.published_on.strftime("%d.%m.%Y"),
-                                                    "Edit",
-                                                    "Show"]
-                                                 ])
+        ["Published",
+          "Epsiode",
+          "Title",
+          "downloads_count",
+          "published_on",
+          "",
+          ""],
+        ["",
+          "001",
+          "Soli Wartenberg",
+          "1",
+          episode.published_on.strftime("%d.%m.%Y"),
+          "Edit",
+          "Show"]
+      ])
     end
 
     it "create a new episode" do
@@ -71,21 +71,21 @@ describe "Administrate Episodes", type: :system do
       expect(Episode.last.audio_size).to eq 114_031
       expect(page).to have_content "Episode was successfully created."
       expect(page).to have_table_with_exact_data([
-                                                   ["Published",
-                                                    "Epsiode",
-                                                    "Title",
-                                                    "downloads_count",
-                                                    "published_on",
-                                                    "",
-                                                    ""],
-                                                   ["",
-                                                    "001",
-                                                    "Talk about shit",
-                                                    "0",
-                                                    published_on.strftime("%d.%m.%Y"),
-                                                    "Edit",
-                                                    "Show"]
-                                                 ])
+        ["Published",
+          "Epsiode",
+          "Title",
+          "downloads_count",
+          "published_on",
+          "",
+          ""],
+        ["",
+          "001",
+          "Talk about shit",
+          "0",
+          published_on.strftime("%d.%m.%Y"),
+          "Edit",
+          "Show"]
+      ])
       episode = Episode.last
       expect(episode.artwork_url).to eq "https://test.com/001-test.png"
       expect(episode.chapter_marks.squish).to eq %(00:00:01 Intro
@@ -136,28 +136,28 @@ describe "Administrate Episodes", type: :system do
 
       expect(page).to have_content "Episode was successfully updated."
       expect(page).to have_table_with_exact_data([
-                                                   ["Published",
-                                                    "Epsiode",
-                                                    "Title",
-                                                    "downloads_count",
-                                                    "published_on",
-                                                    "",
-                                                    ""],
-                                                   ["",
-                                                    "002",
-                                                    "test",
-                                                    "1",
-                                                    1.day.ago.strftime("%d.%m.%Y"),
-                                                    "Edit",
-                                                    "Show"],
-                                                   ["",
-                                                    "001",
-                                                    "balh",
-                                                    "1",
-                                                    Time.current.strftime("%d.%m.%Y"),
-                                                    "Edit",
-                                                    "Show"]
-                                                 ])
+        ["Published",
+          "Epsiode",
+          "Title",
+          "downloads_count",
+          "published_on",
+          "",
+          ""],
+        ["",
+          "002",
+          "test",
+          "1",
+          1.day.ago.strftime("%d.%m.%Y"),
+          "Edit",
+          "Show"],
+        ["",
+          "001",
+          "balh",
+          "1",
+          Time.current.strftime("%d.%m.%Y"),
+          "Edit",
+          "Show"]
+      ])
 
       expect(episode.reload.slug).to eq "002-test"
       expect(episode.reload.artwork_url).to eq "https://blah.com/001-test-1.png"

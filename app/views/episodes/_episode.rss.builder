@@ -26,5 +26,4 @@ xml.item do
 
   # The episode parental advisory information.
   xml.tag! "itunes:explicit", false
-
 end
