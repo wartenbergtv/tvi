@@ -13,6 +13,7 @@ class EpisodesController < ApplicationController
   end
 
   def show
+    expires_in(1.day, public: true)
     episode_record = Episode.find_by!(slug: params[:slug])
     @episode = EpisodePresenter.new episode_record
     respond_to do |format|
