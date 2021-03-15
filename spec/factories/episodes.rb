@@ -39,5 +39,6 @@ FactoryBot.define do
     file_duration { 321 }
     published_on { Time.current.to_date }
     sequence(:number)
+    audio { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/test-001.mp3"), "audio/mpeg") }
   end
 end
