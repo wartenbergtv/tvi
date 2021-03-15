@@ -35,7 +35,17 @@ class Episode < ApplicationRecord
   scope :published, -> { where(active: true).where("published_on <= ?", Time.zone.today).order(number: :desc) }
 
   validates(:number, uniqueness: true)
-  validates(:file_url, uniqueness: true)
+  # validates(:file_url, uniqueness: true)
   validates(:slug, uniqueness: true)
   validates(:title, uniqueness: true)
+
+  has_one_attached :audio
+
+  def duration
+    audio.blob.metadata[:duration] if audio.attached?
+  end
+
+  def audio_size
+    audio.blob.byte_size if audio.attached?
+  end
 end

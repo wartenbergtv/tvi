@@ -51,4 +51,7 @@ Rails.application.configure do
   config.aws_secret_key  = nil
   config.aws_bucket_name = nil
   config.aws_s3_region   = nil
+
+  config.active_storage.service = :test
+  config.active_job.queue_adapter = :inline
 end

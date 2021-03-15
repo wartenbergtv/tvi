@@ -64,9 +64,11 @@ describe "Administrate Episodes", type: :system do
         00:01:30 Vorstellung
       )
       fill_in "Artwork url", with: "https://test.com/001-test.png"
-
+      attach_file "Audio", Rails.root.join("spec/fixtures/test-002.mp3")
       click_on "Save"
 
+      expect(Episode.last.duration).to eq 8
+      expect(Episode.last.audio_size).to eq 114_031
       expect(page).to have_content "Episode was successfully created."
       expect(page).to have_table_with_exact_data([
                                                    ["Published",
@@ -118,12 +120,19 @@ describe "Administrate Episodes", type: :system do
         00:00:41 Begrüßung der Leute
         00:01:30 Bereitstellung
       )
+
+      attach_file "Audio", Rails.root.join("spec/fixtures/test-001.mp3")
+
       click_on "Save"
 
       expect(page).to have_content "Title has already been taken"
 
+      attach_file "Audio", Rails.root.join("spec/fixtures/test-001.mp3")
       fill_in "Title", with: "test"
       click_on "Save"
+
+      expect(Episode.last.duration).to eq 3
+      expect(Episode.last.audio_size).to eq 52_632
 
       expect(page).to have_content "Episode was successfully updated."
       expect(page).to have_table_with_exact_data([

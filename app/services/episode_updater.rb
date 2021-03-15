@@ -1,6 +1,14 @@
 class EpisodeUpdater < BaseService
-  UPDATEABLE_ATTRIBUTES = %w[title description file_url file_size
-                             file_duration nodes active artwork_url chapter_marks published_on].freeze
+  UPDATEABLE_ATTRIBUTES = %w[title
+                             description
+                             file_url
+                             file_size
+                             file_duration
+                             nodes active
+                             artwork_url
+                             chapter_marks
+                             audio
+                             published_on].freeze
 
   attr_accessor(*UPDATEABLE_ATTRIBUTES, :episode)
 
