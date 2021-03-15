@@ -34,8 +34,8 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def cdn_url
-    if Rails.application.config.active_storage.service == :aws
-      File.join("https://d3qd1sxnjnmo7u.cloudfront.net", o.audio.blob.key)
+    if Rails.application.config.active_storage.service == :aws && Rails.application.config.aws_cloudfront_url
+      File.join(Rails.application.config.aws_cloudfront_url, o.audio.blob.key)
     else
       route = o.audio.blob.is_a?(ActiveStorage::Variant) ? :rails_representation : :rails_blob
       Rails.application.routes.url_helpers.route_for(route, o.audio.blob)
