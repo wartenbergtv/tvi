@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_094059) do
+ActiveRecord::Schema.define(version: 2021_03_15_163443) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -52,14 +52,13 @@ ActiveRecord::Schema.define(version: 2021_03_15_094059) do
     t.date "published_on"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "file_size", null: false
-    t.integer "file_duration", null: false
+    t.integer "file_size"
+    t.integer "file_duration"
     t.text "nodes"
     t.boolean "active", default: true
     t.integer "number", default: 0, null: false
     t.string "artwork_url"
     t.text "chapter_marks"
-    t.index ["file_url"], name: "index_episodes_on_file_url", unique: true
     t.index ["number"], name: "index_episodes_on_number", unique: true
     t.index ["published_on"], name: "index_episodes_on_published_on"
     t.index ["slug"], name: "index_episodes_on_slug", unique: true

@@ -4,9 +4,6 @@ class EpisodeCreator < BaseService
     description
     artwork_url
     published_on
-    file_url
-    file_size
-    file_duration
     nodes
     number
     active
@@ -18,12 +15,9 @@ class EpisodeCreator < BaseService
 
   validates(:title, presence: true)
   validates(:description, presence: true)
-  validates(:file_url, presence: true, url: true)
   validates(:artwork_url, presence: true, url: true)
   validates(:number, presence: true)
   validates(:published_on, presence: true)
-  validates(:file_size, presence: true)
-  validates(:file_duration, presence: true)
   validates(:audio, presence: true)
 
   def initialize(attributes = {})

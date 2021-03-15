@@ -1,10 +1,8 @@
 class EpisodeUpdater < BaseService
   UPDATEABLE_ATTRIBUTES = %w[title
     description
-    file_url
-    file_size
-    file_duration
-    nodes active
+    nodes
+    active
     artwork_url
     chapter_marks
     audio
@@ -14,11 +12,10 @@ class EpisodeUpdater < BaseService
 
   delegate :id, to: :episode
 
-  validates(:title, :description, :file_url, :file_size,
-    :file_duration, :nodes, :artwork_url, :published_on, presence: true)
+  validates(:title, :description, :nodes, :artwork_url, :published_on, presence: true)
   validates(:episode, presence: true)
-  validates(:file_url, url: true)
   validates(:artwork_url, url: true)
+
   def call
     @published_on = published_on.present? ? published_on.to_date : nil
     return false if invalid?
