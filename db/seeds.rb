@@ -7,7 +7,5 @@ FactoryBot.create :user, email: "joe@test.com", password: "test123", password_co
 FactoryBot.create :user, :admin, email: "admin@test.com", password: "test123", password_confirmation: "test123"
 
 FactoryBot.create :episode, published_on: 1.day.ago, number: 2, title: "Anton Müller",
-                            file_url: "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/002/002-anton-muller.mp3",
                             artwork_url: "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/002/002-anton-mueller.png"
-FactoryBot.create :episode, title: "Markus Loibl", number: 1, published_on: 1.month.ago, slug: "001-markus",
-                            file_url: "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/000-markus-loibl.mp3"
+FactoryBot.create :episode, title: "Markus Loibl", number: 1, published_on: 1.month.ago, slug: "001-markus"

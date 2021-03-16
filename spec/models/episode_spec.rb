@@ -8,8 +8,8 @@
 #  chapter_marks   :text
 #  description     :text             not null
 #  downloads_count :integer          default(0)
-#  file_duration   :integer          not null
-#  file_size       :integer          not null
+#  file_duration   :integer
+#  file_size       :integer
 #  file_url        :text
 #  nodes           :text
 #  number          :integer          default(0), not null
@@ -21,7 +21,6 @@
 #
 # Indexes
 #
-#  index_episodes_on_file_url      (file_url) UNIQUE
 #  index_episodes_on_number        (number) UNIQUE
 #  index_episodes_on_published_on  (published_on)
 #  index_episodes_on_slug          (slug) UNIQUE

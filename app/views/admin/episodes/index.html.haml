@@ -1,31 +1,29 @@
-.site-section.bg-light
-  .container
-    .row
-      .col-md-12
-        %h1 Episodes
+.bg-ligh
 
-        %table.table.table-striped.table-bordered
-          %thead.thead-dark
-            %tr
-              %th Published
-              %th Epsiode
-              %th Title
-              %th downloads_count
-              %th published_on
-              %th
-              %th
-
-          %tbody
-            - @episodes.each do |episode|
-              %tr{id: "episode-#{episode.id}", class: "#{'inactive' unless episode.published?}"}
-                %td= show_boolean_value episode.published?
-                %td= episode.number
-                %td= episode.title
-                %td= episode.downloads_count
-                %td= episode.published_on
-                %td= edit_button edit_admin_episode_path(episode)
-                %td= show_button episode_path(episode)
-
-        %br
-
-        = add_button  new_admin_episode_path
+  %h1 Episodes
+  %table.table.table-striped.table-bordered
+    %thead.thead-dark
+      %tr
+        %th Published
+        %th Epsiode
+        %th Title
+        %th Size
+        %th Duration
+        %th Downloads
+        %th Published
+        %th
+        %th
+    %tbody
+      - @episodes.each do |episode|
+        %tr{id: "episode-#{episode.id}", class: "text-nowrap #{'inactive' unless episode.published?}"}
+          %td= show_boolean_value episode.published?
+          %td= episode.number
+          %td= episode.title
+          %td= episode.audio_size_formatted
+          %td= episode.duration_formatted
+          %td= episode.downloads_count
+          %td= episode.published_on
+          %td= edit_button edit_admin_episode_path(episode)
+          %td= show_button episode_path(episode)
+  %br
+  = add_button  new_admin_episode_path

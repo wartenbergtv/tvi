@@ -2,27 +2,23 @@ class EpisodeCreator < BaseService
   CREATABLE_ATTRIBUTES = %w[
     title
     description
-    file_url
     artwork_url
     published_on
-    file_size
-    file_duration
     nodes
     number
     active
     chapter_marks
+    audio
   ].freeze
 
   attr_accessor(*CREATABLE_ATTRIBUTES)
 
   validates(:title, presence: true)
   validates(:description, presence: true)
-  validates(:file_url, presence: true, url: true)
   validates(:artwork_url, presence: true, url: true)
   validates(:number, presence: true)
   validates(:published_on, presence: true)
-  validates(:file_size, presence: true)
-  validates(:file_duration, presence: true)
+  validates(:audio, presence: true)
 
   def initialize(attributes = {})
     super

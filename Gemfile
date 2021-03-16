@@ -28,7 +28,7 @@ gem "will_paginate-bootstrap4"
 gem "rollbar"
 gem "newrelic_rpm"
 
-gem "ruby-mp3info"
+gem "ruby-mp3info", require: false
 gem "dalli"
 
 gem "sitemap_generator" # https://github.com/kjvarga/sitemap_generator
@@ -60,6 +60,7 @@ group :development, :test do
   gem "capybara"
   gem "launchy" # for capybara save_and_open_page
   gem "webdrivers"
+  gem "dotenv-rails"
 end
 
 group :test do

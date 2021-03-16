@@ -29,6 +29,27 @@ class EpisodePresenter < ApplicationPresenter
     o.artwork_url.presence || current_setting.default_episode_artwork_url
   end
 
+  def file_duration
+    o.audio.present? ? o.duration : o.file_duration
+  end
+
+  def cdn_url
+    if Rails.application.config.active_storage.service == :aws && Rails.application.config.aws_cloudfront_url
+      File.join(Rails.application.config.aws_cloudfront_url, o.audio.blob.key)
+    else
+      route = o.audio.blob.is_a?(ActiveStorage::Variant) ? :rails_representation : :rails_blob
+      Rails.application.routes.url_helpers.route_for(route, o.audio.blob)
+    end
+  end
+
+  def file_url
+    o.audio.present? ? cdn_url : o.file_url
+  end
+
+  def file_size
+    o.audio.present? ? o.audio_size : o.file_size
+  end
+
   def mp3_url
     Rails.application.routes.url_helpers.episode_url(o, format: :mp3)
   end
@@ -36,5 +57,13 @@ class EpisodePresenter < ApplicationPresenter
   def episonde_url
     # This is used when an episode has a corresponding webpage. For example:
     Rails.application.routes.url_helpers.episode_url(o)
+  end
+
+  def audio_size_formatted
+    h.number_to_human_size file_size
+  end
+
+  def duration_formatted
+    h.format_duration seconds: file_duration if file_duration
   end
 end

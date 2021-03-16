@@ -19,13 +19,17 @@ describe "Administrate Episodes", type: :system do
         ["Published",
           "Epsiode",
           "Title",
-          "downloads_count",
-          "published_on",
+          "Size",
+          "Duration",
+          "Downloads",
+          "Published",
           "",
           ""],
         ["",
           "001",
           "Soli Wartenberg",
+          "51.4 KB",
+          "00:00:03",
           "1",
           episode.published_on.strftime("%d.%m.%Y"),
           "Edit",
@@ -46,17 +50,12 @@ describe "Administrate Episodes", type: :system do
       click_on "Save"
       expect(page).to have_content "Title can't be blank"
       expect(page).to have_content "Description can't be blank"
-      expect(page).to have_content "File url can't be blank"
       expect(page).to have_content "Published on can't be blank"
-      expect(page).to have_content "File size can't be blank"
-      expect(page).to have_content "File duration can't be blank"
+      expect(page).to have_content "Audio can't be blank"
 
       fill_in "Title", with: "Talk about shit"
       fill_in "Description", with: "more alk about shit"
-      fill_in "File url", with: "https://blah.com/001-test.mp3"
       fill_in "Published on", with: published_on
-      fill_in "File size", with: 1000
-      fill_in "File duration", with: 123_456
 
       fill_in "Chapter marks", with: %(
         00:00:01 Intro
@@ -64,21 +63,27 @@ describe "Administrate Episodes", type: :system do
         00:01:30 Vorstellung
       )
       fill_in "Artwork url", with: "https://test.com/001-test.png"
-
+      attach_file "Audio", Rails.root.join("spec/fixtures/test-002.mp3")
       click_on "Save"
 
+      expect(Episode.last.duration).to eq 8
+      expect(Episode.last.audio_size).to eq 114_031
       expect(page).to have_content "Episode was successfully created."
       expect(page).to have_table_with_exact_data([
         ["Published",
           "Epsiode",
           "Title",
-          "downloads_count",
-          "published_on",
+          "Size",
+          "Duration",
+          "Downloads",
+          "Published",
           "",
           ""],
         ["",
           "001",
           "Talk about shit",
+          "111 KB",
+          "00:00:08",
           "0",
           published_on.strftime("%d.%m.%Y"),
           "Edit",
@@ -93,7 +98,7 @@ describe "Administrate Episodes", type: :system do
 
     it "edits a existin episode" do
       FactoryBot.create :episode, title: "balh", number: 1
-      episode = FactoryBot.create :episode, title: "foo", number: 2
+      episode = FactoryBot.create :episode, title: "foo", number: 2, description: "should be foo"
 
       visit "/"
       click_on "Administration"
@@ -110,33 +115,43 @@ describe "Administrate Episodes", type: :system do
 
       fill_in "Title", with: "balh"
       fill_in "Nodes", with: "# my notes here *there*"
+      attach_file "Audio", Rails.root.join("spec/fixtures/test-001.mp3")
+      click_on "Save"
+      expect(page).to have_content "Title has already been taken"
+
+      fill_in "Title", with: "test"
+      fill_in "Nodes", with: "# my notes here *there*"
       fill_in "Artwork url", with: "https://blah.com/001-test-1.png"
       fill_in "Published on", with: 1.day.ago
-
+      fill_in "Description", with: "should be foo changed"
       fill_in "Chapter marks", with: %(
         00:00:01 Intro
         00:00:41 Begrüßung der Leute
         00:01:30 Bereitstellung
       )
+      attach_file "Audio", Rails.root.join("spec/fixtures/test-001.mp3")
+
       click_on "Save"
 
-      expect(page).to have_content "Title has already been taken"
-
-      fill_in "Title", with: "test"
-      click_on "Save"
+      expect(Episode.last.duration).to eq 3
+      expect(Episode.last.audio_size).to eq 52_632
 
       expect(page).to have_content "Episode was successfully updated."
       expect(page).to have_table_with_exact_data([
         ["Published",
           "Epsiode",
           "Title",
-          "downloads_count",
-          "published_on",
+          "Size",
+          "Duration",
+          "Downloads",
+          "Published",
           "",
           ""],
         ["",
           "002",
           "test",
+          "51.4 KB",
+          "00:00:03",
           "1",
           1.day.ago.strftime("%d.%m.%Y"),
           "Edit",
@@ -144,6 +159,8 @@ describe "Administrate Episodes", type: :system do
         ["",
           "001",
           "balh",
+          "51.4 KB",
+          "00:00:03",
           "1",
           Time.current.strftime("%d.%m.%Y"),
           "Edit",
