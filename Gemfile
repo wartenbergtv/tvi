@@ -43,11 +43,11 @@ group :development do
   gem "annotate"
   gem "spring"
 
+  gem "haml_lint"
   gem "rubocop"
   gem "rubocop-performance", require: false
   gem "rubocop-rails", require: false
   gem "rubocop-rspec", require: false
-  gem "haml_lint"
 end
 
 group :development, :test do
