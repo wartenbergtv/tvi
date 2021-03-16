@@ -30,7 +30,7 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def file_duration
-    o.audio.present? ? o.duration : o.file_duration
+    o.duration
   end
 
   def cdn_url
@@ -43,11 +43,11 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def file_url
-    o.audio.present? ? cdn_url : o.file_url
+    cdn_url
   end
 
   def file_size
-    o.audio.present? ? o.audio_size : o.file_size
+    o.audio_size
   end
 
   def mp3_url
