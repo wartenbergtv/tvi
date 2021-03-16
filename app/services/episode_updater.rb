@@ -15,7 +15,7 @@ class EpisodeUpdater < BaseService
 
   validates(:episode, :title, :description, :nodes, :published_on, presence: true)
 
-  #  #validates(:artwork_url, presence: true, url: true)
+  # validates(:artwork_url, presence: true, url: true)
   # validates(:audio, presence: true)
   # validates(:image, presence: true)
 
