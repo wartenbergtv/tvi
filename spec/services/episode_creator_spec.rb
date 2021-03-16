@@ -48,17 +48,5 @@ RSpec.describe EpisodeCreator do
       expect(creator.errors.count).to eq 1
       expect(creator.errors.full_messages.join).to eq "Artwork url is not a valid URL"
     end
-
-    xit "error when file_url is not uniq" do
-      FactoryBot.create :episode, file_url: "https://test.com/001-blah"
-      creator = described_class.new episode_attribs.merge file_url: "https://test.com/001-blah"
-
-      expect do
-        creator.call
-      end.not_to change(Episode, :count)
-
-      expect(creator.errors.count).to eq 1
-      expect(creator.errors.full_messages.join).to eq "File url has already been taken"
-    end
   end
 end
