@@ -115,6 +115,7 @@ describe "Administrate Episodes", type: :system do
 
       fill_in "Title", with: "balh"
       fill_in "Nodes", with: "# my notes here *there*"
+      attach_file "Audio", Rails.root.join("spec/fixtures/test-001.mp3")
       click_on "Save"
       expect(page).to have_content "Title has already been taken"
 
