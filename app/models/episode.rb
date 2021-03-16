@@ -35,6 +35,7 @@ class Episode < ApplicationRecord
   validates(:title, uniqueness: true)
 
   has_one_attached :audio
+  has_one_attached :image, service: :cloudinary
 
   def duration
     audio.blob.metadata[:duration] if audio.attached?

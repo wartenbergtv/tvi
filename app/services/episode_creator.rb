@@ -7,6 +7,7 @@ class EpisodeCreator < BaseService
     nodes
     number
     active
+    image
     chapter_marks
     audio
   ].freeze
@@ -15,10 +16,11 @@ class EpisodeCreator < BaseService
 
   validates(:title, presence: true)
   validates(:description, presence: true)
-  validates(:artwork_url, presence: true, url: true)
+  # validates(:artwork_url, presence: true, url: true)
   validates(:number, presence: true)
   validates(:published_on, presence: true)
   validates(:audio, presence: true)
+  validates(:image, presence: true)
 
   def initialize(attributes = {})
     super

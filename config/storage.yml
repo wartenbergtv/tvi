@@ -12,3 +12,11 @@ aws:
   secret_access_key: <%= Rails.application.config.aws_secret_key %>
   bucket: <%= Rails.application.config.aws_bucket_name %>
   region: <%= Rails.application.config.aws_s3_region %>
+
+cloudinary:
+  service: Cloudinary
+  cloud_name: <%= Rails.application.config.cloudinary_cloud_name %>
+  api_key: <%= Rails.application.config.cloudinary_api_key %>
+  api_secret: <%= Rails.application.config.cloudinary_api_secret %>
+  secure: true
+  cdn_subdomain: true

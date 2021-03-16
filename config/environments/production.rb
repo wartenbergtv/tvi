@@ -106,6 +106,7 @@ Rails.application.configure do
      socket_timeout: 1.5,
      socket_failure_delay: 0.2,
      down_retry_delay: 60}
+
   config.aws_access_key = ENV["S3_ACCESS_KEY"]
   config.aws_secret_key = ENV["S3_SECRET_KEY"]
   config.aws_bucket_name = ENV["S3_BUCKET_NAME"]
@@ -113,4 +114,8 @@ Rails.application.configure do
   config.aws_cloudfront_url = ENV["CLOUDFRONT_URL"]
 
   config.active_storage.service = :aws
+
+  config.cloudinary_cloud_name = ENV["CLOUDINARY_CLOUD_NAME"]
+  config.cloudinary_api_key = ENV["CLOUDINARY_API_KEY"]
+  config.cloudinary_api_secret = ENV["CLOUDINARY_API_SECRET"]
 end

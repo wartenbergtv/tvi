@@ -3,7 +3,12 @@
 = f.input :description, as: :text, input_html: { cols: 5, rows: 10 }
 = f.input :nodes, as: :text, input_html: { cols: 5, rows: 10 }
 = f.input :chapter_marks, as: :text, input_html: { cols: 5, rows: 10 }, hint: "chapter marks format: 00:00:41.018 Intro"
-= f.input :artwork_url, hint: "Path for episodes logo"
+- # = f.input :artwork_url, hint: "Path for episodes logo"
+- if f.object.image.respond_to?(:attached?) && f.object.image.attached?
+  = cl_image_tag(f.object.image.key, width: 100, crop: :scale)
+  = cloudinary_url(f.object.image.key, width: 100, crop: :scale)
+= f.input :image, as: :file
+
 - if f.object.audio.respond_to?(:attached?) && f.object.audio.attached?
   =  "The currently attached file is #{f.object.audio.filename}. Click here to replace this file."
 = f.input :audio, as: :file

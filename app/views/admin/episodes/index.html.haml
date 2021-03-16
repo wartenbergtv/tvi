@@ -6,6 +6,7 @@
       %tr
         %th Published
         %th Epsiode
+        %th Cover
         %th Title
         %th Size
         %th Duration
@@ -18,6 +19,7 @@
         %tr{id: "episode-#{episode.id}", class: "text-nowrap #{'inactive' unless episode.published?}"}
           %td= show_boolean_value episode.published?
           %td= episode.number
+          %td= cl_image_tag(episode.image.key, width: 50, crop: :scale) if episode.image
           %td= episode.title
           %td= episode.audio_size_formatted
           %td= episode.duration_formatted
