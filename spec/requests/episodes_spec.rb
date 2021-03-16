@@ -129,8 +129,8 @@ RSpec.describe "episodes", type: :request do
 
       get episode.mp3_url
 
-      expect(response.body).to match(/<html><body>You are being <a href=.*>redirected<\/a>\.<\/body><\/html>/)
-      expect(response.body).to match(/http:\/\/wartenberger\.test\.com\/.*\/test-001\.mp3/)
+      expect(response.body).to match(%r{<html><body>You are being <a href=.*>redirected</a>\.</body></html>})
+      expect(response.body).to match(%r{http://wartenberger\.test\.com/.*/test-001\.mp3})
       expect(episode.reload.downloads_count).to eq 1
     end
   end

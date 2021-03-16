@@ -16,13 +16,13 @@ class EpisodesController < ApplicationController
     episode_record = Episode.find_by!(slug: params[:slug])
     @episode = EpisodePresenter.new episode_record
     if stale? episode_record, public: true
-    respond_to do |format|
-      # ETag caching https://api.rubyonrails.org/classes/ActionController/ConditionalGet.html#method-i-stale-3F
-      format.html
-      format.mp3 do
-        episode_record.increment! :downloads_count
-        redirect_to @episode.file_url
-      end
+      respond_to do |format|
+        # ETag caching https://api.rubyonrails.org/classes/ActionController/ConditionalGet.html#method-i-stale-3F
+        format.html
+        format.mp3 do
+          episode_record.increment! :downloads_count
+          redirect_to @episode.file_url
+        end
       end
     end
   end

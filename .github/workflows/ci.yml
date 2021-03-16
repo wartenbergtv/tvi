@@ -20,10 +20,10 @@ jobs:
       with:
         ruby-version: .ruby-version
 
-    - name: Standard
+    - name: Rubocop
       run: |
         bundle install --jobs 4 --retry 3
-        bundle exec standardrb
+        bundle exec rubocop
 
   brakeman:
     runs-on: ubuntu-latest
