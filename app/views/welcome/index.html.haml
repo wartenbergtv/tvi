@@ -45,3 +45,9 @@
           .row
             .col-md-12
               = render "shared/episode", episode: episode
+
+      .container
+        .row
+          .col.text-center
+            = link_to(episodes_path, class: " btn btn-secondary rounded-pill") do
+              Alle Episoden
