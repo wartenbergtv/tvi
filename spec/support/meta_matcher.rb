@@ -9,10 +9,10 @@ RSpec::Matchers.define :have_meta do |name, expected|
 
   failure_message_for_should do |_actual|
     actual = if name.include?("og:")
-               first("meta[property='#{name}']", visible: false)
-             else
-               first("meta[name='#{name}']", visible: false)
-             end
+      first("meta[property='#{name}']", visible: false)
+    else
+      first("meta[name='#{name}']", visible: false)
+    end
 
     if actual
       "expected that meta #{name} would have content='#{expected}' but was '#{actual[:content]}'"
