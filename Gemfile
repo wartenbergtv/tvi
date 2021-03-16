@@ -43,6 +43,10 @@ group :development do
   gem "annotate"
   gem "spring"
 
+  gem "rubocop"
+  gem "rubocop-performance", require: false
+  gem "rubocop-rails", require: false
+  gem "rubocop-rspec", require: false
   gem "haml_lint"
 end
 
@@ -56,10 +60,6 @@ group :development, :test do
   gem "capybara"
   gem "launchy" # for capybara save_and_open_page
   gem "webdrivers"
-  gem "rubocop"
-  gem "rubocop-performance", require: false
-  gem "rubocop-rails", require: false
-  gem "rubocop-rspec", require: false
   gem "dotenv-rails"
 end
 
