@@ -38,7 +38,7 @@ FactoryBot.define do
 
     author { "Michael Deimel, Thomas Rademacher" }
 
-    owner {  "Michael Deimel" }
+    owner { "Michael Deimel" }
 
     email { "admin@wartenberger.de" }
 
@@ -46,7 +46,7 @@ FactoryBot.define do
 
     itunes_category { "News" }
 
-    itunes_sub_category {  "Politics" }
+    itunes_sub_category { "Politics" }
 
     itunes_language { "de-de" }
 
@@ -56,9 +56,9 @@ FactoryBot.define do
 
     facebook_url { "https://www.facebook.com/Wartenberger-Der-Podcast-102909105061563" }
 
-    youtube_url {  "https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg" }
+    youtube_url { "https://www.youtube.com/channel/UCfnC8JiraR8N8QUkqzDsQFg" }
 
-    twitter_url {  "https://twitter.com/WartenbergerPod" }
+    twitter_url { "https://twitter.com/WartenbergerPod" }
 
     instagram_url { "https://www.instagram.com/wartenbergerpodcast" }
 
