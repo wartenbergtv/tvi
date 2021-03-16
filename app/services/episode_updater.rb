@@ -15,6 +15,7 @@ class EpisodeUpdater < BaseService
   validates(:title, :description, :nodes, :artwork_url, :published_on, presence: true)
   validates(:episode, presence: true)
   validates(:artwork_url, url: true)
+  validates(:audio, url: true)
 
   def call
     @published_on = published_on.present? ? published_on.to_date : nil
