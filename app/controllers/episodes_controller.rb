@@ -3,6 +3,7 @@ class EpisodesController < ApplicationController
     @episodes_records = Episode.published.paginate(page: params[:page], per_page: params[:per_page])
     @episodes = EpisodePresenter.wrap @episodes_records
 
+    fresh_when(@episodes_record, public: true) # ETag caching https://api.rubyonrails.org/classes/ActionController/ConditionalGet.html#method-i-fresh_when
     respond_to do |format|
       format.html
       format.rss do
@@ -13,9 +14,10 @@ class EpisodesController < ApplicationController
   end
 
   def show
-    expires_in(1.day, public: true)
     episode_record = Episode.find_by!(slug: params[:slug])
     @episode = EpisodePresenter.new episode_record
+
+    fresh_when episode_record, public: true # ETag caching https://api.rubyonrails.org/classes/ActionController/ConditionalGet.html#method-i-fresh_when
     respond_to do |format|
       format.html
       format.mp3 do
