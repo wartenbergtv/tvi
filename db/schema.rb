@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_15_163443) do
+ActiveRecord::Schema.define(version: 2021_03_16_151618) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,13 +47,10 @@ ActiveRecord::Schema.define(version: 2021_03_15_163443) do
     t.string "title", null: false
     t.string "slug", null: false
     t.text "description", null: false
-    t.text "file_url"
     t.integer "downloads_count", default: 0
     t.date "published_on"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "file_size"
-    t.integer "file_duration"
     t.text "nodes"
     t.boolean "active", default: true
     t.integer "number", default: 0, null: false
