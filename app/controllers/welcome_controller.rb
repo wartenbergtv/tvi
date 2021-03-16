@@ -1,8 +1,10 @@
 class WelcomeController < ApplicationController
   def index
-    @episodes = EpisodePresenter.wrap Episode.published.limit(3)
+    @episodes_records = Episode.published.limit(3)
+    @episodes = EpisodePresenter.wrap @episodes_records
 
     @last_episode = @episodes.first
+    fresh_when @episodes_records, public: true
   end
 
   def imprint

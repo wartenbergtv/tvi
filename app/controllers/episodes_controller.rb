@@ -4,8 +4,7 @@ class EpisodesController < ApplicationController
     @episodes = EpisodePresenter.wrap @episodes_records
 
     respond_to do |format|
-      # ETag caching https://api.rubyonrails.org/classes/ActionController/ConditionalGet.html#method-i-stale-3F
-      format.html if stale? @episodes_records, public: true
+      format.html
       format.rss do
         @feed = PodcastFeedPresenter.new(@episodes)
         render layout: false, content_type: "application/xml"
