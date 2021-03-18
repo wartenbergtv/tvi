@@ -29,8 +29,8 @@ class EpisodePresenter < ApplicationPresenter
     # Make sure the file type in the URL matches the actual file type of the image file.d
 
     if o.image.attached?
-     cloudinary_url(o.image.key, width: size, height: size, crop: :fill, responsive: true) #c_fill,h_200,w_200
-      #cloudinary_url(o.image.key, width: :auto, crop: :scale, responsive: true, responsive_placeholder: :blank) #c_fill,h_200,w_200 cl_image_tag("smiling_man.jpg", :width => :auto, :crop => :scale, :responsive => :true,
+      cloudinary_url(o.image.key, width: size, height: size, crop: :fill, responsive: true) # c_fill,h_200,w_200
+    # cloudinary_url(o.image.key, width: :auto, crop: :scale, responsive: true, responsive_placeholder: :blank) #c_fill,h_200,w_200 cl_image_tag("smiling_man.jpg", :width => :auto, :crop => :scale, :responsive => :true,
 
     elsif o.artwork_url.present?
       o.artwork_url
@@ -73,12 +73,11 @@ class EpisodePresenter < ApplicationPresenter
     h.number_to_human_size file_size
   end
 
-  def duration_formxatted
+  def duration_formatted
     h.format_duration seconds: file_duration if file_duration
   end
 
   def audio_filename_formatted
-    "#{o.audio.filename.to_s} (#{o.audio.key})" if o.audio
+    "#{o.audio.filename} (#{o.audio.key})" if o.audio
   end
-
 end

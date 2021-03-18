@@ -37,16 +37,5 @@ RSpec.describe EpisodeCreator do
       expect(creator.errors.count).to eq 1
       expect(creator.errors.full_messages.join).to eq "Number has already been taken"
     end
-
-    it "error when artwork_url is not a url" do
-      creator = described_class.new episode_attribs.merge artwork_url: 1
-
-      expect do
-        creator.call
-      end.not_to change(Episode, :count)
-
-      expect(creator.errors.count).to eq 1
-      expect(creator.errors.full_messages.join).to eq "Artwork url is not a valid URL"
-    end
   end
 end

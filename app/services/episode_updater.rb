@@ -3,7 +3,6 @@ class EpisodeUpdater < BaseService
     description
     nodes
     active
-    artwork_url
     chapter_marks
     audio
     image

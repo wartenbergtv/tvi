@@ -2,7 +2,6 @@ class EpisodeCreator < BaseService
   CREATABLE_ATTRIBUTES = %w[
     title
     description
-    artwork_url
     published_on
     nodes
     number

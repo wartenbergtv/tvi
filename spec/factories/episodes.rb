@@ -28,7 +28,7 @@ FactoryBot.define do
     sequence(:title) { |n| "Soli Wartenberg #{n}" }
     slug { "#{number.to_s.rjust(3, "0")} #{title}".parameterize }
     description { "we talk about bikes and things" }
-    artwork_url { "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/#{slug}.jpg" }
+    # image { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/001-vorstellung.jpg")) }
     downloads_count { 1 }
     published_on { Time.current.to_date }
     sequence(:number)
