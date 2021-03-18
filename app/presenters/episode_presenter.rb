@@ -73,7 +73,12 @@ class EpisodePresenter < ApplicationPresenter
     h.number_to_human_size file_size
   end
 
-  def duration_formatted
+  def duration_formxatted
     h.format_duration seconds: file_duration if file_duration
   end
+
+  def audio_filename_formatted
+    "#{o.audio.filename.to_s} (#{o.audio.key})" if o.audio
+  end
+
 end

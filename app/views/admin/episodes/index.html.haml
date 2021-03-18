@@ -10,6 +10,7 @@
         %th Title
         %th Size
         %th Duration
+        %th Filename
         %th Downloads
         %th Published
         %th
@@ -23,6 +24,7 @@
           %td= episode.title
           %td= episode.audio_size_formatted
           %td= episode.duration_formatted
+          %td= episode.audio_filename_formatted
           %td= episode.downloads_count
           %td= episode.published_on
           %td= edit_button edit_admin_episode_path(episode)
