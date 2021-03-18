@@ -1,10 +1,9 @@
-
 - content_for(:html_title) { "Über den Podcast" }
 = render "shared/episode_show", episode: @about_episode
 
 .site-section.bg-light
   .container-fluid
-    .row.mb-5{"data-aos" => "fade-up"}
+    .row.mb-5
       .col-md-12
         %h3.text-center Über den Podcast
 
@@ -18,7 +17,7 @@
           Wir werden Dinge kritisch hinterfragen, aber immer einen neutralen Standpunkt einnehmen.
 
 .site-section
-  .container{"data-aos" => "fade-up"}
+  .container
     .row.mb-5
       .col-md-12.text-center
         %h2.font-weight-bold.text-black Die Gastgeber
