@@ -1,11 +1,10 @@
 -# **************************
 -# background logo
 -# **************************
-.site-blocks-cover.overlay-welcome{"data-aos" => "fade",
- :style => "background-image: url(#{asset_pack_path('media/images/hp-bg-logo-950x600.jpg')});"}
+.site-blocks-cover.overlay-welcome{style: "background-image: url(#{asset_pack_path('media/images/hp-bg-logo-950x600.jpg')});"}
   .container-fluid
     .row.align-items-center.justify-content-center.text-center
-      .col-md-8{"data-aos" => "fade-up", "data-aos-delay" => "400"}
+      .col-md-8
         = render "shared/episode_inline", episode: @last_episode
 -# **************************
 -#  episodes
@@ -13,7 +12,7 @@
 
 .site-section.bg-light
   .container
-    .row.mb-3{"data-aos" => "fade-up"}
+    .row.mb-3
       .col-md-12.text-center
         .subscribe-buttons.justify-content-center.text-white
           -if current_setting.itunes_url.present?

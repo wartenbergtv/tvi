@@ -9,8 +9,12 @@ Rack::Attack.blocklist("fail2ban pentesters") do |req|
       req.path.include?("phpMyAdmin") ||
       req.path.include?("xmlrpc.php") ||
       req.path.include?("wp-admin") ||
+      req.path.include?("wp-content") ||
       req.path.include?("wp-login") ||
       req.path.include?("th1s_1s_a_4o4.html") ||
-      req.path.include?("ads.txt")
+      req.path.include?("ads.txt") ||
+      req.path.include?("wlwmanifest.xml") ||
+      req.path.include?("eval-stdin.php") ||
+      req.path.include?(".env")
   end
 end

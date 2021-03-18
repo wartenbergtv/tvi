@@ -11,14 +11,8 @@ import 'bootstrap/dist/js/bootstrap'
 import "@fortawesome/fontawesome-free/css/all.css";
 // custom css
 require("css/application.scss")
-import AOS from 'aos';
-import("aos/dist/aos.css")
+
 
 document.addEventListener("turbolinks:load", () => {
-  AOS.init({
-    duration: 800,
-    easing: 'slide',
-    once: true
-  });
 
 });
