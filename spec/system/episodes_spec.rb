@@ -25,7 +25,7 @@ describe "Episodes", type: :system do
 
   context "show page" do
     it "gets an epsiode by slug" do
-      FactoryBot.create :episode, title: "Blah Test", number: 1
+      episode = FactoryBot.create :episode, title: "Blah Test", number: 1
 
       visit "/episodes/001-blah-test"
 
@@ -35,7 +35,7 @@ describe "Episodes", type: :system do
       expect(page).to have_meta "og:title", "Blah Test"
       expect(page).to have_meta "og:url", "http://wartenberger.test.com/episodes/001-blah-test"
       expect(page).to have_meta "og:description", "we talk about bikes and things"
-      expect(page).to have_meta "og:image", "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/001-blah-test.jpg"
+      expect(page).to have_meta "og:image", "http://res.cloudinary.com/djarupgq4/image/upload/c_fill,h_200,w_200/#{episode.image.key}"
       expect(page).to have_meta "og:audio", "http://wartenberger.test.com/episodes/001-blah-test.mp3"
     end
 

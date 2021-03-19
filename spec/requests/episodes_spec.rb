@@ -79,7 +79,7 @@ RSpec.describe "episodes", type: :request do
               </content:encoded>
               <itunes:duration>321</itunes:duration>
               <link>http://wartenberger.test.com/episodes/002-anton-muller</link>
-              <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/002-anton-muller.jpg"/>
+              <itunes:image href="http://res.cloudinary.com/djarupgq4/image/upload/c_fill,h_500,w_500/#{episode2.image.key}"/>
               <itunes:explicit>false</itunes:explicit>
             </item>
             <item>
@@ -110,7 +110,7 @@ RSpec.describe "episodes", type: :request do
               </content:encoded>
               <itunes:duration>321</itunes:duration>
               <link>http://wartenberger.test.com/episodes/001-soli-wartenberg</link>
-              <itunes:image href="https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/001-soli-wartenberg.jpg"/>
+              <itunes:image href="http://res.cloudinary.com/djarupgq4/image/upload/c_fill,h_500,w_500/#{episode1.image.key}"/>
               <itunes:explicit>false</itunes:explicit>
             </item>
           </channel>

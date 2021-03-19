@@ -1,6 +1,5 @@
 class EpisodePresenter < ApplicationPresenter
   include CloudinaryHelper
-  delegate :file_size, to: :o
 
   def published?
     o.active? && !o.published_on.future?
@@ -39,10 +38,6 @@ class EpisodePresenter < ApplicationPresenter
     end
   end
 
-  def file_duration
-    o.duration
-  end
-
   def cdn_url
     if Rails.application.config.active_storage.service == :aws && Rails.application.config.aws_cloudfront_url
       File.join(Rails.application.config.aws_cloudfront_url, o.audio.blob.key)
@@ -56,10 +51,6 @@ class EpisodePresenter < ApplicationPresenter
     cdn_url
   end
 
-  def file_size
-    o.audio_size
-  end
-
   def mp3_url
     Rails.application.routes.url_helpers.episode_url(o, format: :mp3)
   end
@@ -70,11 +61,11 @@ class EpisodePresenter < ApplicationPresenter
   end
 
   def audio_size_formatted
-    h.number_to_human_size file_size
+    h.number_to_human_size o.audio_size
   end
 
   def duration_formatted
-    h.format_duration seconds: file_duration if file_duration
+    h.format_duration seconds: o.duration
   end
 
   def audio_filename_formatted

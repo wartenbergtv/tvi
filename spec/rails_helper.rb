@@ -61,4 +61,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.after(:all) do
+    # cleanup after tests
+    if Rails.env.test?
+      FileUtils.rm_rf(Dir["#{Rails.root}/tmp/storage"])
+    end
+  end
 end
