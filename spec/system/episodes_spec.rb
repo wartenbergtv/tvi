@@ -35,7 +35,7 @@ describe "Episodes", type: :system do
       expect(page).to have_meta "og:title", "Blah Test"
       expect(page).to have_meta "og:url", "http://wartenberger.test.com/episodes/001-blah-test"
       expect(page).to have_meta "og:description", "we talk about bikes and things"
-      expect(page).to have_meta "og:image", "http://res.cloudinary.com/djarupgq4/image/upload/c_fill,h_200,w_200/#{episode.image.key}"
+      expect(page).to have_meta "og:image", "http://res.cloudinary.com/sample/image/upload/c_fill,h_200,w_200/#{episode.image.key}"
       expect(page).to have_meta "og:audio", "http://wartenberger.test.com/episodes/001-blah-test.mp3"
     end
 
