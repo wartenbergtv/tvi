@@ -7,6 +7,10 @@ class EpisodeFeedPresenter < EpisodePresenter
     o.duration
   end
 
+  def artwork_url
+    super size: 1400
+  end
+
   def audio_type
     #  The type attribute provides the correct category for the type of file you are using.
     # The type values for the supported file formats are:
