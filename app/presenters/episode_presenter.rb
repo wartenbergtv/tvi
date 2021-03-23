@@ -27,10 +27,13 @@ class EpisodePresenter < ApplicationPresenter
     # These requirements are different from the standard RSS image tag specifications.
     # Make sure the file type in the URL matches the actual file type of the image file.d
 
-    if o.image.attached?
-      cloudinary_url(o.image.key, width: size, height: size, crop: :fill, responsive: true) # c_fill,h_200,w_200
-    # cloudinary_url(o.image.key, width: :auto, crop: :scale, responsive: true, responsive_placeholder: :blank) #c_fill,h_200,w_200 cl_image_tag("smiling_man.jpg", :width => :auto, :crop => :scale, :responsive => :true,
+    if o.image.present?
 
+      if o.image.storage.is_a? Shrine::Storage::Cloudinary
+        o.image_url(width: size, height: size, crop: :fit, responsive: true)
+      else
+        o.image.url
+      end
     elsif o.artwork_url.present?
       o.artwork_url
     else

@@ -37,6 +37,9 @@ gem "aws-sdk-s3" # hosting the sidemap on s3
 gem "rack-attack"
 gem "cloudinary"
 
+gem "shrine", "~> 3.0"
+gem "shrine-cloudinary", "~> 1.1"
+
 group :development do
   gem "listen", "~> 3.3"
   gem "rack-mini-profiler", "~> 2.0"

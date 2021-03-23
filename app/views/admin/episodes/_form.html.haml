@@ -4,9 +4,8 @@
 = f.input :nodes, as: :text, input_html: { cols: 5, rows: 10 }
 = f.input :chapter_marks, as: :text, input_html: { cols: 5, rows: 10 }, hint: "chapter marks format: 00:00:41.018 Intro"
 
-- if f.object.image.respond_to?(:attached?) && f.object.image.attached?
-  = cl_image_tag(f.object.image.key, width: 100, crop: :scale)
-  = cloudinary_url(f.object.image.key, width: 100, crop: :scale)
+= f.hidden_field :image, value: f.object.cached_image_data
+= image_tag f.object.image_url, size: "50x50" if  f.object.cached_image_data || f.object.image
 = f.input :image, as: :file
 
 - if f.object.audio.respond_to?(:attached?) && f.object.audio.attached?

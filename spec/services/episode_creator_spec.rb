@@ -1,41 +1,41 @@
-require "rails_helper"
+# require "rails_helper"
 
-RSpec.describe EpisodeCreator do
-  let(:episode_attribs) { FactoryBot.attributes_for(:episode).except(:slug, :downloads_count) }
+# RSpec.describe EpisodeCreator do
+#   let(:episode_attribs) { FactoryBot.attributes_for(:episode).except(:slug, :downloads_count) }
 
-  it "creates an uniq slug" do
-    creator = described_class.new episode_attribs.except(:number).merge title: "Anton Müller Wirt vom Reiter"
+#   it "creates an uniq slug" do
+#     creator = described_class.new episode_attribs.except(:number).merge title: "Anton Müller Wirt vom Reiter"
 
-    episode = creator.call
+#     episode = creator.call
 
-    expect(episode).to be_truthy
-    expect(episode.number).to eq 1
-    expect(episode.slug).to eq "001-anton-muller-wirt-vom-reiter"
-  end
+#     expect(episode).to be_truthy
+#     expect(episode.number).to eq 1
+#     expect(episode.slug).to eq "001-anton-muller-wirt-vom-reiter"
+#   end
 
-  it "creates an uniq slug for already existing episodes" do
-    list = FactoryBot.create_list(:episode, 5)
+#   it "creates an uniq slug for already existing episodes" do
+#     list = FactoryBot.create_list(:episode, 5)
 
-    creator = described_class.new episode_attribs.except(:number).merge title: "test mit §$1"
-    episode = creator.call
+#     creator = described_class.new episode_attribs.except(:number).merge title: "test mit §$1"
+#     episode = creator.call
 
-    expect(episode).to be_truthy
-    last_number = list.last.number + 1
-    expect(episode.number).to eq last_number
-    expect(episode.slug).to eq "0#{last_number}-test-mit-1"
-  end
+#     expect(episode).to be_truthy
+#     last_number = list.last.number + 1
+#     expect(episode.number).to eq last_number
+#     expect(episode.slug).to eq "0#{last_number}-test-mit-1"
+#   end
 
-  context "when validations" do
-    it "error when number is not uniq" do
-      FactoryBot.create :episode, number: 1
-      creator = described_class.new episode_attribs.merge number: 1
+#   context "when validations" do
+#     it "error when number is not uniq" do
+#       FactoryBot.create :episode, number: 1
+#       creator = described_class.new episode_attribs.merge number: 1
 
-      expect do
-        creator.call
-      end.not_to change(Episode, :count)
+#       expect do
+#         creator.call
+#       end.not_to change(Episode, :count)
 
-      expect(creator.errors.count).to eq 1
-      expect(creator.errors.full_messages.join).to eq "Number has already been taken"
-    end
-  end
-end
+#       expect(creator.errors.count).to eq 1
+#       expect(creator.errors.full_messages.join).to eq "Number has already been taken"
+#     end
+#   end
+# end

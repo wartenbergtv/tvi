@@ -8,6 +8,7 @@
 #  chapter_marks   :text
 #  description     :text             not null
 #  downloads_count :integer          default(0)
+#  image_data      :text
 #  nodes           :text
 #  number          :integer          default(0), not null
 #  published_on    :date
@@ -28,7 +29,8 @@ FactoryBot.define do
     sequence(:title) { |n| "Soli Wartenberg #{n}" }
     slug { "#{number.to_s.rjust(3, "0")} #{title}".parameterize }
     description { "we talk about bikes and things" }
-    image { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/001-vorstellung.jpg")) }
+    nodes { "* some nodes" }
+    image_data { TestData.image_data }
     downloads_count { 1 }
     published_on { Time.current.to_date }
     sequence(:number)

@@ -8,7 +8,7 @@ class EpisodeFeedPresenter < EpisodePresenter
   end
 
   def artwork_url
-    super size: 1400
+    super(size: 1400)
   end
 
   def audio_type

@@ -8,6 +8,7 @@
 #  chapter_marks   :text
 #  description     :text             not null
 #  downloads_count :integer          default(0)
+#  image_data      :text
 #  nodes           :text
 #  number          :integer          default(0), not null
 #  published_on    :date
@@ -24,18 +25,36 @@
 #  index_episodes_on_title         (title) UNIQUE
 #
 class Episode < ApplicationRecord
+  include ImageUploader::Attachment(:image)
+
+  ATTRIBUTES = %w[
+    title
+    description
+    published_on
+    nodes
+    number
+    active
+    image
+    chapter_marks
+    audio
+  ].freeze
+
   def to_param
     slug
   end
 
   scope :published, -> { where(active: true).where("published_on <= ?", Time.zone.today).order(number: :desc) }
 
+  validates(:number, :title, :description, :nodes, :published_on, presence: true)
+
   validates(:number, uniqueness: true)
   validates(:slug, uniqueness: true)
   validates(:title, uniqueness: true)
 
+  validates(:audio, presence: true)
+  validates(:image, presence: true)
+
   has_one_attached :audio
-  has_one_attached :image, service: Rails.application.config.active_storage.image_service
 
   def duration
     audio.blob.metadata[:duration] if audio.attached?

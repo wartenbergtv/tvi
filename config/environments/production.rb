@@ -114,7 +114,7 @@ Rails.application.configure do
   config.aws_cloudfront_url = ENV["CLOUDFRONT_URL"]
 
   config.active_storage.service = :aws
-  config.active_storage.image_service = :cloudinary
+
   config.cloudinary_cloud_name = ENV["CLOUDINARY_CLOUD_NAME"]
   config.cloudinary_api_key = ENV["CLOUDINARY_API_KEY"]
   config.cloudinary_api_secret = ENV["CLOUDINARY_API_SECRET"]

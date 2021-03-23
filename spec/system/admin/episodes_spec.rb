@@ -60,6 +60,7 @@ describe "Administrate Episodes", type: :system do
 
       fill_in "Title", with: "Talk about shit"
       fill_in "Description", with: "more alk about shit"
+      fill_in "Nodes", with: "* some thing"
       fill_in "Published on", with: published_on
 
       fill_in "Chapter marks", with: %(
@@ -116,6 +117,7 @@ describe "Administrate Episodes", type: :system do
       within "#episode-#{episode2.id}" do
         click_on "Edit"
       end
+
       expect(page).to have_text "Editing Episode"
 
       fill_in "Title", with: ""
@@ -125,7 +127,7 @@ describe "Administrate Episodes", type: :system do
 
       fill_in "Title", with: "balh"
       fill_in "Nodes", with: "# my notes here *there*"
-      attach_file "Audio", Rails.root.join("spec/fixtures/test-001.mp3")
+      # attach_file "Audio", Rails.root.join("spec/fixtures/test-001.mp3")
       click_on "Save"
       expect(page).to have_content "Title has already been taken"
 
@@ -139,8 +141,9 @@ describe "Administrate Episodes", type: :system do
         00:00:41 Begrüßung der Leute
         00:01:30 Bereitstellung
       )
+
       attach_file "Audio", Rails.root.join("spec/fixtures/test-002.mp3")
-      attach_file "Image", Rails.root.join("spec/fixtures/001-vorstellung.jpg")
+      # attach_file "Image", Rails.root.join("spec/fixtures/001-vorstellung.jpg")
 
       click_on "Save"
 

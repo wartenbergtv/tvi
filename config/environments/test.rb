@@ -54,7 +54,6 @@ Rails.application.configure do
   config.aws_cloudfront_url = nil
 
   config.active_storage.service = :test
-  config.active_storage.image_service = :test
   config.active_job.queue_adapter = :inline
 
   config.cloudinary_cloud_name = nil
