@@ -1,6 +1,4 @@
 class EpisodePresenter < ApplicationPresenter
-  delegate :file_size, to: :o
-
   def published?
     o.active? && !o.published_on.future?
   end

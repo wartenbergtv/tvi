@@ -13,7 +13,7 @@ module ApplicationHelper
   end
 
   def format_duration(seconds:)
-    Time.at(seconds).utc.strftime("%H:%M:%S")
+    Time.at(seconds).utc.strftime("%H:%M:%S") if seconds.present?
   end
 
   # buttons
