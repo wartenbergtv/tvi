@@ -1,5 +1,4 @@
 class EpisodePresenter < ApplicationPresenter
-
   def published?
     o.active? && !o.published_on.future?
   end
