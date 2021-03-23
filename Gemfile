@@ -32,7 +32,7 @@ gem "ruby-mp3info", require: false
 gem "dalli"
 
 gem "sitemap_generator" # https://github.com/kjvarga/sitemap_generator
-gem "aws-sdk-s3" # hosting the sidemap on s3
+gem "aws-sdk-s3"
 
 gem "rack-attack"
 
@@ -42,7 +42,6 @@ gem "shrine-cloudinary", "~> 1.1"
 group :development do
   gem "listen", "~> 3.3"
   gem "rack-mini-profiler", "~> 2.0"
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem "annotate"
   gem "spring"
 
@@ -59,7 +58,7 @@ group :development, :test do
 
   gem "factory_bot_rails"
   gem "rspec-rails"
-  # capybara
+
   gem "capybara"
   gem "launchy" # for capybara save_and_open_page
   gem "webdrivers"
