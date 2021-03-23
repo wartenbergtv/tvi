@@ -35,7 +35,6 @@ gem "sitemap_generator" # https://github.com/kjvarga/sitemap_generator
 gem "aws-sdk-s3" # hosting the sidemap on s3
 
 gem "rack-attack"
-gem "cloudinary"
 
 gem "shrine", "~> 3.0"
 gem "shrine-cloudinary", "~> 1.1"
