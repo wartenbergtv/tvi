@@ -1,5 +1,4 @@
 class EpisodePresenter < ApplicationPresenter
-  include CloudinaryHelper
 
   def published?
     o.active? && !o.published_on.future?

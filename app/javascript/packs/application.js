@@ -11,4 +11,8 @@ import 'bootstrap/dist/js/bootstrap'
 import "@fortawesome/fontawesome-free/css/all.css";
 // custom css
 require("css/application.scss")
-document.addEventListener("turbolinks:load", () => {});
+
+
+document.addEventListener("turbolinks:load", () => {
+
+});
