@@ -64,4 +64,6 @@ Rails.application.configure do
   config.aws_s3_region = ENV["S3_REGION"]
   config.aws_cloudfront_url = ENV["CLOUDFRONT_URL"]
   config.active_storage.service = :local
+
+  config.hosts << ENV['NGROK_HOST'] if ENV['NGROK_HOST'].present?
 end
