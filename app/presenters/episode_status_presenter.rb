@@ -3,29 +3,25 @@ class EpisodeStatusPresenter < EpisodePresenter
     mp3_url(notracking: true)
   end
 
-  def audio_exist?
-   return @audio_exist if defined?(@audio_exist)
-   @audio_exist = RemoteFileStatus.new(url: none_tracking_mp3_url).call
-  rescue
-   @audio_exist = false
+  def audio_status
+   return @audio_status if defined?(@audio_status)
+   @audio_status = RemoteFileStatus.new(url: none_tracking_mp3_url).call
+
   end
 
-  def image_exist?
-   return @image_exist if defined?(@image_exist)
+  def image_status
+   return @image_status if defined?(@image_status)
 
-    artwork_url
-    begin
-      @image_exist = RemoteFileStatus.new(url: artwork_url).call
-    rescue
-      @audio_exist = false
-    end
-  end
 
-  def valid?
-    o.valid?
+   @image_status = RemoteFileStatus.new(url: artwork_url).call
+
   end
 
   def status
-   image_exist? && audio_exist? ? :ok : :error
+    [audio_status.status, image_status.status].uniq
+  end
+
+  def status_text
+   [audio_status.message, image_status.message]
   end
 end
