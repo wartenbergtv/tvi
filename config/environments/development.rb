@@ -68,4 +68,6 @@ Rails.application.configure do
   config.cloudinary_cloud_name = ENV["CLOUDINARY_CLOUD_NAME"]
   config.cloudinary_api_key = ENV["CLOUDINARY_API_KEY"]
   config.cloudinary_api_secret = ENV["CLOUDINARY_API_SECRET"]
+
+  config.hosts << ENV['NGROK_HOST'] if ENV['NGROK_HOST'].present?
 end
