@@ -1,1 +1,25 @@
-%h1 Status
+.bg-ligh
+
+  %h1 Status
+
+  %h2 Episodes
+  %table.table.table-striped.table-bordered
+    %thead.thead-dark
+      %tr
+        %th Status
+        %th Name
+        %th Image
+        %th Audio
+        %th
+    %tbody
+      - @episodes.each do |episode|
+        %tr{id: "episode-#{episode.id}", class: "text-nowrap"}
+          %td= episode.status
+          %td= episode.slug
+          %td
+            = show_boolean_value episode.image_exist?
+            = link_to truncate(episode.artwork_url), episode.artwork_url
+          %td
+            = show_boolean_value episode.audio_exist?
+            = link_to truncate(episode.none_tracking_mp3_url), episode.none_tracking_mp3_url
+          %td= edit_button edit_admin_episode_path(episode)

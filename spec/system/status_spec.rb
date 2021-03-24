@@ -9,9 +9,29 @@ describe "Status", type: :system do
     before { login_as admin }
 
     it "show status" do
+      episode = FactoryBot.create :episode, title: "Ruby", number: 1
+
       visit "/"
       click_on "Status"
       expect(page).to have_selector "h1", text: "Status"
+      expect(page).to have_selector "h2", text: "Episodes"
+
+      expect(page).to have_table_with_exact_data([
+        ["Name",
+          "Valid",
+          "Image",
+          "Audio",
+          ""],
+        ["",
+          "001",
+          "Soli Wartenberg",
+          "51.4 KB",
+          "00:00:03",
+          "1",
+          episode.published_on.strftime("%d.%m.%Y"),
+          "Edit",
+          "Show"]
+      ])
     end
   end
 
