@@ -17,6 +17,7 @@ class EpisodePresenter < ApplicationPresenter
 
   def artwork_url
     "https://img.youtube.com/vi/#{o.youtube_key}/0.jpg"
+    #current_setting.default_episode_artwork_url
   end
 
   def file_duration
@@ -38,10 +39,6 @@ class EpisodePresenter < ApplicationPresenter
 
   def file_size
     o.audio_size
-  end
-
-  def mp3_url
-    Rails.application.routes.url_helpers.episode_url(o, format: :mp3)
   end
 
   def episonde_url

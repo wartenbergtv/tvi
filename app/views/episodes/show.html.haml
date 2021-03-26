@@ -5,7 +5,6 @@
   %meta{ property: "og:url",         content: @episode.episonde_url }
   %meta{ property: "og:description", content: truncate(@episode.description, omission: "", separator: " ",length: 120).squish }
   %meta{ property: "og:image",       content: @episode.artwork_url, itemprop: "image" }
-  %meta{ property: "og:audio",       content: @episode.mp3_url }
 
 = render "shared/episode_show", episode: @episode
 

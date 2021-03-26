@@ -30,7 +30,7 @@ class EpisodeFeedPresenter < EpisodePresenter
     # Failing to comply with these guidelines may result in duplicate episodes being shown to listeners,
     # inaccurate data in Podcast Analytics,
     # and can cause issues with your podcasts’s listing and chart placement in Apple Podcasts.
-    mp3_url
+    o.updated_at
   end
 
   def description_with_show_notes_html
