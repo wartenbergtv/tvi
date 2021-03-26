@@ -10,7 +10,7 @@ class EpisodeUpdater < BaseService
 
   delegate :id, to: :episode
 
-  validates(:title, :description, :nodes, :published_on, presence: true)
+  validates(:title, :description, :youtube_key, :published_on, presence: true)
   validates(:episode, presence: true)
 
   def call

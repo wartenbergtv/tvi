@@ -16,11 +16,13 @@
         %h3
           Beschreibung
         = render_markdown @episode.description
-        %br
-        %h3
-          Show Notes
-        .show-notes
-          = render_markdown @episode.nodes
+
+        -if @episode.nodes.present?
+          %br
+          %h3
+            Show Notes
+          .show-notes
+            = render_markdown @episode.nodes
 
 - if current_user&.admin?
   .p.mt-3

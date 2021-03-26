@@ -1,8 +1,8 @@
 .podcast-entry.bg-white.mb-5.p-2
   .row
     .col-md-3
-      .video-container.image.img-thumbnail.img-fluid.d-block
-        %iframe{:allowfullscreen => "", :frameborder => "0", with: 150, src: "http://www.youtube.com/embed/#{episode.youtube_key}" }
+      .embed-responsive.embed-responsive-16by9
+        %iframe{:allowfullscreen => "", :frameborder => "0",  src: "http://www.youtube.com/embed/#{episode.youtube_key}" }
     .col-md
       %h3.font-weight-light
         = link_to "Episode #{episode.number}", episode.episonde_url

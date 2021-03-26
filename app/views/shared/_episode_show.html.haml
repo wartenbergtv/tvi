@@ -4,13 +4,10 @@
       .episode-header.bg-dark.text-white.text-center
         %h2.header.text-white.font-weight-light.display-4
           = episode.title
-      .site-blocks-cover.overlay.inner-page-cover{style: "background-image: url(#{episode.artwork_url});"}
-        .container-fluid
-          .row.align-items-top.justify-content-center.text-center
-            .col-md-8
-
+      .video
+        .embed-responsive.embed-responsive-16by9
+          %iframe.embed-responsive-item{:allowfullscreen => "", :src => "https://www.youtube.com/embed/#{episode.youtube_key}"}
   .row
     .col-md-12
       .player
-        = "TODO Render VIDIO "
         - #= render "shared/webplayer", webplayer_config: PodigeeWebplayerConfigBuilder.new(episode, title: true).to_json
