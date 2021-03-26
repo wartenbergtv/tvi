@@ -4,7 +4,7 @@
 # `HEROKU_APP_NAME` aren't defined.
 
 host = if Rails.env.test?
-  "wartenberger.test.com"
+  "wartenbergtv.test.com"
 elsif Rails.env.development?
   "localhost:3000"
 else

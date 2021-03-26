@@ -2,6 +2,21 @@
 
 podcast hosting
 
+## setup an admin user
+
+open rails console
+
+```
+user = User.new
+user.admin = true
+user.email = "test@example.com"
+user.first_name = "Super"
+user.last_name = "Admin"
+user.password = "supersecret"
+user.password_confirmation = "supersecret"
+user.save!
+```
+
 ## setup sidemap
 
 configure s3 access

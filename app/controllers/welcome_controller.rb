@@ -25,8 +25,8 @@ class WelcomeController < ApplicationController
   end
 
   def about
-    episode_number = current_setting.about_episode_number.presence
-    episode = Episode.find_by(number: episode_number)
+    #episode_number = current_setting.about_episode_number.presence
+    episode = nil # Episode.find_by(number: episode_number)
     @about_episode = episode ? EpisodePresenter.new(episode) : nil
   end
 end
