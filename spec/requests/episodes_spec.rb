@@ -14,12 +14,6 @@ RSpec.describe "episodes", type: :request do
       FactoryBot.create :episode, number: 3, title: "Future", published_on: 1.day.since
       FactoryBot.create :episode, number: 4, title: "inactive", active: false
 
-      # update metadata because active_storage analysers are not running
-      episode1.audio.blob.metadata[:duration] = 321
-      episode1.audio.blob.save!
-      episode2.audio.blob.metadata[:duration] = 321
-      episode2.audio.blob.save!
-
       get "/episodes.rss"
 
       expected_xml = %(<?xml version="1.0" encoding="UTF-8"?>
