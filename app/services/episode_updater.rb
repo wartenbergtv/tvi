@@ -3,19 +3,15 @@ class EpisodeUpdater < BaseService
     description
     nodes
     active
-    artwork_url
-    chapter_marks
-    audio
+    youtube_key
     published_on].freeze
 
   attr_accessor(*UPDATEABLE_ATTRIBUTES, :episode)
 
   delegate :id, to: :episode
 
-  validates(:title, :description, :nodes, :artwork_url, :published_on, presence: true)
+  validates(:title, :description, :nodes, :published_on, presence: true)
   validates(:episode, presence: true)
-  validates(:artwork_url, url: true)
-  validates(:audio, presence: true)
 
   def call
     @published_on = published_on.present? ? published_on.to_date : nil

@@ -13,6 +13,7 @@
 #  published_on    :date
 #  slug            :string           not null
 #  title           :string           not null
+#  youtube_key     :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -25,13 +26,11 @@
 #
 FactoryBot.define do
   factory :episode do
-    sequence(:title) { |n| "Soli Wartenberg #{n}" }
+    sequence(:title) { |n| "My Video #{n}" }
     slug { "#{number.to_s.rjust(3, "0")} #{title}".parameterize }
-    description { "we talk about bikes and things" }
-    artwork_url { "https://wartenberger-podcast.s3.eu-central-1.amazonaws.com/#{slug}.jpg" }
+    description { "we show somethings" }
     downloads_count { 1 }
     published_on { Time.current.to_date }
     sequence(:number)
-    audio { Rack::Test::UploadedFile.new(Rails.root.join("spec/fixtures/test-001.mp3"), "audio/mpeg") }
   end
 end

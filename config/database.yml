@@ -10,12 +10,12 @@ default: &default
 development:
   <<: *default
   host: <%= ENV.fetch('DATABASE_HOST', '0.0.0.0') %>
-  database: <%= ENV.fetch("DATABASE_NAME", "podi_development") %>
+  database: <%= ENV.fetch("DATABASE_NAME", "tivi_development") %>
 
 test:
   <<: *default
-  database: podi_test
+  database: tivi_test
 
 production:
   <<: *default
-  database: <%= ENV.fetch('DATABASE_NAME', "podi_production") %>
+  database: <%= ENV.fetch('DATABASE_NAME', "tivi_production") %>

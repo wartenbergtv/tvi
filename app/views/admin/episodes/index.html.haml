@@ -7,9 +7,7 @@
         %th Published
         %th Epsiode
         %th Title
-        %th Size
-        %th Duration
-        %th Downloads
+        %th Link
         %th Published
         %th
         %th
@@ -19,9 +17,7 @@
           %td= show_boolean_value episode.published?
           %td= episode.number
           %td= episode.title
-          %td= episode.audio_size_formatted
-          %td= episode.duration_formatted
-          %td= episode.downloads_count
+          %td= link_to episode.youtube_link, episode.youtube_link
           %td= episode.published_on
           %td= edit_button edit_admin_episode_path(episode)
           %td= show_button episode_path(episode)
