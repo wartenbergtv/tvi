@@ -11,7 +11,7 @@
 -# **************************
 
 .site-section.bg-light
-  .container
+  .container-fluid
     .row.mb-3
       .col-md-12.text-center
         .subscribe-buttons.justify-content-center.text-white
@@ -45,7 +45,7 @@
             .col-md-12
               = render "shared/episode", episode: episode
 
-      .container
+      .container-fluid
         .row
           .col.text-center
             = link_to(episodes_path, class: " btn btn-secondary rounded-pill") do
