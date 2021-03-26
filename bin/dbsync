@@ -44,7 +44,6 @@ end
 
 puts "start import dump file"
 postgres_pw = development_db_password ? { "PGPASSWORD" => development_db_password } : {}
-#pg_restore --verbose --clean --no-acl --no-owner -h localhost -U postgres -d podi_development latest.dump
 
 system(postgres_pw,
        "pg_restore --verbose --clean --no-acl --no-owner " \
