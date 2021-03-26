@@ -13,7 +13,7 @@ class EpisodeCreator < BaseService
 
   validates(:title, presence: true)
   validates(:description, presence: true)
-  validates(:youtube_key, presence: true, url: true)
+  validates(:youtube_key, presence: true)
   validates(:number, presence: true)
   validates(:published_on, presence: true)
 
