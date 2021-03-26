@@ -11,20 +11,12 @@ class EpisodePresenter < ApplicationPresenter
     h.format_date o.published_on
   end
 
+  def youtube_link
+    "https://www.youtube.com/watch?v=#{o.youtube_key}"
+  end
+
   def artwork_url
-    # You should use this tag when you have a high quality, episode-specific image you would like listeners to see.
-    # Specify your episode artwork using the <a href> attribute in the <itunes:image> tag.
-    # Depending on their device, listeners see your episode artwork in varying sizes.
-    # Therefore, make sure your design is effective at both its original size and at thumbnail size.
-    # You should include a title, brand, or source name as part of your episode artwork.
-    # To avoid technical issues when you update your episode artwork, be sure to:
-    # Change the artwork file name and URL at the same time
-    # Verify the web server hosting your artwork allows HTTP head requests
-    # Artwork must be a minimum size of 1400 x 1400 pixels and a maximum size of 3000 x 3000 pixels,
-    # in JPEG or PNG format, 72 dpi, with appropriate file extensions (.jpg, .png), and in the RGB colorspace.
-    # These requirements are different from the standard RSS image tag specifications.
-    # Make sure the file type in the URL matches the actual file type of the image file.d
-    o.artwork_url.presence || current_setting.default_episode_artwork_url
+    "https://img.youtube.com/vi/#{o.youtube_key}/0.jpg"
   end
 
   def file_duration

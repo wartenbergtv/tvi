@@ -13,6 +13,7 @@
 #  published_on    :date
 #  slug            :string           not null
 #  title           :string           not null
+#  youtube_key     :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #

@@ -1,7 +1,7 @@
 test:
   adapter: postgresql
   encoding: unicode
-  database: podi_test
+  database: tivi_test
   pool: 5
   host: localhost
   username: <%= ENV["POSTGRES_USER"] %>

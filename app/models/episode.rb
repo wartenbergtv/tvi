@@ -13,6 +13,7 @@
 #  published_on    :date
 #  slug            :string           not null
 #  title           :string           not null
+#  youtube_key     :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
 #
@@ -33,14 +34,4 @@ class Episode < ApplicationRecord
   validates(:number, uniqueness: true)
   validates(:slug, uniqueness: true)
   validates(:title, uniqueness: true)
-
-  has_one_attached :audio
-
-  def duration
-    audio.blob.metadata[:duration] if audio.attached?
-  end
-
-  def audio_size
-    audio.blob.byte_size if audio.attached?
-  end
 end

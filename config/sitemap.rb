@@ -1,3 +1,5 @@
+if Rails.application.config.aws_bucket_name.present?
+
 # Set the host name for URL creation
 host = if Rails.env.test?
   "wartenberger.test.com"
@@ -6,6 +8,9 @@ elsif Rails.env.development?
 else
   ENV["DEFAULT_URL_HOST"] || "#{ENV.fetch("HEROKU_APP_NAME")}.herokuapp.com"
 end
+
+
+
 
 protocol = Rails.application.config.force_ssl ? "https" : "http"
 
@@ -23,8 +28,6 @@ SitemapGenerator::Sitemap.adapter = SitemapGenerator::AwsSdkAdapter.new(
 
 # The full path to your bucket
 SitemapGenerator::Sitemap.sitemaps_host = "https://#{Rails.application.config.aws_bucket_name}.s3.amazonaws.com"
-
-if Rails.application.config.aws_bucket_name.present?
 
   SitemapGenerator::Sitemap.create do
     add episodes_path, priority: 0.7, changefreq: "daily"
